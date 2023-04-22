@@ -14,19 +14,19 @@ extents = Vector3( 1.5, 1.5, 1.5 )
 [sub_resource type="CubeMesh" id=4]
 size = Vector3( 3, 3, 3 )
 
-[sub_resource type="OpenSimplexNoise" id=11]
+[sub_resource type="OpenSimplexNoise" id=5]
 
-[sub_resource type="NoiseTexture" id=12]
-noise = SubResource( 11 )
+[sub_resource type="NoiseTexture" id=6]
+noise = SubResource( 5 )
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.662745, 0.337255, 0.337255, 1 )
-albedo_texture = SubResource( 12 )
+albedo_texture = SubResource( 6 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=8]
 extents = Vector3( 0.2, 0.2, 0.4 )
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="CubeMesh" id=9]
 size = Vector3( 0.4, 0.4, 0.8 )
 
 [sub_resource type="SpatialMaterial" id=10]
@@ -85,18 +85,17 @@ shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Box"]
 mesh = SubResource( 4 )
-material/0 = SubResource( 13 )
+material/0 = SubResource( 7 )
 
 [node name="Floor" type="RigidBody" parent="."]
 transform = Transform( 40, 0, 0, 0, 2, 0, 0, 0, 40, 0, -12, 0 )
 mode = 1
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 6 )
+mesh = SubResource( 9 )
 material/0 = SubResource( 10 )
 
 [node name="PinJoint" type="PinJoint" parent="."]
