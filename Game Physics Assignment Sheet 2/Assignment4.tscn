@@ -124,7 +124,7 @@ nodes/node_a = NodePath("../Sphere4")
 nodes/node_b = NodePath("../Box")
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147663, -3.54971, 15.4206 )
+transform = Transform( 0.94925, -0.0877385, 0.302037, 0, 0.960303, 0.278958, -0.314523, -0.2648, 0.911568, 3.47095, -3.54971, 14.0278 )
 
 [node name="Spatial" type="Spatial" parent="."]
 
