@@ -5,7 +5,7 @@ var rotSpeed = 1
 
 func _process(delta):	
 	var change = Vector3(0,0,0)
-	var rotChange = Vector3(0,0,0)
+	#var rotChange = Vector3(0,0,0)
 	
 	if Input.is_action_pressed("left"):
 		change.x -= 1
