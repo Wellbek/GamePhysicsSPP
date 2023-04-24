@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/MarbleMaze.obj-eec44466a4a84099f7e1a203af01ae91.mesh"
+
+[deps]
+
+files=[ "res://.import/MarbleMaze.obj-eec44466a4a84099f7e1a203af01ae91.mesh" ]
+
+source_file="res://Assets/MarbleMaze.obj"
+dest_files=[ "res://.import/MarbleMaze.obj-eec44466a4a84099f7e1a203af01ae91.mesh", "res://.import/MarbleMaze.obj-eec44466a4a84099f7e1a203af01ae91.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

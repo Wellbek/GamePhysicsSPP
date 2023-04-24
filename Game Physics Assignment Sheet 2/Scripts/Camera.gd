@@ -41,7 +41,6 @@ func _process(delta):
 	rotate_object_local(Vector3(1,0,0),rotSpeed * delta * rotChange.x)
 	
 	if Input.is_action_just_pressed("unlock_camera"):
-		print("test")
 		clickOrigin = get_viewport().get_mouse_position()
 	
 	if Input.is_action_pressed("unlock_camera"):
