@@ -3,5 +3,10 @@
 [sub_resource type="ProceduralSky" id=1]
 
 [resource]
-background_mode = 2
+background_mode = 3
 background_sky = SubResource( 1 )
+background_color = Color( 0.129412, 0.184314, 0.203922, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+fog_enabled = true
+fog_color = Color( 0.239216, 0.32549, 0.423529, 0.701961 )
+fog_sun_amount = 0.1
