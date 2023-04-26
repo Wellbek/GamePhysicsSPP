@@ -155,3 +155,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0.4 )
 
 [node name="wallRow10" parent="Spatial" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.4 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.998512, -0.0384406, 0.0386788, 0, 0.709288, 0.704919, -0.0545319, -0.70387, 0.708232, 0, 0, 7.47432 )
+shadow_enabled = true

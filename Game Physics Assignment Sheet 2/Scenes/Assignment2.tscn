@@ -11,6 +11,7 @@
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.946704, 0.0723057, -0.313884, 0.063003, 0.914088, 0.400591, 0.315882, -0.399017, 0.860816, -2.05403, 8.32813, 11.3885 )
+shadow_enabled = true
 
 [node name="Plane" type="Spatial" parent="."]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
