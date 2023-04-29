@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/maze_lvl_2.obj-d832a800c6bf902b81660cbc2da4331e.mesh"
+
+[deps]
+
+files=[ "res://.import/maze_lvl_2.obj-d832a800c6bf902b81660cbc2da4331e.mesh" ]
+
+source_file="res://Assets/maze_lvl_2.obj"
+dest_files=[ "res://.import/maze_lvl_2.obj-d832a800c6bf902b81660cbc2da4331e.mesh", "res://.import/maze_lvl_2.obj-d832a800c6bf902b81660cbc2da4331e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
