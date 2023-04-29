@@ -4,7 +4,7 @@ var rotSpeed = .3 # NOTE: Higher values than 0.3 will lead to tunneling (object 
 export var mouseSpeed = 2.0
 export var clickOrigin = Vector2(0,0)
 
-export var pathToNewScene = "res://Scenes/MazeLVLs/MarbleMaze.tscn"
+export var pathToNewScene = "res://Scenes/MarbleMaze.tscn"
 
 func _physics_process(delta):
 	# ======================================
