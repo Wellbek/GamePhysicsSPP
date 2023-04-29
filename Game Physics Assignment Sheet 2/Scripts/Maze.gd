@@ -4,6 +4,8 @@ var rotSpeed = .3 # NOTE: Higher values than 0.3 will lead to tunneling (object 
 export var mouseSpeed = 2.0
 export var clickOrigin = Vector2(0,0)
 
+export var pathToNewScene = "res://Scenes/MazeLVLs/MarbleMaze.tscn"
+
 func _physics_process(delta):
 	# ======================================
 	# Arrowkeys Rotation:
@@ -40,3 +42,8 @@ func _physics_process(delta):
 	#limit rotation along x,z and lock along y
 	var myRot = get_rotation()
 	rotation = Vector3(clamp(myRot.x, -.2, .2), 0, clamp(myRot.z, -.2, .2))
+
+
+func _on_GoalZone_body_entered(body):
+	if body.name == "Marble":
+		get_tree().change_scene(pathToNewScene)

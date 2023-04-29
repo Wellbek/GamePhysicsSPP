@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Marble.gd" type="Script" id=1]
+[ext_resource path="res://Materials/ballMaterial.tres" type="Material" id=2]
+
+[sub_resource type="SphereShape" id=10]
+margin = 0.05
+radius = 0.2
+
+[sub_resource type="SphereMesh" id=11]
+radius = 0.2
+height = 0.4
+
+[node name="Marble" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06454, 2.99281, 4.37109 )
+continuous_cd = true
+can_sleep = false
+script = ExtResource( 1 )
+respawnLocation = Vector3( 3.6, 2.5, -3.8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 11 )
+material/0 = ExtResource( 2 )
