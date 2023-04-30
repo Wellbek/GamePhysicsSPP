@@ -5,6 +5,10 @@ var minutes = 0
 var seconds = 0
 var ms = 0
 
+func get_current_rot():
+	var rot = get_node("/root/Spatial/Maze").get_global_transform().basis.y
+	return rot
+
 func increase_death():
 	deaths += 1
 	get_node("/root/Spatial/GUI").update_death()
