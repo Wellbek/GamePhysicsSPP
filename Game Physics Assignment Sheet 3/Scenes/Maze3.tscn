@@ -17,6 +17,7 @@ data = PoolVector3Array( -1, 0, -0.7, -1, 0.3, 0.6, -1, 0, 0.6, -1, 0, -0.7, -1,
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 mode = 1
 script = ExtResource( 5 )
+pathToNewScene = "res://Scenes/Maze4.tscn"
 
 [node name="MeshInstance" type="MeshInstance" parent="Maze"]
 mesh = ExtResource( 4 )
