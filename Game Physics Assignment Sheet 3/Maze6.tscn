@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Instances/MazeCamera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instances/Marble.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://test1.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://palette_001.material" type="Material" id=5]
+[ext_resource path="res://wreckZ.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends RigidBody
+
+var rotSpeed = .3 # NOTE: Higher values than 0.3 will lead to tunneling (object passing through collider)
+export var mouseSpeed = 2.0
+export var clickOrigin = Vector2(0,0)
+
+export var pathToNewScene = \"res://Scenes/MarbleMaze.tscn\"
+
+func _physics_process(delta):
+	# ======================================
+	# Arrowkeys Rotation:
+	var rotChange = Vector3(0,0,0)
+	
+	if Input.is_action_pressed(\"rot_left\"):
+		rotChange += Vector3(0,0,1)
+	if Input.is_action_pressed(\"rot_right\"):
+		rotChange += Vector3(0,0,-1)
+	if Input.is_action_pressed(\"rot_up\"):
+		rotChange += Vector3(-1,0,0)
+	if Input.is_action_pressed(\"rot_down\"):
+		rotChange += Vector3(1,0,0)
+	
+	rotChange = rotChange.normalized()
+
+	rotate_object_local(Vector3(0,0,1),rotSpeed * delta * rotChange.z)
+	rotate_object_local(Vector3(1,0,0),rotSpeed * delta * rotChange.x)
+	# ======================================
+	# Mouse Rotation:
+	# NOTE: Tunneling!
+	#		simply clamping mouseSpeed and/or clickVector wont resolve the issue as in the arrow key case
+	if Input.is_action_just_pressed(\"unlock_camera\"):
+		clickOrigin = get_viewport().get_mouse_position()
+	
+	if Input.is_action_pressed(\"unlock_camera\"):
+		var clickVec = get_viewport().get_mouse_position() - clickOrigin
+		clickOrigin = get_viewport().get_mouse_position()
+		clickVec = clickVec/10
+		rotate_object_local(Vector3(0,0,1),mouseSpeed * delta * -clickVec.x)
+		rotate_object_local(Vector3(1,0,0),mouseSpeed * delta * clickVec.y)
+	# ======================================
+	
+	#limit rotation along x,z and lock along y
+	var myRot = get_rotation()
+	rotation = Vector3(clamp(myRot.x, -.2, .2), 0, clamp(myRot.z, -.2, .2))
+
+
+func _on_GoalZone_body_entered(body):
+	if body.name == \"Marble\":
+		get_tree().change_scene(pathToNewScene)
+"
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -2, 0, 0.2, -2, 0.1, 0.3, -2, 0, 0.3, -2, 0, 0.1, -2, 0.1, 0.2, -2, 0, 0.2, -2, 0.1, 0.2, -2, 0, -2.98023e-008, -2, 0.1, 0.1, -2, 0, 0.1, -2, 0.1, 0.1, -2, 0, -0.1, -2, 0.1, -2.98023e-008, -2, 0, -2.98023e-008, -2, 0.1, -2.98023e-008, -2, 0, -0.2, -2, 0.1, -0.1, -2, 0, -0.1, -2, 0.1, -0.1, -2, 0.1, -0.2, 2, 0, 0.2, 2, 0, 0.3, 2, 0.1, 0.3, 2, 0, -0.1, 2, 0, 0.2, 2, 0.1, 0.2, 2, 0.1, 0.2, 2, 0, -0.2, 2, 0, -0.1, 2, 0.1, -0.1, 2, 0.1, -0.1, 2, 0.1, -0.2, -2, 0.1, 0.3, -1.9, 0, 0.3, -2, 0, 0.3, -1.9, 0.1, 0.3, -1.9, 0.1, 0.3, -1.8, 0, 0.3, -1.9, 0, 0.3, -1.8, 0.1, 0.3, -1.8, 0.1, 0.3, -1.7, 0, 0.3, -1.8, 0, 0.3, -1.7, 0.1, 0.3, -1.7, 0.1, 0.3, -1.6, 0, 0.3, -1.7, 0, 0.3, -1.6, 0.1, 0.3, -1.6, 0.1, 0.3, 2, 0, 0.3, -1.6, 0, 0.3, 2, 0.1, 0.3, -2, 0.1, -0.2, -2, 0, -0.2, -1.9, 0, -0.2, -1.9, 0.1, -0.2, -1.9, 0.1, -0.2, -1.9, 0, -0.2, -1.8, 0, -0.2, -1.8, 0.1, -0.2, -1.8, 0.1, -0.2, -1.8, 0, -0.2, -1.7, 0, -0.2, -1.7, 0.1, -0.2, -1.7, 0.1, -0.2, -1.7, 0, -0.2, -1.6, 0, -0.2, -1.6, 0.1, -0.2, -1.6, 0.1, -0.2, -1.6, 0, -0.2, 2, 0, -0.2, 2, 0.1, -0.2, -1.9, 0, 0.3, -2, 0, 0.2, -2, 0, 0.3, -1.8, 0, 0.3, -1.9, 0, 0.2, -1.9, 0, 0.3, -1.9, 0, 0.2, -1.7, 0, 0.3, -1.8, 0, 0.2, -1.8, 0, 0.3, -1.8, 0, 0.2, -1.6, 0, 0.3, -1.7, 0, 0.2, -1.7, 0, 0.3, -1.7, 0, 0.2, 2, 0, 0.3, -1.6, 0, 0.2, -1.6, 0, 0.3, -1.6, 0, 0.2, 1.7, 0, 0.2, 2, 0, 0.2, -2, 0, 0.1, -2, 0, 0.2, -1.9, 0, 0.1, -1.9, 0, 0.1, -1.8, 0, 0.1, -1.8, 0, 0.1, -1.6, 0, 0.2, -1.7, 0, 0.1, -1.7, 0, 0.1, -1.6, 0, 0.1, -1.6, 0, 0.1, -2, 0, -2.98023e-008, -2, 0, 0.1, -1.9, 0, -2.98023e-008, -1.9, 0, -2.98023e-008, -1.8, 0, -2.98023e-008, -1.8, 0, -2.98023e-008, -1.6, 0, 0.1, -1.7, 0, -2.98023e-008, -1.7, 0, -2.98023e-008, -1.6, 0, -2.98023e-008, -1.6, 0, -2.98023e-008, -2, 0, -0.1, -2, 0, -2.98023e-008, -1.9, 0, -0.1, -1.9, 0, -0.1, -1.8, 0, -0.1, -1.8, 0, -0.1, -1.6, 0, -2.98023e-008, -1.7, 0, -0.1, -1.7, 0, -0.1, -1.6, 0, -0.1, -1.6, 0, -0.1, 2, 0, 0.2, 1.7, 0, -0.1, 1.7, 0, 0.2, 1.7, 0, -0.1, 2, 0, -0.1, -2, 0, -0.2, -2, 0, -0.1, -1.9, 0, -0.2, -1.9, 0, -0.2, -1.8, 0, -0.2, -1.8, 0, -0.2, -1.6, 0, -0.1, -1.7, 0, -0.2, -1.7, 0, -0.2, -1.6, 0, -0.2, -1.6, 0, -0.2, 2, 0, -0.1, 2, 0, -0.2, -1.9, 0.1, 0.3, -2, 0.1, 0.3, -2, 0.1, 0.2, -1.8, 0.1, 0.3, -1.9, 0.1, 0.3, -1.9, 0.1, 0.2, -1.9, 0.1, 0.2, -1.7, 0.1, 0.3, -1.8, 0.1, 0.3, -1.8, 0.1, 0.2, -1.8, 0.1, 0.2, -1.6, 0.1, 0.3, -1.7, 0.1, 0.3, -1.7, 0.1, 0.2, -1.7, 0.1, 0.2, 2, 0.1, 0.3, -1.6, 0.1, 0.3, -1.6, 0.1, 0.2, -1.6, 0.1, 0.2, 1.7, 0.1, 0.2, 2, 0.1, 0.2, -2, 0.1, 0.2, -2, 0.1, 0.1, -1.9, 0.1, 0.1, -1.9, 0.1, 0.1, -1.8, 0.1, 0.1, -1.8, 0.1, 0.1, -1.6, 0.1, 0.2, -1.7, 0.1, 0.1, -1.7, 0.1, 0.1, -1.6, 0.1, 0.1, -1.6, 0.1, 0.1, -2, 0.1, 0.1, -2, 0.1, -2.98023e-008, -1.9, 0.1, -2.98023e-008, -1.9, 0.1, -2.98023e-008, -1.8, 0.1, -2.98023e-008, -1.8, 0.1, -2.98023e-008, -1.6, 0.1, 0.1, -1.7, 0.1, -2.98023e-008, -1.7, 0.1, -2.98023e-008, -1.6, 0.1, -2.98023e-008, -1.6, 0.1, -2.98023e-008, -2, 0.1, -2.98023e-008, -2, 0.1, -0.1, -1.9, 0.1, -0.1, -1.9, 0.1, -0.1, -1.8, 0.1, -0.1, -1.8, 0.1, -0.1, -1.6, 0.1, -2.98023e-008, -1.7, 0.1, -0.1, -1.7, 0.1, -0.1, -1.6, 0.1, -0.1, -1.6, 0.1, -0.1, 2, 0.1, 0.2, 1.7, 0.1, 0.2, 1.7, 0.1, -0.1, 1.7, 0.1, -0.1, 2, 0.1, -0.1, -2, 0.1, -0.1, -2, 0.1, -0.2, -1.9, 0.1, -0.2, -1.9, 0.1, -0.2, -1.8, 0.1, -0.2, -1.8, 0.1, -0.2, -1.6, 0.1, -0.1, -1.7, 0.1, -0.2, -1.7, 0.1, -0.2, -1.6, 0.1, -0.2, -1.6, 0.1, -0.2, 2, 0.1, -0.1, 2, 0.1, -0.2 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.999606, -0.0171816, -0.0221961, 0.0271178, 0.795267, 0.605653, 0.00724568, -0.606016, 0.795419, -0.0619801, 7.63908, 6.53477 )
+fov = 63.8649
+
+[node name="Marble" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 3, 0.25 )
+respawnLocation = Vector3( 9.5, 3, 0.25 )
+
+[node name="GUI" parent="." instance=ExtResource( 3 )]
+title = "Level 6"
+
+[node name="Maze" type="RigidBody" parent="."]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
+mode = 1
+script = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Maze"]
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Maze"]
+shape = SubResource( 3 )
+
+[node name="Spatial" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.218282, 0 )
+
+[node name="Spatial2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.36608, -0.218282, 0 )
+
+[node name="Spatial3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50002, 0.582661, 0 )

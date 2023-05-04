@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Instances/Camera.tscn" type="PackedScene" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.1
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0996011, 2.52169, 7.567 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+mode = 1
+
+[node name="RigidBody2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00819182, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
+shape = SubResource( 2 )
+
+[node name="RigidBody3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188474, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody3"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody3"]
+shape = SubResource( 2 )
+
+[node name="RigidBody4" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34536, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody4"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
+shape = SubResource( 2 )
+
+[node name="RigidBody5" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.541962, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody5"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody5"]
+shape = SubResource( 2 )
+
+[node name="RigidBody6" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18398, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody6"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
+shape = SubResource( 4 )
+
+[node name="PinJoint" type="PinJoint" parent="."]
+nodes/node_a = NodePath("../RigidBody")
+nodes/node_b = NodePath("../RigidBody2")
+
+[node name="PinJoint2" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25867, -0.0425909, 0.0112796 )
+nodes/node_a = NodePath("../RigidBody2")
+nodes/node_b = NodePath("../RigidBody3")
+
+[node name="PinJoint3" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394882, -0.0425909, 0.0112796 )
+nodes/node_a = NodePath("../RigidBody3")
+nodes/node_b = NodePath("../RigidBody4")
+
+[node name="PinJoint4" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412918, -0.0425909, 0.0112796 )
+nodes/node_a = NodePath("../RigidBody4")
+nodes/node_b = NodePath("../RigidBody5")
+
+[node name="PinJoint5" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591333, -0.0425909, 0.0112796 )
+nodes/node_a = NodePath("../RigidBody5")
+nodes/node_b = NodePath("../RigidBody6")

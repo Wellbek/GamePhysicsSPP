@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/GUI.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/GUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.429688, 0.429688, 0.429688, 1, 0.433594, 0.433594, 0.433594, 1 )
@@ -11,7 +11,7 @@ gradient = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 17
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 0.429688, 0.429688, 0.429688, 1, 0.429688, 0.429688, 0.429688, 1 )
@@ -19,13 +19,13 @@ colors = PoolColorArray( 0.429688, 0.429688, 0.429688, 1, 0.429688, 0.429688, 0.
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
 
-[sub_resource type="DynamicFont" id=7]
-size = 20
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 27
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [node name="GUI" type="MarginContainer"]
 anchor_right = 1.0
@@ -33,7 +33,7 @@ custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,8 +85,8 @@ texture = SubResource( 5 )
 [node name="Label" type="Label" parent="HBoxContainer/Title/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -3.8147e-06
-custom_fonts/font = SubResource( 7 )
+margin_right = -3.8147e-006
+custom_fonts/font = SubResource( 6 )
 text = "Level 1"
 align = 1
 valign = 1
@@ -110,7 +110,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_right = 0.999998
 margin_bottom = -1.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "X"
 align = 1
 valign = 1
@@ -122,9 +122,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.90735e-06
-margin_right = -3.8147e-06
-custom_fonts/font = SubResource( 7 )
+margin_left = -1.90735e-006
+margin_right = -3.8147e-006
+custom_fonts/font = SubResource( 6 )
 text = "0"
 align = 1
 valign = 1
