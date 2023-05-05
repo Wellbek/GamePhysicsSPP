@@ -6,24 +6,24 @@
 
 [sub_resource type="CylinderMesh" id=2]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.545098, 0.270588, 0.0745098, 1 )
 
-[sub_resource type="SphereMesh" id=3]
+[sub_resource type="SphereMesh" id=4]
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 1 )
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=6]
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="SphereMesh" id=7]
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 metallic = 1.0
 metallic_specular = 0.49
 
-[sub_resource type="SphereShape" id=6]
+[sub_resource type="SphereShape" id=9]
 
 [sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.862745, 0.862745, 0.862745, 1 )
@@ -44,7 +44,6 @@ metallic = 1.0
 [node name="Spatial" type="Spatial"]
 
 [node name="stem" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 mode = 1
 
@@ -55,7 +54,7 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="stem"]
 transform = Transform( 0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 3 )
 
 [node name="wreck" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0114302, 4.29806, 2.73257 )
@@ -63,66 +62,61 @@ gravity_scale = 5.0
 axis_lock_linear_x = true
 
 [node name="MeshInstance" type="MeshInstance" parent="wreck"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="wreck"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="chain" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.3, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="chain"]
-mesh = SubResource( 5 )
-material/0 = SubResource( 9 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="chain"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="chain2" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.3, 0.4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="chain2"]
-mesh = SubResource( 5 )
+mesh = SubResource( 7 )
 material/0 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="chain2"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="chain3" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.3, 0.8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="chain3"]
-mesh = SubResource( 5 )
+mesh = SubResource( 7 )
 material/0 = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="chain3"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="chain4" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.3, 1.2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="chain4"]
-mesh = SubResource( 5 )
+mesh = SubResource( 7 )
 material/0 = SubResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="chain4"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="chain5" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.3, 1.6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="chain5"]
-mesh = SubResource( 5 )
+mesh = SubResource( 7 )
 material/0 = SubResource( 13 )
 
 [node name="CollisionShape" type="CollisionShape" parent="chain5"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="PinJoint" type="PinJoint" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3, 0 )

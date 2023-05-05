@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Game Physics Assignment Sheet 3"
-run/main_scene="res://Maze6.tscn"
+run/main_scene="res://Scenes/Maze1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -86,6 +86,7 @@ down={
 
 [physics]
 
+common/physics_fps=600
 3d/smooth_trimesh_collision=true
 
 [rendering]
