@@ -42,7 +42,10 @@ func _physics_process(delta):
 	var myRot = get_rotation()
 	rotation = Vector3(clamp(myRot.x, -.2, .2), 0, clamp(myRot.z, -.2, .2))
 
+func reset_rotation():
+	rotation = Vector3(0,0,0)
 
 func _on_GoalZone_body_entered(body):
 	if body.name == "Marble":
 		get_tree().change_scene(pathToNewScene)
+		

@@ -21,6 +21,13 @@ func reset_timer():
 	seconds = 0
 	ms = 0
 	
+func reset_scene(withGUI):
+	if withGUI:
+		reset_deaths()
+		reset_timer()
+	get_node("/root/Spatial/Maze").reset_rotation()
+	get_node("/root/Spatial/Marble").respawn()
+	
 func _process(delta):
 	ms += delta
 	if ms >= 1:

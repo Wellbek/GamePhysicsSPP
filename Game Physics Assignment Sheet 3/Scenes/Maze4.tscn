@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Maze.gd" type="Script" id=1]
 [ext_resource path="res://Instances/MazeCamera.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Instances/Marble.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Instances/GoalZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Instances/GUI.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Instances/JumpPad.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 300, 300 )
@@ -100,9 +99,6 @@ material/0 = ExtResource( 3 )
 shape = SubResource( 10 )
 
 [node name="GoalZone" parent="Maze" instance=ExtResource( 6 )]
-
-[node name="JumpPad" parent="Maze" instance=ExtResource( 8 )]
-transform = Transform( 0.025, 0, 0, 0, 0.005, 0, 0, 0, 0.025, -0.875, 0.204929, 0.475 )
 
 [node name="GUI" parent="." instance=ExtResource( 7 )]
 title = "Level 4"
