@@ -1,6 +1,6 @@
 extends RigidBody
 
-var arrowkeySpeed = 0.7
+var arrowkeySpeed = .7
 export var mouseSpeed = 5.0
 export var clickOrigin = Vector2(0,0)
 export var maxRotPerFrame = .01 # avoids tunneling when rotating rapidly (the lower the framerate the higher the variables value should be)
@@ -28,14 +28,17 @@ func _physics_process(delta):
 	# ======================================
 	# Mouse Rotation:
 	if Input.is_action_just_pressed("unlock_camera"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		clickOrigin = get_viewport().get_mouse_position()
 	
 	if Input.is_action_pressed("unlock_camera"):
 		var clickVec = get_viewport().get_mouse_position() - clickOrigin
 		clickOrigin = get_viewport().get_mouse_position()
-		clickVec = clickVec
+		clickVec = clickVec / 10
 		rotate_object_local(Vector3(0,0,1),clamp(mouseSpeed * delta * -clickVec.x, -maxRotPerFrame, maxRotPerFrame))
 		rotate_object_local(Vector3(1,0,0),clamp(mouseSpeed * delta * clickVec.y, -maxRotPerFrame, maxRotPerFrame))
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	# ======================================
 	
 	#limit rotation along x,z and lock along y
