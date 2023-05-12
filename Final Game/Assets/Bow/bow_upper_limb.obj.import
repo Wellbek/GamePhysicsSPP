@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/bow_upper_limb.obj-3b2171903f0841588b106362247dedcb.mesh"
+
+[deps]
+
+files=[ "res://.import/bow_upper_limb.obj-3b2171903f0841588b106362247dedcb.mesh" ]
+
+source_file="res://Assets/Bow/bow_upper_limb.obj"
+dest_files=[ "res://.import/bow_upper_limb.obj-3b2171903f0841588b106362247dedcb.mesh", "res://.import/bow_upper_limb.obj-3b2171903f0841588b106362247dedcb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

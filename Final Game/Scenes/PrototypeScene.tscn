@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
+[ext_resource path="res://Instances/bow.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -25,6 +26,9 @@ shape = SubResource( 1 )
 
 [node name="FirstPersonCamera" type="Camera" parent="Character"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+
+[node name="bow" parent="Character/FirstPersonCamera" instance=ExtResource( 2 )]
+transform = Transform( 0.0312567, 0.177265, 5.86514e-08, 0.177265, -0.0312567, 0, 1.01847e-08, 5.77604e-08, -0.18, 0.731, -0.132, -0.928 )
 
 [node name="Ground" type="RigidBody" parent="."]
 mode = 1
