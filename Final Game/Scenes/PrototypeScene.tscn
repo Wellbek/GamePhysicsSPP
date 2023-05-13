@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://Instances/bow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/crosshair.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -28,7 +29,28 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 
 [node name="bow" parent="Character/FirstPersonCamera" instance=ExtResource( 2 )]
-transform = Transform( 0.0312567, 0.177265, 5.86514e-08, 0.177265, -0.0312567, 0, 1.01847e-08, 5.77604e-08, -0.18, 0.731, -0.132, -0.928 )
+transform = Transform( 0.0319463, 0.176448, -0.0156666, 0.177022, -0.0312138, 0.00942047, 0.00651783, -0.0170793, -0.179069, 0.731, -0.132, -0.928 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Character/FirstPersonCamera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="TextureRect" parent="Character/FirstPersonCamera/CenterContainer"]
+modulate = Color( 0.133333, 0.85098, 0.109804, 0.803922 )
+margin_left = 504.0
+margin_top = 292.0
+margin_right = 520.0
+margin_bottom = 308.0
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Ground" type="RigidBody" parent="."]
 mode = 1
