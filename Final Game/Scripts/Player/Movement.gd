@@ -7,6 +7,10 @@ export var mouse_sens = 5.0
 var clickVec = Vector2(0,0)
 var velocity = Vector3(0,0,0)
 
+export var number_of_extra_jumps = 0
+var number_of_left_jumps = 0
+var jumping = false
+
 #This variable determines how long a jump is still possible after walking off a platform, so probably needs tweaking
 export var coyote_max = 0.1
 var coyote_timer = 0
@@ -62,8 +66,17 @@ func handle_jump(delta):
 	velocity.x *= 0.8
 	velocity.z *= 0.8
 	velocity.y += gravity
+	
+	if is_on_floor():
+		number_of_left_jumps = number_of_extra_jumps
+	
+	if Input.is_action_just_pressed("jump") && !is_on_floor() && number_of_left_jumps > 0:
+		number_of_left_jumps-=1
+		velocity.y = jump_strength
+	
 	if (Input.is_action_just_pressed("jump") || jump_buffered) && (is_on_floor() || coyote_possible):
 		velocity.y = jump_strength
+		number_of_left_jumps = number_of_extra_jumps
 		if !is_on_floor():
 			coyote_possible = false
 	

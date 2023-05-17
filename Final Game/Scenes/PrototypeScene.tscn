@@ -24,6 +24,7 @@ transform = Transform( 1, 0, 0, 0, 0.828256, 0.56035, 0, -0.56035, 0.828256, 0, 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 movement_speed = 8.0
 jump_strength = 8.0
+number_of_extra_jumps = 1
 
 [node name="Scene" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
