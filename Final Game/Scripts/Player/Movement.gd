@@ -7,9 +7,14 @@ export var mouse_sens = 5.0
 var clickVec = Vector2(0,0)
 var velocity = Vector3(0,0,0)
 
-var jump_timer = 0
+#This variable determines how long a jump is still possible after walking off a platform, so probably needs tweaking
+export var coyote_max = 0.1
+var coyote_timer = 0
+var coyote_possible = false
+var last_y_on_floor = 0
+
 export var jump_buffer_time = 0.1
-var can_press_jump = true
+var jump_timer = 0
 var jump_buffered = false
 
 func _ready():
@@ -27,7 +32,6 @@ func _input(event):
 func _physics_process(delta):
 	
 	handle_jump(delta)
-	
 	handle_wasd(delta)
 
 	# limit camera rotation along x (so we can only look up/down a certain amount)
@@ -52,6 +56,32 @@ func handle_wasd(delta):
 
 func handle_jump(delta):
 	
+	update_buffer(delta)
+	update_coyote(delta)
+	
+	velocity.y += gravity
+	if (Input.is_action_just_pressed("jump") || jump_buffered) && (is_on_floor() || coyote_possible):
+		velocity.y = jump_strength
+	
+	#last parameter determines whether the player can move rigidbodies or view then as static bodies
+	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol
+	#first parameter is linear_velocity that is getting applied, second is the normal of the floor
+	velocity = move_and_slide(velocity, Vector3(0,1,0), false, 4, 0.785398, false)
+	
+	
+func update_coyote(delta):
+	if is_on_floor():
+		coyote_timer = 0
+		coyote_possible=false
+		last_y_on_floor = transform.origin.y
+	else:
+		if last_y_on_floor > transform.origin.y && coyote_timer <= coyote_max:
+			coyote_possible=true
+			coyote_timer += delta
+		else:
+			coyote_possible = false
+
+func update_buffer(delta):
 	if jump_timer <= jump_buffer_time:
 		jump_timer += delta
 	else:
@@ -60,12 +90,3 @@ func handle_jump(delta):
 	if Input.is_action_pressed("jump") && !is_on_floor():
 		jump_buffered = true
 		jump_timer = 0
-	
-	velocity.y += gravity
-	if (Input.is_action_just_pressed("jump") || jump_buffered) && is_on_floor():
-		velocity.y = jump_strength
-	
-	#last parameter determines whether the player can move rigidbodies or view then as static bodies
-	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol
-	#first parameter is linear_velocity that is getting applied, second is the normal of the floor
-	velocity = move_and_slide(velocity, Vector3(0,1,0), false, 4, 0.785398, false)

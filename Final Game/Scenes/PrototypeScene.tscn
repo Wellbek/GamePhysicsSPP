@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instances/Environment/BuildingBlock.tscn" type="PackedScene" id=2]
 
 [sub_resource type="PlaneMesh" id=4]
 size = Vector2( 20, 20 )
@@ -50,3 +51,15 @@ shape = SubResource( 6 )
 [node name="MeshInstance" type="MeshInstance" parent="Scene/RigidBody"]
 mesh = SubResource( 7 )
 material/0 = SubResource( 9 )
+
+[node name="BuildingBlock" parent="Scene" instance=ExtResource( 2 )]
+transform = Transform( 3.49574, 0, 0, 0, 0.330089, 0, 0, 0, 1, 9.01317, -1.7053, 11.017 )
+
+[node name="BuildingBlock2" parent="Scene" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.199055, 0, 0, 0, 1, 11.6494, -0.137314, 15.9638 )
+
+[node name="BuildingBlock3" parent="Scene" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.199055, 0, 0, 0, 1, 20.4163, 1.31497, 15.9638 )
+
+[node name="BuildingBlock4" parent="Scene" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.199055, 0, 0, 0, 1, 23.0896, 3.44816, 9.43012 )
