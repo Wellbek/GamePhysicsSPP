@@ -110,6 +110,7 @@ tracks/7/keys = {
 }
 
 [node name="bow" type="Spatial"]
+process_priority = 3
 script = ExtResource( 8 )
 
 [node name="bow_grip_mesh" type="MeshInstance" parent="."]

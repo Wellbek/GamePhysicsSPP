@@ -59,9 +59,13 @@ func handle_jump(delta):
 	update_buffer(delta)
 	update_coyote(delta)
 	
+	velocity.x *= 0.8
+	velocity.z *= 0.8
 	velocity.y += gravity
 	if (Input.is_action_just_pressed("jump") || jump_buffered) && (is_on_floor() || coyote_possible):
 		velocity.y = jump_strength
+		if !is_on_floor():
+			coyote_possible = false
 	
 	#last parameter determines whether the player can move rigidbodies or view then as static bodies
 	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol
@@ -72,11 +76,10 @@ func handle_jump(delta):
 func update_coyote(delta):
 	if is_on_floor():
 		coyote_timer = 0
-		coyote_possible=false
+		coyote_possible=true
 		last_y_on_floor = transform.origin.y
 	else:
-		if last_y_on_floor > transform.origin.y && coyote_timer <= coyote_max:
-			coyote_possible=true
+		if last_y_on_floor > transform.origin.y && coyote_timer <= coyote_max && coyote_possible:
 			coyote_timer += delta
 		else:
 			coyote_possible = false
