@@ -19,6 +19,10 @@ config/name="Final Game"
 run/main_scene="res://Scenes/PrototypeScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerVariables="*res://Scripts/Singletons/PlayerVariables.gd"
+
 [display]
 
 window/size/width=1920
