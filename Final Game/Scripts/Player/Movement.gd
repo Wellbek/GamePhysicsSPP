@@ -83,7 +83,7 @@ func handle_jump(delta):
 	#last parameter determines whether the player can move rigidbodies or view then as static bodies
 	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol
 	#first parameter is linear_velocity that is getting applied, second is the normal of the floor
-	velocity = move_and_slide(velocity, Vector3(0,1,0), false, 4, 0.785398, false)
+	velocity = move_and_slide(velocity, Vector3(0,1,0), false, 4, 0.785398, true)
 	
 	
 func update_coyote(delta):

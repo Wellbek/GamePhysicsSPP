@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Instances/Environment/BuildingBlock.tscn" type="PackedScene" id=2]
@@ -15,6 +15,22 @@ extents = Vector3( 100, 1, 100 )
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.247059, 0.360784, 0.00392157, 1 )
+
+[sub_resource type="SphereMesh" id=6]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape" id=7]
+radius = 0.1
+
+[sub_resource type="CylinderMesh" id=8]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 0.1
+
+[sub_resource type="CylinderShape" id=9]
+radius = 0.5
+height = 0.1
 
 [node name="Spatial" type="Spatial"]
 
@@ -66,3 +82,69 @@ transform = Transform( 1, 0, 0, 0, 0.199055, 0, 0, 0, 1, 20.4163, 1.31497, 15.96
 
 [node name="BuildingBlock4" parent="Scene" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 0.199055, 0, 0, 0, 1, 23.0896, 3.44816, 9.43012 )
+
+[node name="RigidBody2" type="RigidBody" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46779, -10.2837 )
+mode = 1
+
+[node name="PinJoint" type="PinJoint" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46779, -10.2837 )
+nodes/node_a = NodePath("../RigidBody2")
+nodes/node_b = NodePath("../RigidBody3")
+
+[node name="RigidBody3" type="RigidBody" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46779, -10.2837 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scene/RigidBody3"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene/RigidBody3"]
+shape = SubResource( 7 )
+
+[node name="PinJoint2" type="PinJoint" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.37385, -10.2837 )
+nodes/node_a = NodePath("../RigidBody3")
+nodes/node_b = NodePath("../RigidBody4")
+
+[node name="RigidBody4" type="RigidBody" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27131, -10.2837 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scene/RigidBody4"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene/RigidBody4"]
+shape = SubResource( 7 )
+
+[node name="PinJoint3" type="PinJoint" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17842, -10.2837 )
+nodes/node_a = NodePath("../RigidBody4")
+nodes/node_b = NodePath("../RigidBody5")
+
+[node name="RigidBody5" type="RigidBody" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07466, -10.2837 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scene/RigidBody5"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene/RigidBody5"]
+shape = SubResource( 7 )
+
+[node name="PinJoint4" type="PinJoint" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96892, -10.2837 )
+nodes/node_a = NodePath("../RigidBody5")
+nodes/node_b = NodePath("../RigidBody6")
+
+[node name="RigidBody6" type="RigidBody" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, -0.0298582, -0.999554, 0, 0.999554, -0.0298582, 0, 1.47761, -10.2837 )
+collision_layer = 513
+collision_mask = 513
+
+[node name="MeshInstance" type="MeshInstance" parent="Scene/RigidBody6"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene/RigidBody6"]
+shape = SubResource( 9 )
