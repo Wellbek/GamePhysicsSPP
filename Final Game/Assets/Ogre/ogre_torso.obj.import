@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ogre_torso.obj-979397b6280507fa8286fc7eb3aec934.mesh"
+
+[deps]
+
+files=[ "res://.import/ogre_torso.obj-979397b6280507fa8286fc7eb3aec934.mesh" ]
+
+source_file="res://Assets/Ogre/ogre_torso.obj"
+dest_files=[ "res://.import/ogre_torso.obj-979397b6280507fa8286fc7eb3aec934.mesh", "res://.import/ogre_torso.obj-979397b6280507fa8286fc7eb3aec934.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

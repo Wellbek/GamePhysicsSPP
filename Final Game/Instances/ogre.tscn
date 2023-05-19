@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Ogre/ogre_mat.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Ogre/ogre_arm_right.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Ogre/ogre_head.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Ogre/ogre_arm_left.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Assets/Ogre/ogre_torso.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Assets/Ogre/ogre_leg_left.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Assets/Ogre/ogre_leg_right.obj" type="ArrayMesh" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="torso_mesh" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.197003, 0.186195, -0.402591 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 1 )
+
+[node name="head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458389, 0.0460939 )
+
+[node name="head_mesh" type="MeshInstance" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196077, -0.273401, -0.432902 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 1 )
+
+[node name="arm_left" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395279, 0.336485, 0.0354562 )
+
+[node name="arm_right_mesh" type="MeshInstance" parent="arm_left"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.198559, -2.04531, -1.53891 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 1 )
+
+[node name="arm_r" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400329, 0.347827, 0 )
+
+[node name="arm_left_mesh" type="MeshInstance" parent="arm_r"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49877, -2.05414, -1.5029 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="leg_right" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.5, -1.62125e-05 )
+
+[node name="leg_right_mesh" type="MeshInstance" parent="leg_right"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.2, -1.50287 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 1 )
+
+[node name="leg_left" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.5, -1.62125e-05 )
+
+[node name="leg_left_mesh" type="MeshInstance" parent="leg_left"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -1.2, -1.50287 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 1 )

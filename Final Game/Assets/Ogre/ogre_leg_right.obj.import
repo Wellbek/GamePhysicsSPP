@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ogre_leg_right.obj-72b8b3a3fc9cba8f513fd6878c1097b6.mesh"
+
+[deps]
+
+files=[ "res://.import/ogre_leg_right.obj-72b8b3a3fc9cba8f513fd6878c1097b6.mesh" ]
+
+source_file="res://Assets/Ogre/ogre_leg_right.obj"
+dest_files=[ "res://.import/ogre_leg_right.obj-72b8b3a3fc9cba8f513fd6878c1097b6.mesh", "res://.import/ogre_leg_right.obj-72b8b3a3fc9cba8f513fd6878c1097b6.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

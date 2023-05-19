@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ogre_head.obj-52f687de8233ef52b53895b7d0e7ffce.mesh"
+
+[deps]
+
+files=[ "res://.import/ogre_head.obj-52f687de8233ef52b53895b7d0e7ffce.mesh" ]
+
+source_file="res://Assets/Ogre/ogre_head.obj"
+dest_files=[ "res://.import/ogre_head.obj-52f687de8233ef52b53895b7d0e7ffce.mesh", "res://.import/ogre_head.obj-52f687de8233ef52b53895b7d0e7ffce.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

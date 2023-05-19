@@ -11,6 +11,9 @@ func _process(delta):
 		get_node("Spatial").look_at(global_transform.origin + linear_velocity, Vector3.UP)
 
 func _on_Area_body_entered(body):
+	# disable area collisionshape to not further collide with other objects
+	get_node("Spatial/Area/CollisionShape").disabled = true
+	
 	# stop physics
 	linear_velocity = Vector3(0,0,0)
 	sleeping = true
