@@ -45,8 +45,9 @@ height = 0.1
 transform = Transform( 1, 0, 0, 0, 0.828256, 0.56035, 0, -0.56035, 0.828256, 0, 6.92696, 4.87195 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-movement_speed = 8.0
-jump_strength = 8.0
+accelaration_speed = 2.0
+max_speed = 7.0
+jump_strength = 6.0
 number_of_extra_jumps = 1
 
 [node name="Scene" type="Spatial" parent="."]

@@ -24,6 +24,11 @@ config/icon="res://icon.png"
 PlayerVariables="*res://Scripts/Singletons/PlayerVariables.gd"
 LineDrawer="*res://Scripts/DrawLine3D.gd"
 
+[display]
+
+window/size/width=1980
+window/size/height=1020
+
 [input]
 
 show_mouse={
