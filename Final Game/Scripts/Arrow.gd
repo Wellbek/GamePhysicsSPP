@@ -7,6 +7,8 @@ var ray = null
 var hit = false
 
 var ray_hit_point: Vector3
+
+export var ray_amplifier = 3.0 # controls length of the ray
 	
 func _ready():
 	my_root = get_parent().get_parent()
@@ -18,10 +20,12 @@ func _process(delta):
 		hit = false
 		get_parent().transform.origin -= ray.global_transform.origin - ray_hit_point # correct position
 		ray.enabled = false; # disable raycast
+		_on_Area_body_entered(ray.get_collider())
 	
 	if simulate:
 		get_node("Spatial").look_at(global_transform.origin + linear_velocity, Vector3.UP)
-		ray.cast_to = global_transform.basis.inverse().xform(linear_velocity) * delta # set raycast length to global linear velocity times timestep
+		ray.cast_to = ray_amplifier * global_transform.basis.inverse().xform(linear_velocity) * delta # set raycast length to global linear velocity times timestep
+		# LineDrawer.DrawRay(ray.global_transform.origin, ray_amplifier * linear_velocity * delta, Color.red)
 		
 	if ray.is_colliding():
 		# print("ray hit")
