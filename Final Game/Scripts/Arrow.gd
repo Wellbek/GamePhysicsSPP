@@ -10,6 +10,8 @@ var hit = false
 var ray_hit_point: Vector3
 
 export var ray_amplifier = 3.0 # controls length of the ray
+
+export var debug = false
 	
 func _process(delta):
 	if hit:
@@ -22,7 +24,7 @@ func _process(delta):
 	if simulate:
 		get_node("Spatial").look_at(global_transform.origin + linear_velocity, Vector3.UP)
 		ray.cast_to = ray_amplifier * global_transform.basis.inverse().xform(linear_velocity) * delta # set raycast length to global linear velocity times timestep
-		# LineDrawer.DrawRay(ray.global_transform.origin, ray_amplifier * linear_velocity * delta, Color.red)
+		if debug: LineDrawer.DrawRay(ray.global_transform.origin, ray_amplifier * linear_velocity * delta, Color.red)
 		
 		# destroy if out of render distance
 		var distance_to_player = PlayerVariables.player.global_transform.origin.distance_to(global_transform.origin)
@@ -30,7 +32,6 @@ func _process(delta):
 			get_parent().queue_free() 
 		
 	if ray.is_colliding():
-		# print("ray hit")
 		hit = true
 		ray_hit_point = ray.get_collision_point() # in world space
 
@@ -54,6 +55,12 @@ func _on_Area_body_entered(body):
 	
 	# 	keep global transform (position, rotation, scale)
 	global_transform = initial_transform
+	
+	if body.is_in_group("Enemy"):
+		if body.has_method('take_damage'):
+			body.take_damage(PlayerVariables.damage)
+		elif debug:
+			print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
 	
 	# start despawn timer
 	despawn_timer.start()

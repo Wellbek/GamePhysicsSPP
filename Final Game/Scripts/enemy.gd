@@ -4,6 +4,10 @@ export var speed = 3.0
 export var attack_speed = 1.0
 export var damage = 5
 
+export var max_health = 100.0
+var health = max_health
+var dead = false
+
 var path = []
 var cur_path_index = 0
 var velocity = Vector3.ZERO
@@ -16,16 +20,40 @@ var attack_target = null
 onready var nav = get_parent()
 onready var target = nav.get_node("NavMesh/Core")
 onready var attack_timer = get_node("AttackTimer")
+onready var health_bar = get_node("HealthBar3D/Viewport/HealthBar2D")
 
 export var debug = false
 
 func _ready():
+	health_bar.max_value = max_health
+	health_bar.value = health
+	
 	attack_timer.wait_time = 1.0 / attack_speed
 
 func _physics_process(delta):	
 	# Movement:
 	if path.size() > 0:
 		move_to_target()
+
+# ===================================================================
+# Damageable functions:
+func take_damage(var amount: float):
+	if dead: return
+	
+	health -= amount
+	
+	if debug: print("[" + name + "] remaining health: " + str(health))
+	
+	if health <= 0:
+		health = 0
+		die()
+	
+	health_bar.value = health
+		
+func die():
+	dead = true
+	if debug: print("[" + name + "] died")
+	queue_free() # exchange this later 
 
 # ===================================================================
 # Movement functions:
@@ -60,4 +88,7 @@ func _on_AttackRange_body_exited(body):
 
 func _on_AttackTimer_timeout():
 	if attack_target != null:
-		attack_target.take_damage(damage)
+		if attack_target.has_method('take_damage'):
+			attack_target.take_damage(damage)
+		elif debug:
+			print("NoSuchMethodError: take_damage() in " + attack_target.get_script().get_path())

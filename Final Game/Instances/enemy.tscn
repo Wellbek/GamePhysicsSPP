@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://GUI/HealthBar2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/HealthBar3D.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.0745098, 0.6, 0.121569, 1 )
@@ -18,7 +20,9 @@ height = 2.0
 radius = 1.5
 height = 3.0
 
-[node name="Enemy" type="KinematicBody"]
+[node name="Enemy" type="KinematicBody" groups=[
+"Enemy",
+]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource( 1 )
@@ -46,6 +50,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 4 )
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="HealthBar3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.43172, 0 )
+flip_h = true
+pixel_size = 0.003
+script = ExtResource( 3 )
+
+[node name="Viewport" type="Viewport" parent="HealthBar3D"]
+size = Vector2( 600, 60 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="HealthBar2D" parent="HealthBar3D/Viewport" instance=ExtResource( 2 )]
 [connection signal="timeout" from="PathfindingTimer" to="." method="_on_PathfindingTimer_timeout"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]

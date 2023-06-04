@@ -382,7 +382,6 @@ debug = true
 
 [node name="Enemy2" parent="PathfindingTest/Navigation" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.912, 0, 6.72217 )
-speed = 3.0
 attack_speed = 0.4
 damage = 15
 debug = true
