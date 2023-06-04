@@ -12,6 +12,8 @@ var ray_hit_point: Vector3
 export var ray_amplifier = 3.0 # controls length of the ray
 
 export var debug = false
+
+var damage = PlayerVariables.damage # NOTE: this will be set in Combat.gd when spawning the arrow
 	
 func _process(delta):
 	if hit:
@@ -58,7 +60,7 @@ func _on_Area_body_entered(body):
 	
 	if body.is_in_group("Enemy"):
 		if body.has_method('take_damage'):
-			body.take_damage(PlayerVariables.damage)
+			body.take_damage(damage)
 		elif debug:
 			print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
 	

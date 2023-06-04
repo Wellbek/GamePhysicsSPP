@@ -49,6 +49,8 @@ func take_damage(var amount: float):
 		die()
 	
 	health_bar.value = health
+	if health_bar.value < health_bar.max_value and not health_bar.visible:
+		health_bar.show()
 		
 func die():
 	dead = true
