@@ -21,7 +21,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="RigidBody" type="RigidBody" parent="."]
 collision_layer = 8
-collision_mask = 6
+collision_mask = 22
 script = ExtResource( 3 )
 
 [node name="Spatial" type="Spatial" parent="RigidBody"]
@@ -50,7 +50,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0, -0.798098 )
 enabled = true
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 6
+collision_mask = 22
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0936524 )

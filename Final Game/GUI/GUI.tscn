@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.3387
+margin_top = 5.16943
+margin_right = 10.3387
+margin_bottom = 5.16943
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoreBar" type="ProgressBar" parent="."]
+anchor_left = 0.505
+anchor_right = 0.505
+margin_left = -399.9
+margin_top = 20.0
+margin_right = 400.1
+margin_bottom = 60.0
+theme = ExtResource( 1 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

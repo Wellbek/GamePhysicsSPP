@@ -73,6 +73,7 @@ jump={
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="World"
 3d_physics/layer_4="Arrow"
+3d_physics/layer_5="Core"
 
 [rendering]
 
