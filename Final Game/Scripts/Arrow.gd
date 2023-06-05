@@ -1,37 +1,40 @@
 extends RigidBody
 	
 var simulate = true # whether arrow is traveling or not
-onready var my_root = get_parent().get_parent()
+onready var my_root = get_parent()
 onready var ray = get_node("Spatial/RayCast")
-onready var despawn_timer = get_parent().get_node("DespawnTimer")
+onready var despawn_timer = get_node("DespawnTimer")
 
-var hit = false
+var hit = false # true when ray collided => arrow will hit its target in the next frame
 
 var ray_hit_point: Vector3
 
 export var ray_amplifier = 3.0 # controls length of the ray
 
-export var debug = false
-
 var damage = PlayerVariables.damage # NOTE: this will be set in Combat.gd when spawning the arrow
+
+var col_impulse_magnitude = 0.1 # controls the magnitude of the linear_velocity that is transfered on collision with rigidbody 
+
+export var debug = false
 	
 func _process(delta):
 	if hit:
 		# if last frame raycast has hit then correct position and disable raycast
 		hit = false
-		get_parent().transform.origin -= ray.global_transform.origin - ray_hit_point # correct position
+		transform.origin -= ray.global_transform.origin - ray_hit_point # correct position
 		ray.enabled = false; # disable raycast
 		_on_Area_body_entered(ray.get_collider())
 	
 	if simulate:
+		#if linear_velocity != Vector3.ZERO:
 		get_node("Spatial").look_at(global_transform.origin + linear_velocity, Vector3.UP)
-		ray.cast_to = ray_amplifier * global_transform.basis.inverse().xform(linear_velocity) * delta # set raycast length to global linear velocity times timestep
+		ray.cast_to.z = -abs(ray_amplifier * global_transform.basis.inverse().xform(linear_velocity).z * delta) # scale ray length relative to velocity
 		if debug: LineDrawer.DrawRay(ray.global_transform.origin, ray_amplifier * linear_velocity * delta, Color.red)
 		
 		# destroy if out of render distance
 		var distance_to_player = PlayerVariables.player.global_transform.origin.distance_to(global_transform.origin)
 		if  distance_to_player > PlayerVariables.render_distance:
-			get_parent().queue_free() 
+			queue_free() 
 		
 	if ray.is_colliding():
 		hit = true
@@ -40,6 +43,10 @@ func _process(delta):
 func _on_Area_body_entered(body):
 	# disable area collisionshape to not further collide with other objects
 	get_node("Spatial/Area/CollisionShape").disabled = true
+	
+	# since we "can't" use rigidbody collision (can't rotate collision shape child on its own => look_at fails) we need to apply impulse manually on impact
+	if body.has_method('apply_impulse'):
+		body.apply_impulse(ray_hit_point, linear_velocity * col_impulse_magnitude / body.mass)
 	
 	# stop physics
 	linear_velocity = Vector3(0,0,0)
@@ -50,9 +57,9 @@ func _on_Area_body_entered(body):
 	var initial_transform = global_transform
 	
 	# 	unbind from parent
-	my_root.remove_child(get_parent())
+	my_root.remove_child(self)
 	# 	set body as new parent
-	body.add_child(get_parent())
+	body.add_child(self)
 	my_root = body
 	
 	# 	keep global transform (position, rotation, scale)
@@ -68,4 +75,4 @@ func _on_Area_body_entered(body):
 	despawn_timer.start()
 
 func _on_DespawnTimer_timeout():
-	get_parent().queue_free()
+	queue_free()

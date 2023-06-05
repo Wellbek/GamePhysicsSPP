@@ -20,8 +20,8 @@ func _process(delta):
 			
 			arrow.transform.origin = get_parent().global_transform.origin
 			arrow.rotation = get_parent().global_transform.basis.get_euler()
-			arrow.get_node("RigidBody").apply_central_impulse(-get_parent().global_transform.basis.z * arrow_impulse_multiplier * anim_frac)
-			arrow.get_node("RigidBody").damage = anim_frac * PlayerVariables.damage
+			arrow.apply_central_impulse(-get_parent().global_transform.basis.z * arrow_impulse_multiplier * anim_frac)
+			arrow.damage = anim_frac * PlayerVariables.damage
 			
 			get_tree().root.add_child(arrow)
 		
