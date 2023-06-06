@@ -26,7 +26,6 @@ func _process(delta):
 		_on_Area_body_entered(ray.get_collider())
 	
 	if simulate:
-		#if linear_velocity != Vector3.ZERO:
 		get_node("Spatial").look_at(global_transform.origin + linear_velocity, Vector3.UP)
 		ray.cast_to.z = -abs(ray_amplifier * global_transform.basis.inverse().xform(linear_velocity).z * delta) # scale ray length relative to velocity
 		if debug: LineDrawer.DrawRay(ray.global_transform.origin, ray_amplifier * linear_velocity * delta, Color.red)

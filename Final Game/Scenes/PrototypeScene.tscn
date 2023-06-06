@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Instances/Environment/BuildingBlock.tscn" type="PackedScene" id=2]
@@ -9,11 +9,10 @@
 [ext_resource path="res://Assets/Ogre/ogre_torso.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Assets/Ogre/ogre_leg_left.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://Assets/Ogre/ogre_leg_right.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://Instances/enemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Instances/ogre.tscn" type="PackedScene" id=10]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Core.gd" type="Script" id=12]
 [ext_resource path="res://Instances/Spawner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Instances/ogre.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 20, 20 )
@@ -45,8 +44,8 @@ radius = 0.5
 height = 0.1
 
 [sub_resource type="NavigationMesh" id=10]
-vertices = PoolVector3Array( -0.100002, 0.181334, 9.5, -0.100002, 0.181334, 4.3, -2.05, 0.181334, 3.65, -7.9, 0.181334, 9.5, -2.05, 0.181334, -3.5, -0.100002, 0.181334, -4.15, -0.100002, 0.181334, -9.35, -7.9, 0.181334, -9.35, -15.05, 0.181334, 9.5, -7.9, 0.181334, 9.5, -2.05, 0.181334, 3.65, -15.05, 0.181334, -9.35, -22.2, 0.181334, -9.35, -29.35, 0.181334, -0.25, -22.2, 0.181334, -9.35, -29.35, 0.181334, -9.35, -29.35, 0.181334, -0.25, -29.35, 0.181334, -0.25, -29.35, 0.181334, 9.5, -22.2, 0.181334, 9.5, -2.05, 0.181334, 3.65, -2.05, 0.181334, -3.5, -7.9, 0.181334, -9.35, -15.05, 0.181334, -9.35, -29.35, 0.181334, -0.25, -22.2, 0.181334, 9.5, -15.05, 0.181334, 9.5, -0.100002, 0.181334, -9.35, -0.100002, 0.181334, -4.15, 1.85, 0.181334, -3.5, 7.05, 0.181334, -9.35, 1.85, 0.181334, 3.65, -0.100002, 0.181334, 4.3, -0.100002, 0.181334, 9.5, 7.05, 0.181334, 9.5, 1.85, 0.181334, 3.65, 7.05, 0.181334, 9.5, 14.2, 0.181334, 9.5, 29.15, 0.181334, 9.5, 27.2, 0.181334, 1.05, 23.95, 0.181334, 1.7, 21.35, 0.181334, 9.5, 23.3, 0.181334, -0.900001, 25.9, 0.181334, -2.2, 21.35, 0.181334, -9.35, 14.2, 0.181334, -9.35, 29.15, 0.181334, -9.35, 21.35, 0.181334, -9.35, 25.9, 0.181334, -2.2, 29.15, 0.181334, -0.25, 21.35, 0.181334, 9.5, 23.95, 0.181334, 1.7, 23.3, 0.181334, -0.900001, 14.2, 0.181334, -9.35, 7.05, 0.181334, -9.35, 1.85, 0.181334, -3.5, 1.85, 0.181334, 3.65, 14.2, 0.181334, 9.5, 29.15, 0.181334, -0.25, 25.9, 0.181334, -2.2, 27.2, 0.181334, 1.05, 29.15, 0.181334, 9.5, 29.15, 0.181334, -0.25, 27.2, 0.181334, 1.05 )
-polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 10, 9, 8 ), PoolIntArray( 13, 12, 11 ), PoolIntArray( 16, 15, 14 ), PoolIntArray( 19, 18, 17 ), PoolIntArray( 26, 25, 20 ), PoolIntArray( 20, 25, 21 ), PoolIntArray( 21, 25, 22 ), PoolIntArray( 22, 25, 23 ), PoolIntArray( 23, 25, 24 ), PoolIntArray( 30, 29, 27 ), PoolIntArray( 27, 29, 28 ), PoolIntArray( 34, 33, 31 ), PoolIntArray( 31, 33, 32 ), PoolIntArray( 37, 36, 35 ), PoolIntArray( 41, 40, 38 ), PoolIntArray( 38, 40, 39 ), PoolIntArray( 45, 44, 42 ), PoolIntArray( 42, 44, 43 ), PoolIntArray( 49, 48, 46 ), PoolIntArray( 46, 48, 47 ), PoolIntArray( 57, 56, 50 ), PoolIntArray( 50, 56, 51 ), PoolIntArray( 51, 56, 52 ), PoolIntArray( 52, 56, 55 ), PoolIntArray( 52, 55, 53 ), PoolIntArray( 53, 55, 54 ), PoolIntArray( 60, 59, 58 ), PoolIntArray( 63, 62, 61 ) ]
+vertices = PoolVector3Array( -0.1, 0.2, 9.5, -0.1, 0.2, 4.3, -2.05, 0.2, 3.65, -7.9, 0.2, 9.5, -2.05, 0.2, -3.5, -0.1, 0.2, -4.15, -0.1, 0.2, -9.35, -7.9, 0.2, -9.35, -15.05, 0.2, -9.35, -22.2, 0.2, -9.35, -29.35, 0.2, -0.25, -29.35, 0.2, -0.25, -22.2, 0.2, 9.5, -15.05, 0.2, 9.5, -2.05, 0.2, 3.65, -7.9, 0.2, -9.35, -15.05, 0.2, -9.35, -22.2, 0.2, -9.35, -29.35, 0.2, -9.35, -29.35, 0.2, -0.25, -29.35, 0.2, -0.25, -29.35, 0.2, 9.5, -22.2, 0.2, 9.5, -2.05, 0.2, 3.65, -2.05, 0.2, -3.5, -7.9, 0.2, -9.35, -15.05, 0.2, 9.5, -7.9, 0.2, 9.5, -2.05, 0.2, 3.65, -0.1, 0.2, -9.35, -0.1, 0.2, -4.15, 1.85, 0.2, -3.5, 7.05, 0.2, -9.35, 1.85, 0.2, 3.65, -0.1, 0.2, 4.3, -0.1, 0.2, 9.5, 7.05, 0.2, 9.5, 1.85, 0.2, 3.65, 7.05, 0.2, 9.5, 14.2, 0.2, 9.5, 21.35, 0.2, 9.5, 23.95, 0.2, 1.7, 23.3, 0.2, -0.900001, 23.3, 0.2, -0.900001, 25.9, 0.2, -2.2, 21.35, 0.2, -9.35, 14.2, 0.2, -9.35, 29.15, 0.2, -9.35, 21.35, 0.2, -9.35, 25.9, 0.2, -2.2, 29.15, 0.2, -0.25, 14.2, 0.2, -9.35, 7.05, 0.2, -9.35, 1.85, 0.2, -3.5, 29.15, 0.2, -0.25, 25.9, 0.2, -2.2, 27.2, 0.2, 1.05, 29.15, 0.2, 9.5, 29.15, 0.2, -0.25, 27.2, 0.2, 1.05, 29.15, 0.2, 9.5, 27.2, 0.2, 1.05, 23.95, 0.2, 1.7, 21.35, 0.2, 9.5, 14.2, 0.2, 9.5, 21.35, 0.2, 9.5, 23.3, 0.2, -0.900001, 14.2, 0.2, -9.35, 1.85, 0.2, -3.5, 1.85, 0.2, 3.65 )
+polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 10, 9, 8 ), PoolIntArray( 16, 15, 11 ), PoolIntArray( 11, 15, 12 ), PoolIntArray( 12, 15, 13 ), PoolIntArray( 13, 15, 14 ), PoolIntArray( 19, 18, 17 ), PoolIntArray( 22, 21, 20 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 28, 27, 26 ), PoolIntArray( 32, 31, 29 ), PoolIntArray( 29, 31, 30 ), PoolIntArray( 36, 35, 33 ), PoolIntArray( 33, 35, 34 ), PoolIntArray( 39, 38, 37 ), PoolIntArray( 42, 41, 40 ), PoolIntArray( 46, 45, 43 ), PoolIntArray( 43, 45, 44 ), PoolIntArray( 50, 49, 47 ), PoolIntArray( 47, 49, 48 ), PoolIntArray( 53, 52, 51 ), PoolIntArray( 56, 55, 54 ), PoolIntArray( 59, 58, 57 ), PoolIntArray( 63, 62, 60 ), PoolIntArray( 60, 62, 61 ), PoolIntArray( 69, 68, 64 ), PoolIntArray( 64, 68, 65 ), PoolIntArray( 65, 68, 66 ), PoolIntArray( 66, 68, 67 ) ]
 cell/size = 0.65
 cell/height = 0.1
 agent/radius = 0.5
@@ -362,13 +361,10 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.77, 0, 0 )
 
 [node name="Enemy" parent="PathfindingTest/Navigation" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7756, 0, 0 )
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -23.8722, 0, 0 )
 
 [node name="GUI" parent="." instance=ExtResource( 11 )]
 margin_left = 6.63741
 margin_top = 7.02002
 margin_right = 6.63745
 margin_bottom = 7.02002
-
-[node name="Spatial" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61326, 1.68837, -4.96753 )

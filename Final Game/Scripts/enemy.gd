@@ -62,7 +62,7 @@ func die():
 	health_bar.hide()
 	
 	# set all rb children rigid => ~ ragdoll
-	var model = get_node("Model")
+	var model = get_node("Model/Spatial")
 	for i in range(model.get_child_count()):
 		var child = model.get_child(i)
 		if is_instance_valid(child) and child is RigidBody:

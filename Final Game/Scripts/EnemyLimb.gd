@@ -1,6 +1,6 @@
 extends RigidBody
 
-onready var enemy_root = get_parent().get_parent() # NOTE: ugly hardcoded, change later
+onready var enemy_root = get_parent().get_parent().get_parent() # NOTE: ugly hardcoded, change later
 
 export var critical_limb = false # if we want headshots to deal more damage for example
 

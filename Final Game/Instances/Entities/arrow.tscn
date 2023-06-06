@@ -17,6 +17,7 @@ extents = Vector3( 0.098, 0.1, 0.841 )
 size = Vector3( 0.4, 0.2, 2 )
 
 [node name="arrow" type="RigidBody"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 collision_layer = 8
 collision_mask = 22
 script = ExtResource( 3 )
