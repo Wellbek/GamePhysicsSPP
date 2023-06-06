@@ -74,6 +74,7 @@ jump={
 3d_physics/layer_3="World"
 3d_physics/layer_4="Arrow"
 3d_physics/layer_5="Core"
+3d_physics/layer_6="Enemy_Model"
 
 [rendering]
 

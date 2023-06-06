@@ -41,11 +41,20 @@ func _process(delta):
 		ray_hit_point = ray.get_collision_point() # in world space
 
 func _on_Area_body_entered(body):
+	# sometimes body becomes null for some reason 
+	if body == null: return
+	
 	# disable area collisionshape to not further collide with other objects
 	get_node("Spatial/Area/CollisionShape").disabled = true
 	
+	if body.is_in_group("Enemy"):
+		if body.has_method('take_damage'):
+			body.take_damage(damage)
+		elif debug:
+			print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
+	
 	# since we "can't" use rigidbody collision (can't rotate collision shape child on its own => look_at fails) we need to apply impulse manually on impact
-	if body.has_method('apply_impulse'):
+	if body.has_method('apply_impulse'): 
 		body.apply_impulse(ray_hit_point, linear_velocity * col_impulse_magnitude / body.mass)
 	
 	# stop physics
@@ -64,12 +73,6 @@ func _on_Area_body_entered(body):
 	
 	# 	keep global transform (position, rotation, scale)
 	global_transform = initial_transform
-	
-	if body.is_in_group("Enemy"):
-		if body.has_method('take_damage'):
-			body.take_damage(damage)
-		elif debug:
-			print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
 	
 	# start despawn timer
 	despawn_timer.start()

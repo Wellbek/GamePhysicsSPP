@@ -20,6 +20,7 @@ var attack_target = null
 onready var nav = get_parent()
 onready var target = nav.get_node("NavMesh/Core")
 onready var attack_timer = get_node("AttackTimer")
+onready var despawn_timer = get_node("DespawnTimer")
 onready var health_bar = get_node("HealthBar3D/Viewport/HealthBar2D")
 
 export var debug = false
@@ -31,6 +32,8 @@ func _ready():
 	attack_timer.wait_time = 1.0 / attack_speed
 
 func _physics_process(delta):	
+	if dead: return
+	
 	# Movement:
 	if path.size() > 0:
 		move_to_target()
@@ -49,17 +52,33 @@ func take_damage(var amount: float):
 		die()
 	
 	health_bar.value = health
-	if health_bar.value < health_bar.max_value and not health_bar.visible:
+	if health_bar.value < health_bar.max_value and not health_bar.visible and not dead:
 		health_bar.show()
 		
 func die():
 	dead = true
 	if debug: print("[" + name + "] died")
-	queue_free() # exchange this later 
+	
+	health_bar.hide()
+	
+	# set all rb children rigid => ~ ragdoll
+	var model = get_node("Model")
+	for i in range(model.get_child_count()):
+		var child = model.get_child(i)
+		if is_instance_valid(child) and child is RigidBody:
+			var rb = child as RigidBody
+			# Do something with the rigidbody
+			if rb.has_method("change_mode"):
+				rb.change_mode(RigidBody.MODE_RIGID)
+				
+	# start despawn timer
+	despawn_timer.start()
 
 # ===================================================================
 # Movement functions:
 func move_to_target():	
+	if dead: return
+	
 	if transform.origin.distance_to(path[cur_path_index]) < threshold:
 		path.remove(0)
 	else:
@@ -69,28 +88,41 @@ func move_to_target():
 		
 # recompute path to target	
 func get_target_path(target_pos):
+	if dead: return
+	
 	path = nav.get_simple_path(transform.origin, target_pos)
 
 func _on_PathfindingTimer_timeout():
+	if dead: return
+	
 	get_target_path(target.transform.origin)
 	
 # ===================================================================
 # Attack functions:
 func _on_AttackRange_body_entered(body):
+	if dead: return
+	
 	if debug: print("["+ name + "] In range to attack: [" + body.name + "]")
 	attack_target = body 
 	attack_timer.start()
 
 
 func _on_AttackRange_body_exited(body):
+	if dead: return
+	
 	if debug: print("["+ name + "] Out of range to attack: [" + body.name + "]")
 	attack_target = null 
 	attack_timer.stop()
 
 
 func _on_AttackTimer_timeout():
+	if dead: return
+	
 	if attack_target != null:
 		if attack_target.has_method('take_damage'):
 			attack_target.take_damage(damage)
 		elif debug:
 			print("NoSuchMethodError: take_damage() in " + attack_target.get_script().get_path())
+
+func _on_DespawnTimer_timeout():
+	queue_free()

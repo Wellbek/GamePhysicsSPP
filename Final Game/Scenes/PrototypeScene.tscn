@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Instances/Environment/BuildingBlock.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Core.gd" type="Script" id=12]
 [ext_resource path="res://Instances/Spawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Instances/ogre.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 20, 20 )
@@ -368,3 +369,6 @@ margin_left = 6.63741
 margin_top = 7.02002
 margin_right = 6.63745
 margin_bottom = 7.02002
+
+[node name="Spatial" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61326, 1.68837, -4.96753 )
