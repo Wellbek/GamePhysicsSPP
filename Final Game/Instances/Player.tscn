@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
-[ext_resource path="res://Instances/bow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/Bow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/crosshair.png" type="Texture" id=4]
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.4, 0.4, 0.8 )

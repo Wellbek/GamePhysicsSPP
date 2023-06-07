@@ -3,7 +3,8 @@ extends RigidBody
 export var max_health = 100.0
 onready var health = max_health
 
-onready var core_bar = get_tree().root.get_node("Spatial/GUI/CoreBar")
+export(NodePath) onready var GUI = get_node(GUI)
+onready var core_bar = GUI.get_node("CoreBar")
 
 var dead = false
 

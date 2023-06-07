@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Ogre/ogre_torso.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Assets/Ogre/ogre_leg_left.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://Assets/Ogre/ogre_leg_right.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://Instances/ogre.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Instances/Ogre.tscn" type="PackedScene" id=10]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Core.gd" type="Script" id=12]
 [ext_resource path="res://Instances/Spawner.tscn" type="PackedScene" id=13]
@@ -348,6 +348,7 @@ collision_mask = 31
 mode = 1
 script = ExtResource( 12 )
 max_health = 500.0
+GUI = NodePath("../../../../GUI")
 debug = true
 
 [node name="CollisionShape" type="CollisionShape" parent="PathfindingTest/Navigation/NavMesh/Core"]
@@ -359,6 +360,7 @@ material/0 = null
 
 [node name="Spawner" parent="PathfindingTest/Navigation/NavMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.77, 0, 0 )
+navigation = NodePath("../..")
 
 [node name="Enemy" parent="PathfindingTest/Navigation" instance=ExtResource( 10 )]
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -23.8722, 0, 0 )

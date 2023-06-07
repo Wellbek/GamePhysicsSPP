@@ -2,8 +2,8 @@ extends RigidBody
 	
 var simulate = true # whether arrow is traveling or not
 onready var my_root = get_parent()
-onready var ray = get_node("Spatial/RayCast")
-onready var despawn_timer = get_node("DespawnTimer")
+export(NodePath) onready var ray = get_node(ray)
+export(NodePath) onready var despawn_timer = get_node(despawn_timer)
 
 var hit = false # true when ray collided => arrow will hit its target in the next frame
 

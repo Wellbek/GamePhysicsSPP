@@ -1,26 +1,26 @@
 extends Spatial
 
-onready var parent = get_parent()
-onready var anim_player = get_node("AnimationPlayer")
+export(NodePath) onready var enemy_root = get_node(enemy_root)
+export(NodePath) onready var anim_player = get_node(anim_player)
 
 export var walking_animation: String
 
 func _ready():
 	anim_player.play(walking_animation)
-	anim_player.playback_speed = parent.speed / 2
+	anim_player.playback_speed = enemy_root.speed / 2
 
 func _process(delta):
-	if parent.dead: 
+	if enemy_root.dead: 
 		anim_player.stop()
 		return
 	
-	if parent.target != null:
+	if enemy_root.target != null:
 		var my_rot = rotation
 		
 		# look in walking dir except we are in range to attack
-		var look_at_target = global_transform.origin + parent.velocity
-		if parent.attack_target != null: 
-			look_at_target = parent.attack_target.global_transform.origin
+		var look_at_target = global_transform.origin + enemy_root.velocity
+		if enemy_root.attack_target != null: 
+			look_at_target = enemy_root.attack_target.global_transform.origin
 			anim_player.stop(true)
 			anim_player.seek(0, true) # resets animation to default
 			# play attack anim somewhere here

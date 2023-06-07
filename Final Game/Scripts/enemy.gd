@@ -13,6 +13,8 @@ var cur_path_index = 0
 var velocity = Vector3.ZERO
 var threshold = .1 # distance threshold when considered at target location
 
+export(NodePath) onready var nav_mesh_collider = get_node(nav_mesh_collider)
+
 # if we want to have enemy attacking multiple things concurrently change to array
 # and adjust functions accordingly
 var attack_target = null
@@ -58,6 +60,8 @@ func take_damage(var amount: float):
 func die():
 	dead = true
 	if debug: print("[" + name + "] died")
+	
+	if nav_mesh_collider: nav_mesh_collider.disabled = true
 	
 	health_bar.hide()
 	
