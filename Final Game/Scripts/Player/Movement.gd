@@ -74,16 +74,13 @@ func handle_wasd(delta, velocity_damp, accelaration_speed):
 	change = change.normalized()
 	#translate_object_local(change*delta*movement_speed)
 	change = change.rotated(Vector3(0,1,0), get_rotation().y) * accelaration_speed
-	velocity.x += change.x
-	velocity.z += change.z
-	if velocity.x >= max_speed:
-		velocity.x = max_speed
-	if velocity.x <= -max_speed:
-		velocity.x = -max_speed
-	if velocity.z >= max_speed:
-		velocity.z = max_speed
-	if velocity.z <= -max_speed:
-		velocity.z = -max_speed
+	change.x += velocity.x
+	change.z += velocity.z
+	if change.length() > max_speed:
+		change = change.normalized() * max_speed
+	
+	velocity.x = change.x
+	velocity.z = change.z
 
 func handle_jump(delta):
 	
