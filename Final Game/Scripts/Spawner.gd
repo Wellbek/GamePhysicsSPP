@@ -4,9 +4,12 @@ export(NodePath) onready var navigation = get_node(navigation)
 
 onready var wm = PlayerVariables.wave_manager
 
+export var radius = 0
+
 func spawn_enemy(var enemy):
 	var enemy_instance = enemy.instance()
-	enemy_instance.transform.origin = transform.origin
+	var position_offset = Vector3(1,0,0).rotated(Vector3(0,1,0), randf()*2*PI) * radius
+	enemy_instance.transform.origin = transform.origin + position_offset
 	
 	enemy_instance = randomize_enemy(enemy_instance, 0.5, 1.5)
 	

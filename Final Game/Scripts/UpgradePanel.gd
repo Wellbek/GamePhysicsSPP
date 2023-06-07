@@ -55,22 +55,30 @@ func apply_upgrade(var upgrade: int):
 	match upgrade:
 		UpgradeType.NONE:
 			pass
+			
 		UpgradeType.JUMP_STRENGTH_UP:
 			player.jump_strength *= 1.2
+			
 		UpgradeType.MAX_SPEED_UP:
 			player.max_speed *= 1.4
+			
 		UpgradeType.AIRBORNE_MOVEMENT_UP:
 			player.accelaration_speed_in_air *= 1.3 
+			
 		UpgradeType.DAMAGE_UP:
 			PlayerVariables.damage *= 1.3
+			
 		UpgradeType.EXTRA_JUMP:
 			player.number_of_extra_jumps += 1
+			
 		UpgradeType.ATTACK_SPEED_UP:
 			PlayerVariables.player_combat.increase_attack_speed(1.15)
+			
 		UpgradeType.CORE_HEALTH_UP:
 			var amount = PlayerVariables.core.max_health * .1
 			PlayerVariables.core.max_health += amount
 			PlayerVariables.core.health += amount
 			PlayerVariables.core.update_core_bar()
+			
 		UpgradeType.SLOWER_ENEMY_SPAWN:
 			wm.spawn_cd += 1 # 1 second longer cooldown

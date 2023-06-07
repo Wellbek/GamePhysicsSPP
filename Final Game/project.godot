@@ -76,6 +76,10 @@ jump={
 3d_physics/layer_5="Core"
 3d_physics/layer_6="Enemy_Nav_Collider"
 
+[physics]
+
+3d/physics_engine="CustomPhysics"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

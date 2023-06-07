@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Core.gd" type="Script" id=1]
+
+[sub_resource type="CylinderShape" id=16]
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0.772549, 0.176471, 0.898039, 1 )
+metallic = 0.37
+
+[sub_resource type="CylinderMesh" id=18]
+material = SubResource( 17 )
+
+[node name="Core" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2863, 0.983197, 0 )
+collision_layer = 16
+collision_mask = 31
+mode = 1
+script = ExtResource( 1 )
+max_health = 200.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 18 )
+material/0 = null
