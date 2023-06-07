@@ -1,6 +1,7 @@
 extends KinematicBody
 
 export var accelaration_speed = 2.0
+export var accelaration_speed_in_air = 0.4
 export var max_speed = 10.0
 export var ground_friction = 0.85
 export var air_friction = 0.95
@@ -47,7 +48,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		handle_wasd(delta, ground_friction, accelaration_speed)
 	else:
-		handle_wasd(delta, air_friction, accelaration_speed/6)
+		handle_wasd(delta, air_friction, accelaration_speed_in_air)
 	
 	#last parameter determines whether the player can move rigidbodies or view then as static bodies
 	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol

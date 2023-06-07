@@ -43,6 +43,7 @@ func on_enemy_kill():
 		
 func wave_complete():
 	wave += 1
+	upgrade_panel.init_new_upgrades()
 	upgrade_panel.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	

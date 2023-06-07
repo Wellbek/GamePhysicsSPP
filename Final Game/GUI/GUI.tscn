@@ -33,18 +33,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="UpgradePanel"]
+[node name="Button1" type="Button" parent="UpgradePanel"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.25
 anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+text = "Upgrade1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="UpgradePanel"]
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
 anchor_bottom = 0.5
 margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
 theme = ExtResource( 1 )
-text = "next wave"
+text = "Upgrade2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="UpgradePanel/Button" to="UpgradePanel" method="_on_Button_button_up"]
+
+[node name="Button3" type="Button" parent="UpgradePanel"]
+anchor_left = 0.75
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+text = "Upgrade3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="UpgradePanel/Button1" to="UpgradePanel" method="_on_Button1_button_up"]
+[connection signal="button_up" from="UpgradePanel/Button2" to="UpgradePanel" method="_on_Button2_button_up"]
+[connection signal="button_up" from="UpgradePanel/Button3" to="UpgradePanel" method="_on_Button3_button_up"]
