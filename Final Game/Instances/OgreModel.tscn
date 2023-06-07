@@ -123,7 +123,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458389, 0.0460939 )
 collision_layer = 2
 collision_mask = 31
 mode = 3
-mass = 5.0
+mass = 2.0
 script = ExtResource( 8 )
 critical_limb = true
 
@@ -142,7 +142,7 @@ shape = SubResource( 1 )
 collision_layer = 2
 collision_mask = 31
 mode = 3
-mass = 5.0
+mass = 2.0
 script = ExtResource( 8 )
 
 [node name="torso_mesh" type="MeshInstance" parent="Spatial/torso"]
@@ -161,7 +161,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395279, 0.336485, 0.0354562 
 collision_layer = 2
 collision_mask = 31
 mode = 3
-mass = 5.0
+mass = 2.0
 script = ExtResource( 8 )
 
 [node name="arm_right_mesh" type="MeshInstance" parent="Spatial/arm_left"]
@@ -180,7 +180,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400329, 0.347827, 0 )
 collision_layer = 2
 collision_mask = 31
 mode = 3
-mass = 5.0
+mass = 2.0
 script = ExtResource( 8 )
 
 [node name="arm_left_mesh" type="MeshInstance" parent="Spatial/arm_r"]
@@ -199,7 +199,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.5, -1.62125e-05 )
 collision_layer = 2
 collision_mask = 31
 mode = 3
-mass = 5.0
+mass = 2.0
 script = ExtResource( 8 )
 
 [node name="leg_right_mesh" type="MeshInstance" parent="Spatial/leg_right"]
@@ -218,7 +218,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.5, -1.62125e-05 )
 collision_layer = 2
 collision_mask = 31
 mode = 3
-mass = 5.0
+mass = 2.0
 script = ExtResource( 8 )
 
 [node name="leg_left_mesh" type="MeshInstance" parent="Spatial/leg_left"]
