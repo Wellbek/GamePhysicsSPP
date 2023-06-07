@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Ogre/ogre_torso.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Assets/Ogre/ogre_leg_left.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://Assets/Ogre/ogre_leg_right.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://Instances/Ogre.tscn" type="PackedScene" id=10]
+[ext_resource path="res://WaveManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Core.gd" type="Script" id=12]
 [ext_resource path="res://Instances/Spawner.tscn" type="PackedScene" id=13]
@@ -108,7 +108,7 @@ shape = SubResource( 2 )
 transform = Transform( 0.823146, 0, 0.567829, 0, 1, 0, -0.567829, 0, 0.823146, 0, 0, 6.25602 )
 collision_layer = 4
 collision_mask = 15
-mass = 5.0
+mass = 2.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/RigidBody"]
 shape = SubResource( 3 )
@@ -203,7 +203,7 @@ nodes/node_b = NodePath("../RigidBody6")
 transform = Transform( 1, 0, 0, 0, -0.0298582, -0.999554, 0, 0.999554, -0.0298582, 0, 1.47761, -10.2837 )
 collision_layer = 4
 collision_mask = 15
-mass = 5.0
+mass = 2.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/RigidBody6"]
 mesh = SubResource( 8 )
@@ -349,7 +349,6 @@ collision_mask = 31
 mode = 1
 script = ExtResource( 12 )
 max_health = 500.0
-GUI = NodePath("../../../../GUI")
 debug = true
 
 [node name="CollisionShape" type="CollisionShape" parent="PathfindingTest/Navigation/NavMesh/Core"]
@@ -363,11 +362,11 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.77, 0, 0 )
 navigation = NodePath("../..")
 
-[node name="Enemy" parent="PathfindingTest/Navigation" instance=ExtResource( 10 )]
-transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -23.8722, 0, 0 )
-
 [node name="GUI" parent="." instance=ExtResource( 11 )]
 margin_left = 6.63741
 margin_top = 7.02002
 margin_right = 6.63745
 margin_bottom = 7.02002
+
+[node name="WaveManager" parent="." instance=ExtResource( 10 )]
+spawnerNodePaths = [ NodePath("../PathfindingTest/Navigation/NavMesh/Spawner") ]

@@ -8,6 +8,8 @@ var arrow_impulse_multiplier = 50
 var req_draw = 0.2 # seconds how long to draw bow to be able shoot
 
 func _process(delta):	
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE: return
+	
 	if Input.is_action_just_pressed("shoot"):
 		bow_animator.play("bow_draw_animation")
 		

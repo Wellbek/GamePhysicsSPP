@@ -15,8 +15,3 @@ height = 0.2
 mesh = SubResource( 2 )
 material/0 = null
 script = ExtResource( 1 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

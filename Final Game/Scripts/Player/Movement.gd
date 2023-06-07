@@ -31,6 +31,8 @@ func _ready():
 	#Input.set_use_accumulated_input(false) #makes Input events emit as often as possible => smoother rotation
 	
 func _input(event):
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE: return
+	
 	if event is InputEventMouseMotion:
 		clickVec = event.relative*0.001 # with InputEventMouseMotion.relative we get the amount the mouse moved in the last frame
 		rotate_object_local(Vector3(0,1,0),mouse_sens * -clickVec.x)
@@ -39,6 +41,7 @@ func _input(event):
 			
 
 func _physics_process(delta):
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE: return
 	
 	handle_jump(delta)
 	if is_on_floor():

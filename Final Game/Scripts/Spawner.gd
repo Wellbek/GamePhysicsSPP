@@ -1,12 +1,10 @@
 extends MeshInstance
 
-onready var enemy = preload("res://Instances/Ogre.tscn")
-onready var timer = get_node("Timer")
 export(NodePath) onready var navigation = get_node(navigation)
 
 var attribute_amplifier = 1.0 # maybe to progressively get harder the higher wave we are ?
 
-func _on_Timer_timeout():
+func spawn_enemy(var enemy):
 	var enemy_instance = enemy.instance()
 	enemy_instance.transform.origin = transform.origin
 	

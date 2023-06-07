@@ -1,14 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.3387
-margin_top = 5.16943
-margin_right = 10.3387
-margin_bottom = 5.16943
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,3 +23,28 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UpgradePanel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="UpgradePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+text = "next wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="UpgradePanel/Button" to="UpgradePanel" method="_on_Button_button_up"]

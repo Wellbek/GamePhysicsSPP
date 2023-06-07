@@ -63,6 +63,8 @@ func die():
 	
 	if nav_mesh_collider: nav_mesh_collider.disabled = true
 	
+	PlayerVariables.wave_manager.on_enemy_kill()
+	
 	health_bar.hide()
 	
 	# set all rb children rigid => ~ ragdoll

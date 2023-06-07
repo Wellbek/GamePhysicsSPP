@@ -13,7 +13,7 @@ export var ray_amplifier = 3.0 # controls length of the ray
 
 var damage = PlayerVariables.damage # NOTE: this will be set in Combat.gd when spawning the arrow
 
-var col_impulse_magnitude = 0.1 # controls the magnitude of the linear_velocity that is transfered on collision with rigidbody 
+var col_impulse_magnitude = 0.2 # controls the magnitude of the linear_velocity that is transfered on collision with rigidbody 
 
 export var debug = false
 	

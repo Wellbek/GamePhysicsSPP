@@ -3,8 +3,7 @@ extends RigidBody
 export var max_health = 100.0
 onready var health = max_health
 
-export(NodePath) onready var GUI = get_node(GUI)
-onready var core_bar = GUI.get_node("CoreBar")
+onready var core_bar = PlayerVariables.gui.get_node("CoreBar")
 
 var dead = false
 
