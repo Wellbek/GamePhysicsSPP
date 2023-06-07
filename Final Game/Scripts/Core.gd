@@ -10,9 +10,9 @@ var dead = false
 export var debug = false
 
 func _ready():
-	init_core_bar()
+	update_core_bar()
 	
-func init_core_bar():
+func update_core_bar():
 	core_bar.max_value = max_health
 	core_bar.value = health
 
@@ -27,7 +27,7 @@ func take_damage(var amount: float):
 		health = 0
 		die()
 	
-	core_bar.value = health
+	update_core_bar()
 		
 func die():
 	dead = true

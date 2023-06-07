@@ -5,7 +5,14 @@ onready var bow_animator = $AnimationPlayer
 onready var arrow_scene = load("res://Instances//Entities//arrow.tscn")
 
 var arrow_impulse_multiplier = 50
-var req_draw = 0.2 # seconds how long to draw bow to be able shoot
+var req_draw = 0.4 # seconds how long to draw bow to be able shoot
+
+func _ready():
+	bow_animator.playback_speed = 0.5
+
+func increase_attack_speed(var amount):
+	req_draw /= amount
+	bow_animator.playback_speed *= amount
 
 func _process(delta):	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE: return

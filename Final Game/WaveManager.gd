@@ -16,10 +16,10 @@ var wave = 1
 var to_spawn = 0
 var enemies_alive = 0
 
-export var default_spawn_cd = 2
+export var spawn_cd = 5
 
 func _ready():
-	start_wave(wave, 1)
+	start_wave(wave)
 	
 func loadNodes(nodePaths: Array) -> Array:
 	var nodes := []
@@ -29,11 +29,11 @@ func loadNodes(nodePaths: Array) -> Array:
 			nodes.append(node)
 	return nodes
 	
-func start_wave(var _amount, var _spawn_cooldown):
+func start_wave(var _amount):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	upgrade_panel.hide()
 	to_spawn = _amount
-	timer.wait_time = _spawn_cooldown
+	timer.wait_time = spawn_cd
 	timer.start()
 	
 func on_enemy_kill():
@@ -46,6 +46,11 @@ func wave_complete():
 	upgrade_panel.init_new_upgrades()
 	upgrade_panel.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	# reduce spawn cooldown every wave but always wait atleast 1 second
+	spawn_cd -= 0.15
+	if spawn_cd <= 1:
+		spawn_cd = 1
 	
 func _on_Timer_timeout():
 	if to_spawn > 0:

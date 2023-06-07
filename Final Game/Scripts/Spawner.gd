@@ -2,13 +2,15 @@ extends MeshInstance
 
 export(NodePath) onready var navigation = get_node(navigation)
 
-var attribute_amplifier = 1.0 # maybe to progressively get harder the higher wave we are ?
+onready var wm = PlayerVariables.wave_manager
 
 func spawn_enemy(var enemy):
 	var enemy_instance = enemy.instance()
 	enemy_instance.transform.origin = transform.origin
 	
 	enemy_instance = randomize_enemy(enemy_instance, 0.5, 1.5)
+	
+	var attribute_amplifier = 1 + (wm.wave / 30) # the higher the wave the stronger the enemies
 	
 	enemy_instance.speed *= attribute_amplifier
 	enemy_instance.attack_speed *= attribute_amplifier

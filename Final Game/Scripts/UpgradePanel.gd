@@ -7,38 +7,70 @@ onready var buttons = [get_node("Button1"), get_node("Button2"), get_node("Butto
 onready var player = PlayerVariables.player
 
 # Add upgrades here by appending to the list and extending the match statement in apply_upgrade
-var available_upgrades = ["Jump strength up", "Max speed up", "Airborne Movement up", "Damage up", "Extra Jump"]
+enum UpgradeType{
+	NONE,
+	JUMP_STRENGTH_UP,
+	MAX_SPEED_UP,
+	AIRBORNE_MOVEMENT_UP,
+	DAMAGE_UP,
+	EXTRA_JUMP,
+	ATTACK_SPEED_UP
+	CORE_HEALTH_UP,
+	SLOWER_ENEMY_SPAWN
+}
 
-var current_upgrades = [0,0,0]
+var current_upgrades = [UpgradeType.NONE, UpgradeType.NONE, UpgradeType.NONE]
 
-func init_new_upgrades():
+func enum_to_string(var enum_value):
+	var enum_str = str(enum_value)
+	enum_str = enum_str.replace("_", " ")
+	enum_str = enum_str.to_lower()
+	return enum_str.capitalize()
+
+func init_new_upgrades():	
+	var available_upgrades = UpgradeType.keys()
+	available_upgrades.remove(UpgradeType.NONE)
+	
 	for i in 3:
-		var new_upgrade = randi() % available_upgrades.size()
+		var available_index = randi() % available_upgrades.size()
+		var new_upgrade = available_upgrades[available_index]
 		current_upgrades[i] = new_upgrade
-		buttons[i].text = available_upgrades[new_upgrade]
+		available_upgrades.remove(available_index) # remove from available list to not choose again (no duplicates)
+		buttons[i].text = enum_to_string(new_upgrade)
 
 func _on_Button1_button_up():	
-	apply_upgrade(current_upgrades[0])
+	apply_upgrade(UpgradeType[current_upgrades[0]])
 	# maybe decrease default_spawn_cd the higher wave we are?
-	wm.start_wave(wm.wave, wm.default_spawn_cd)
+	wm.start_wave(wm.wave)
 	
 func _on_Button2_button_up():	
-	apply_upgrade(current_upgrades[1])
-	wm.start_wave(wm.wave, wm.default_spawn_cd)
+	apply_upgrade(UpgradeType[current_upgrades[1]])
+	wm.start_wave(wm.wave)
 	
 func _on_Button3_button_up():	
-	apply_upgrade(current_upgrades[2])
-	wm.start_wave(wm.wave, wm.default_spawn_cd)
+	apply_upgrade(UpgradeType[current_upgrades[2]])
+	wm.start_wave(wm.wave)
 	
 func apply_upgrade(var upgrade: int):
 	match upgrade:
-		0:
-			player.jump_strength *= 1.1
-		1:
-			player.max_speed *= 2
-		2:
-			player.accelaration_speed_in_air *= 1.5 
-		3:
-			PlayerVariables.damage += 3
-		4:
+		UpgradeType.NONE:
+			pass
+		UpgradeType.JUMP_STRENGTH_UP:
+			player.jump_strength *= 1.2
+		UpgradeType.MAX_SPEED_UP:
+			player.max_speed *= 1.4
+		UpgradeType.AIRBORNE_MOVEMENT_UP:
+			player.accelaration_speed_in_air *= 1.3 
+		UpgradeType.DAMAGE_UP:
+			PlayerVariables.damage *= 1.3
+		UpgradeType.EXTRA_JUMP:
 			player.number_of_extra_jumps += 1
+		UpgradeType.ATTACK_SPEED_UP:
+			PlayerVariables.player_combat.increase_attack_speed(1.15)
+		UpgradeType.CORE_HEALTH_UP:
+			var amount = PlayerVariables.core.max_health * .1
+			PlayerVariables.core.max_health += amount
+			PlayerVariables.core.health += amount
+			PlayerVariables.core.update_core_bar()
+		UpgradeType.SLOWER_ENEMY_SPAWN:
+			wm.spawn_cd += 1 # 1 second longer cooldown

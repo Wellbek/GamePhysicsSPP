@@ -4,7 +4,6 @@
 [ext_resource path="res://Instances/Bow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/crosshair.png" type="Texture" id=4]
 
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.4, 0.4, 0.8 )
 
@@ -31,7 +30,7 @@ material/0 = SubResource( 3 )
 [node name="FirstPersonCamera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 
-[node name="bow" parent="FirstPersonCamera" instance=ExtResource( 2 )]
+[node name="Bow" parent="FirstPersonCamera" instance=ExtResource( 2 )]
 transform = Transform( 0.0319463, 0.176448, -0.0156666, 0.177022, -0.0312138, 0.00942047, 0.00651783, -0.0170793, -0.179069, 0.731, -0.132, -0.928 )
 
 [node name="CenterContainer" type="CenterContainer" parent="FirstPersonCamera"]
