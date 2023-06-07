@@ -54,7 +54,7 @@ func _on_Area_body_entered(body):
 	
 	# since we "can't" use rigidbody collision (can't rotate collision shape child on its own => look_at fails) we need to apply impulse manually on impact
 	if body.has_method('apply_impulse'): 
-		body.apply_impulse(ray_hit_point, linear_velocity * col_impulse_magnitude / body.mass)
+		body.apply_impulse(ray_hit_point-body.global_transform.origin, linear_velocity * col_impulse_magnitude / body.mass)
 	
 	# stop physics
 	linear_velocity = Vector3(0,0,0)
