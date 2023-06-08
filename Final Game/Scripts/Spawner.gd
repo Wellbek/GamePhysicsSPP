@@ -3,14 +3,18 @@ extends Spatial
 export(NodePath) onready var navigation = get_node(navigation)
 
 onready var wm = PlayerVariables.wave_manager
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	rng.randomize() # get "true" random numbers
 
 func spawn_enemy(var enemy):
 	var enemy_instance = enemy.instance()
 	enemy_instance.transform.origin = transform.origin 
 	
-	enemy_instance = randomize_enemy(enemy_instance, 0.5, 1.5)
+	enemy_instance = randomize_enemy(enemy_instance, 1, 0.3)
 	
-	var attribute_amplifier = 1 + (wm.wave / 30) # the higher the wave the stronger the enemies
+	var attribute_amplifier = 1.0 + (wm.wave / 30) # the higher the wave the stronger the enemies
 	
 	enemy_instance.speed *= attribute_amplifier
 	enemy_instance.attack_speed *= attribute_amplifier
@@ -20,10 +24,10 @@ func spawn_enemy(var enemy):
 	
 	navigation.add_child(enemy_instance)
 	
-func randomize_enemy(var _enemy, var _min, var _max):
-	randomize() # get "true" random numbers
+func randomize_enemy(var _enemy, var _mean, var _deviation):
 	
-	var ran = rand_range(_min, _max)
+	var ran = rng.randfn(_mean, _deviation)
+	ran = clamp(ran, 0.3, 10)
 	
 	_enemy.speed /= ran
 	_enemy.damage *= ran

@@ -9,6 +9,9 @@ onready var spawners: Array = loadNodes(spawnerNodePaths)
 
 onready var upgrade_panel = PlayerVariables.gui.get_node("UpgradePanel")
 
+onready var wave_counter = PlayerVariables.gui.get_node("TopBar/WaveCounter/Background/Counter")
+onready var kill_counter = PlayerVariables.gui.get_node("TopBar/KillCounter/Background/Counter")
+
 var spawner_index = 0
 
 var wave = 1
@@ -21,6 +24,9 @@ export var spawn_cd = 5
 func _ready():
 	start_wave(wave)
 	
+func update_wave_counter(var _wave):
+	wave_counter.text = str(_wave)
+	
 func loadNodes(nodePaths: Array) -> Array:
 	var nodes := []
 	for nodePath in nodePaths:
@@ -30,6 +36,7 @@ func loadNodes(nodePaths: Array) -> Array:
 	return nodes
 	
 func start_wave(var _amount):
+	update_wave_counter(wave)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	upgrade_panel.hide()
 	to_spawn = _amount
@@ -38,6 +45,8 @@ func start_wave(var _amount):
 	
 func on_enemy_kill():
 	enemies_alive -= 1
+	PlayerVariables.kills += 1
+	kill_counter.text = str(PlayerVariables.kills)
 	if enemies_alive <= 0 and to_spawn <= 0:
 		wave_complete()
 		

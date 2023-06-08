@@ -2,7 +2,7 @@ extends Spatial
 
 onready var bow_animator = $AnimationPlayer
 
-onready var arrow_scene = load("res://Instances//Entities//arrow.tscn")
+onready var arrow_scene = load("res://Instances//Entities//Arrow.tscn")
 
 var shoot_range = 25
 var req_draw = 0.4 # seconds how long to draw bow to be able shoot

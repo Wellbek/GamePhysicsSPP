@@ -9,6 +9,8 @@ onready var player_combat = player.get_node("FirstPersonCamera/Bow")
 var render_distance = 50
 var damage = 12
 
+var kills = 0
+
 #for mainscene
 onready var core = get_tree().root.get_node("Spatial/Terrain/Core")
 #for Prototype scene

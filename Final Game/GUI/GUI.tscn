@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
+[ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 1 )
+colors = PoolColorArray( 0.402344, 0.402344, 0.402344, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+font_data = ExtResource( 3 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -10,13 +22,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CoreBar" type="ProgressBar" parent="."]
-anchor_left = 0.505
-anchor_right = 0.505
-margin_left = -399.9
-margin_top = 20.0
-margin_right = 400.1
-margin_bottom = 60.0
+[node name="TopBar" type="HBoxContainer" parent="."]
+anchor_top = 0.02
+anchor_right = 1.0
+anchor_bottom = 0.02
+margin_left = 100.0
+margin_right = -100.0
+margin_bottom = 40.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveCounter" type="MarginContainer" parent="TopBar"]
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+
+[node name="Background" type="NinePatchRect" parent="TopBar/WaveCounter"]
+margin_right = 200.0
+margin_bottom = 40.0
+texture = SubResource( 2 )
+
+[node name="Label" type="Label" parent="TopBar/WaveCounter/Background"]
+margin_right = 100.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "Wave:"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="Label" parent="TopBar/WaveCounter/Background"]
+margin_left = 100.0
+margin_right = 200.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoreBar" type="ProgressBar" parent="TopBar"]
+margin_left = 539.0
+margin_right = 1239.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 700, 40 )
+size_flags_horizontal = 6
 theme = ExtResource( 1 )
 value = 50.0
 percent_visible = false
@@ -24,7 +80,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="KillCounter" type="MarginContainer" parent="TopBar"]
+margin_left = 1580.0
+margin_right = 1780.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Background" type="NinePatchRect" parent="TopBar/KillCounter"]
+margin_right = 200.0
+margin_bottom = 40.0
+texture = SubResource( 2 )
+
+[node name="Label" type="Label" parent="TopBar/KillCounter/Background"]
+margin_right = 110.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "Kills:"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="Label" parent="TopBar/KillCounter/Background"]
+margin_left = 110.0
+margin_right = 200.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="UpgradePanel" type="Panel" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
