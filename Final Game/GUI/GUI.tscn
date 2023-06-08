@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
 [ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=4]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 1 )
@@ -168,6 +169,54 @@ text = "Upgrade3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PauseMenu" type="Panel" parent="."]
+pause_mode = 2
+visible = false
+modulate = Color( 1, 1, 1, 0.623529 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnpauseButton" type="Button" parent="PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+margin_left = -220.0
+margin_top = -60.0
+margin_right = 180.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+text = "Back to Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseSensSlider" type="HSlider" parent="PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -200.0
+margin_right = 200.0
+margin_bottom = 50.0
+min_value = 1.0
+max_value = 20.0
+step = 0.1
+value = 5.0
+tick_count = 4
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="UpgradePanel/Button1" to="UpgradePanel" method="_on_Button1_button_up"]
 [connection signal="button_up" from="UpgradePanel/Button2" to="UpgradePanel" method="_on_Button2_button_up"]
 [connection signal="button_up" from="UpgradePanel/Button3" to="UpgradePanel" method="_on_Button3_button_up"]
+[connection signal="button_up" from="PauseMenu/UnpauseButton" to="PauseMenu" method="_on_UnpauseButton_button_up"]
+[connection signal="value_changed" from="PauseMenu/MouseSensSlider" to="PauseMenu" method="_on_MouseSensSlider_value_changed"]
