@@ -2,8 +2,10 @@ extends RigidBody
 	
 var simulate = true # whether arrow is traveling or not
 onready var my_root = get_parent()
-export(NodePath) onready var ray = get_node(ray)
-export(NodePath) onready var despawn_timer = get_node(despawn_timer)
+
+# NOTE: cant use "export(NodePath) onready var ray = get_node(ray)" because this will cause erros
+#		this is due to us deleting the arrow dynamically but the path will still exist and then idk weird error
+onready var ray = get_node("Spatial/RayCast") 
 
 var hit = false # true when ray collided => arrow will hit its target in the next frame
 
@@ -21,8 +23,8 @@ func _process(delta):
 	if hit:
 		# if last frame raycast has hit then correct position and disable raycast
 		hit = false
-		transform.origin -= ray.global_transform.origin - ray_hit_point # correct position
-		ray.enabled = false; # disable raycast
+		simulate = false
+		transform.origin -= ray.global_transform.origin - ray_hit_point # correct position		
 		_on_Area_body_entered(ray.get_collider())
 	
 	if simulate:
@@ -37,14 +39,15 @@ func _process(delta):
 		
 	if ray.is_colliding():
 		hit = true
+		# prevent further collision
+		ray.enabled = false; 
+		get_node("Spatial/Area").monitoring = false
+		
 		ray_hit_point = ray.get_collision_point() # in world space
 
 func _on_Area_body_entered(body):
 	# sometimes body becomes null for some reason 
 	if body == null: return
-	
-	# disable area collisionshape to not further collide with other objects
-	get_node("Spatial/Area/CollisionShape").disabled = true
 	
 	if body.is_in_group("Enemy"):
 		if body.has_method('take_damage'):
@@ -60,21 +63,20 @@ func _on_Area_body_entered(body):
 	linear_velocity = Vector3(0,0,0)
 	sleeping = true
 	simulate = false
-
-	# stick to collision:
-	var initial_transform = global_transform
 	
-	# 	unbind from parent
-	my_root.remove_child(self)
-	# 	set body as new parent
-	body.add_child(self)
+	# stick to collision:
+	var mesh = get_node("Spatial/ArrowMesh")
+	var initial_transform = mesh.global_transform
+	
+	# unbind from parent
+	get_node("Spatial").remove_child(mesh)
+	# set body as new parent
+	body.add_child(mesh)
 	my_root = body
 	
-	# 	keep global transform (position, rotation, scale)
-	global_transform = initial_transform
+	# keep global transform (position, rotation, scale)
+	mesh.global_transform = initial_transform
 	
-	# start despawn timer
-	despawn_timer.start()
-
-func _on_DespawnTimer_timeout():
+	mesh.start_despawn()
+		
 	queue_free()

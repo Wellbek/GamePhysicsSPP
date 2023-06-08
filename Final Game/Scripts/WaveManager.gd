@@ -54,7 +54,7 @@ func wave_complete():
 	
 func _on_Timer_timeout():
 	if to_spawn > 0:
-		spawners[0].spawn_enemy(enemy)
+		spawners[spawner_index].spawn_enemy(enemy)
 		enemies_alive += 1
 		
 		# alternate spawn locations

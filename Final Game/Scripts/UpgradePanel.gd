@@ -16,7 +16,8 @@ enum UpgradeType{
 	EXTRA_JUMP,
 	ATTACK_SPEED_UP
 	CORE_HEALTH_UP,
-	SLOWER_ENEMY_SPAWN
+	SLOWER_ENEMY_SPAWN,
+	SHOOT_RANGE_UP
 }
 
 var current_upgrades = [UpgradeType.NONE, UpgradeType.NONE, UpgradeType.NONE]
@@ -82,3 +83,6 @@ func apply_upgrade(var upgrade: int):
 			
 		UpgradeType.SLOWER_ENEMY_SPAWN:
 			wm.spawn_cd += 1 # 1 second longer cooldown
+			
+		UpgradeType.SHOOT_RANGE_UP:
+			PlayerVariables.player_combat.shoot_range *= 1.2
