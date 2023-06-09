@@ -13,7 +13,6 @@ enum UpgradeType{
 	NONE,
 	JUMP_STRENGTH_UP,
 	MAX_SPEED_UP,
-	AIRBORNE_MOVEMENT_UP,
 	DAMAGE_UP,
 	EXTRA_JUMP,
 	ATTACK_SPEED_UP
@@ -65,10 +64,9 @@ func apply_upgrade(var upgrade: int):
 			player.jump_strength *= 1.2
 			
 		UpgradeType.MAX_SPEED_UP:
+			player.accelaration_speed *= 1.1
+			player.accelaration_speed_in_air *= 1.1
 			player.max_speed *= 1.4
-			
-		UpgradeType.AIRBORNE_MOVEMENT_UP:
-			player.accelaration_speed_in_air *= 1.3 
 			
 		UpgradeType.DAMAGE_UP:
 			PlayerVariables.damage *= 1.3
