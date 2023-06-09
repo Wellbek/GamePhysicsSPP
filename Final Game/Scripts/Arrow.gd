@@ -47,7 +47,7 @@ func _process(delta):
 
 func _on_Area_body_entered(body):
 	# sometimes body becomes null for some reason 
-	if body == null: return
+	if body == null || sleeping: return
 	
 	if body.is_in_group("Enemy"):
 		if body.has_method('take_damage'):
@@ -66,7 +66,7 @@ func _on_Area_body_entered(body):
 	
 	# stick to collision:
 	var mesh = get_node("Spatial/ArrowMesh")
-	if mesh == null: queue_free() # highly unlikely but very rarely two collisions "at once" i.e. mesh can already be "gone"
+	#if mesh == null: queue_free() # highly unlikely but very rarely two collisions "at once" i.e. mesh can already be "gone"
 	var initial_transform = mesh.global_transform
 	
 	# unbind from parent

@@ -5,12 +5,14 @@ export(NodePath) onready var navigation = get_node(navigation)
 onready var wm = PlayerVariables.wave_manager
 var rng = RandomNumberGenerator.new()
 
+export var spread = 0
+
 func _ready():
 	rng.randomize() # get "true" random numbers
 
 func spawn_enemy(var enemy):
 	var enemy_instance = enemy.instance()
-	enemy_instance.transform.origin = transform.origin 
+	enemy_instance.transform.origin = get_new_position() 
 	
 	enemy_instance = randomize_enemy(enemy_instance, 1, 0.3)
 	
@@ -24,6 +26,17 @@ func spawn_enemy(var enemy):
 	
 	navigation.add_child(enemy_instance)
 	
+func get_new_position():
+	var res = transform.origin
+	if spread == 0:
+		return res
+	
+	var diff = Vector3(1,0,0).rotated(Vector3(0,1,0), randf() * 2*PI) * randf()*spread
+	
+	res = res + diff
+	
+	return res
+
 func randomize_enemy(var _enemy, var _mean, var _deviation):
 	
 	var ran = rng.randfn(_mean, _deviation)
