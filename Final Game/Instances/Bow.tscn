@@ -115,6 +115,7 @@ script = ExtResource( 2 )
 
 [node name="bow_grip_mesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35, -0.3 )
+layers = 2
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 1 )
 
@@ -123,6 +124,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0 )
 
 [node name="bow_lower_limb_mesh" type="MeshInstance" parent="bow_lower_limb"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -1.35, -0.3 )
+layers = 2
 mesh = ExtResource( 8 )
 material/0 = ExtResource( 1 )
 
@@ -131,6 +133,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0, -0.75 )
 
 [node name="bow_lower_string_mesh" type="MeshInstance" parent="bow_lower_limb/bow_lower_string"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, -1.35, 0.45 )
+layers = 2
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 1 )
 
@@ -139,6 +142,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0 )
 
 [node name="bow_upper_limb_mesh" type="MeshInstance" parent="bow_upper_limb"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -1.35, -0.3 )
+layers = 2
 mesh = ExtResource( 5 )
 material/0 = ExtResource( 1 )
 
@@ -147,6 +151,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, -0.75 )
 
 [node name="bow_upper_string_mesh" type="MeshInstance" parent="bow_upper_limb/bow_upper_string"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, -1.35, 0.45 )
+layers = 2
 mesh = ExtResource( 3 )
 material/0 = ExtResource( 1 )
 
@@ -156,6 +161,7 @@ visible = false
 
 [node name="arrow_mesh" type="MeshInstance" parent="arrow"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -1.35, 0 )
+layers = 2
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 1 )
 

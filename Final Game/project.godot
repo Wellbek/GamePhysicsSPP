@@ -28,6 +28,7 @@ LineDrawer="*res://Scripts/DrawLine3D.gd"
 
 window/size/width=1980
 window/size/height=1020
+window/stretch/aspect="expand"
 
 [input]
 

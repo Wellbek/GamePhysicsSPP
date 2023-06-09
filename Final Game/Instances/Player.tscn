@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
 [ext_resource path="res://Instances/Bow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/FillViewport.gd" type="Script" id=3]
 [ext_resource path="res://Assets/crosshair.png" type="Texture" id=4]
 
 [sub_resource type="BoxShape" id=1]
@@ -19,6 +20,8 @@ collision_mask = 22
 script = ExtResource( 1 )
 max_speed = 3.5
 jump_strength = 4.0
+main_camera = NodePath("FirstPersonCamera")
+weapon_camera = NodePath("CanvasLayer/ViewportContainer/Viewport/BowCamera")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -1.2, 0 )
@@ -31,11 +34,11 @@ material/0 = SubResource( 3 )
 
 [node name="FirstPersonCamera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+cull_mask = 1
 
-[node name="Bow" parent="FirstPersonCamera" instance=ExtResource( 2 )]
-transform = Transform( 0.0319463, 0.176448, -0.0156666, 0.177022, -0.0312138, 0.00942047, 0.00651783, -0.0170793, -0.179069, 0.731, -0.132, -0.928 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="FirstPersonCamera"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 0
@@ -44,7 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Crosshair" type="TextureRect" parent="FirstPersonCamera/CenterContainer"]
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/CenterContainer"]
 modulate = Color( 0.133333, 0.85098, 0.109804, 0.803922 )
 margin_left = 982.0
 margin_top = 502.0
@@ -55,3 +58,24 @@ texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+script = ExtResource( 3 )
+
+[node name="BowCamera" type="Camera" parent="CanvasLayer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+cull_mask = 2
+
+[node name="Bow" parent="CanvasLayer/ViewportContainer/Viewport/BowCamera" instance=ExtResource( 2 )]
+transform = Transform( 0.0319463, 0.176448, -0.0156666, 0.177022, -0.0312138, 0.00942047, 0.00651783, -0.0170793, -0.179069, 0.731, -0.132, -0.928 )

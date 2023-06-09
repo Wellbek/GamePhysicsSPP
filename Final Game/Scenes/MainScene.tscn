@@ -36,6 +36,11 @@ height = 1.0
 
 [node name="Spatial" type="Spatial"]
 
+[node name="WaveManager" parent="." instance=ExtResource( 3 )]
+spawnerNodePaths = [ NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner2"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner3"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner4") ]
+
+[node name="GUI" parent="." instance=ExtResource( 4 )]
+
 [node name="Terrain" type="Spatial" parent="."]
 
 [node name="Navigation" type="Navigation" parent="Terrain"]
@@ -87,8 +92,3 @@ transform = Transform( 1.68825, 0, 0, 0, 0.219661, 0, 0, 0, 1.70882, -0.092602, 
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88389, -3.00169 )
-
-[node name="GUI" parent="." instance=ExtResource( 4 )]
-
-[node name="WaveManager" parent="." instance=ExtResource( 3 )]
-spawnerNodePaths = [ NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner2"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner3"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner4") ]

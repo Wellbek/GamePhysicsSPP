@@ -27,6 +27,10 @@ var cooldown_timer = 0
 var jump_timer = 0
 var jump_buffered = false
 
+# Camera
+export(NodePath) onready var main_camera = get_node(main_camera)
+export(NodePath) onready var weapon_camera = get_node(weapon_camera)
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #locks mouse to the center of screen
 	#Input.set_use_accumulated_input(false) #makes Input events emit as often as possible => smoother rotation
@@ -40,6 +44,9 @@ func _input(event):
 			
 
 func _physics_process(delta):	
+	# Camera
+	weapon_camera.global_transform = main_camera.global_transform
+	
 	handle_jump(delta)
 	if is_on_floor():
 		handle_wasd(delta, ground_friction, accelaration_speed)
