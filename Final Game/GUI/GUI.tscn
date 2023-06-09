@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
@@ -12,8 +12,15 @@ colors = PoolColorArray( 0.402344, 0.402344, 0.402344, 1 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Assets/RobotoMono-VariableFont_wght.ttf"
+
 [sub_resource type="DynamicFont" id=3]
 size = 28
+font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 27
 font_data = ExtResource( 3 )
 
 [node name="GUI" type="Control"]
@@ -69,8 +76,8 @@ __meta__ = {
 }
 
 [node name="CoreBar" type="ProgressBar" parent="TopBar"]
-margin_left = 539.0
-margin_right = 1239.0
+margin_left = 540.0
+margin_right = 1240.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 700, 40 )
 size_flags_horizontal = 6
@@ -116,7 +123,6 @@ __meta__ = {
 }
 
 [node name="UpgradePanel" type="Panel" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -170,6 +176,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button4" type="Button" parent="UpgradePanel"]
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+margin_left = -150.0
+margin_top = -25.0
+margin_right = 150.0
+margin_bottom = 25.0
+theme = ExtResource( 1 )
+text = "Close Panel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanUpgradeLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+margin_left = -300.0
+margin_top = -75.0
+margin_right = 300.554
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.862745, 0.933333, 0.0509804, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.764706 )
+text = "Press 'U' to open the upgrade menu."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PauseMenu" type="Panel" parent="."]
 pause_mode = 2
 visible = false
@@ -218,5 +259,6 @@ __meta__ = {
 [connection signal="button_up" from="UpgradePanel/Button1" to="UpgradePanel" method="_on_Button1_button_up"]
 [connection signal="button_up" from="UpgradePanel/Button2" to="UpgradePanel" method="_on_Button2_button_up"]
 [connection signal="button_up" from="UpgradePanel/Button3" to="UpgradePanel" method="_on_Button3_button_up"]
+[connection signal="button_up" from="UpgradePanel/Button4" to="UpgradePanel" method="_on_Button4_button_up"]
 [connection signal="button_up" from="PauseMenu/UnpauseButton" to="PauseMenu" method="_on_UnpauseButton_button_up"]
 [connection signal="value_changed" from="PauseMenu/MouseSensSlider" to="PauseMenu" method="_on_MouseSensSlider_value_changed"]

@@ -8,13 +8,15 @@ export(Array, NodePath) var spawnerNodePaths := []
 onready var spawners: Array = loadNodes(spawnerNodePaths)
 
 onready var upgrade_panel = PlayerVariables.gui.get_node("UpgradePanel")
+onready var upgrade_label = PlayerVariables.gui.get_node("CanUpgradeLabel")
+var can_upgrade = false
 
 onready var wave_counter = PlayerVariables.gui.get_node("TopBar/WaveCounter/Background/Counter")
 onready var kill_counter = PlayerVariables.gui.get_node("TopBar/KillCounter/Background/Counter")
 
 var spawner_index = 0
 
-var wave = 1
+var wave = 0
 
 var to_spawn = 0
 var enemies_alive = 0
@@ -22,7 +24,22 @@ var enemies_alive = 0
 export var spawn_cd = 5
 
 func _ready():
-	start_wave(wave)
+	start_wave()
+	
+func _process(delta):	
+	if can_upgrade:
+		if Input.is_action_just_pressed("upgrade_panel"):
+			if upgrade_panel.visible: 
+				upgrade_panel.hide()
+				upgrade_label.show()
+				get_tree().paused = false
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else: 
+				upgrade_panel.show()
+				upgrade_label.hide()
+				get_tree().paused = true
+				upgrade_panel.set_pause_mode(Node.PAUSE_MODE_PROCESS)
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func update_wave_counter(var _wave):
 	wave_counter.text = str(_wave)
@@ -35,11 +52,15 @@ func loadNodes(nodePaths: Array) -> Array:
 			nodes.append(node)
 	return nodes
 	
-func start_wave(var _amount):
+func start_wave():
+	can_upgrade = false
+	wave += 1
+	despawn_all_enemies()
 	update_wave_counter(wave)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	upgrade_panel.hide()
-	to_spawn = _amount
+	get_tree().paused = false
+	to_spawn = wave
 	timer.wait_time = spawn_cd
 	timer.start()
 	
@@ -51,15 +72,24 @@ func on_enemy_kill():
 		wave_complete()
 		
 func wave_complete():
-	wave += 1
+	can_upgrade = true
 	upgrade_panel.init_new_upgrades()
 	upgrade_panel.show()
+	get_tree().paused = true
+	upgrade_panel.set_pause_mode(Node.PAUSE_MODE_PROCESS)
+	set_pause_mode(Node.PAUSE_MODE_PROCESS)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	# reduce spawn cooldown every wave but always wait atleast 1 second
-	spawn_cd -= 0.15
+	spawn_cd -= 0.2
 	if spawn_cd <= 1:
 		spawn_cd = 1
+		
+func despawn_all_enemies():
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	
+	for e in enemies:
+		e.queue_free()
 	
 func _on_Timer_timeout():
 	if to_spawn > 0:

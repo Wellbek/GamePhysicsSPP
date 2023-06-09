@@ -6,6 +6,8 @@ onready var buttons = [get_node("Button1"), get_node("Button2"), get_node("Butto
 
 onready var player = PlayerVariables.player
 
+onready var upgrade_label = get_parent().get_node("CanUpgradeLabel")
+
 # Add upgrades here by appending to the list and extending the match statement in apply_upgrade
 enum UpgradeType{
 	NONE,
@@ -42,15 +44,15 @@ func init_new_upgrades():
 func _on_Button1_button_up():	
 	apply_upgrade(UpgradeType[current_upgrades[0]])
 	# maybe decrease default_spawn_cd the higher wave we are?
-	wm.start_wave(wm.wave)
+	wm.start_wave()
 	
 func _on_Button2_button_up():	
 	apply_upgrade(UpgradeType[current_upgrades[1]])
-	wm.start_wave(wm.wave)
+	wm.start_wave()
 	
 func _on_Button3_button_up():	
 	apply_upgrade(UpgradeType[current_upgrades[2]])
-	wm.start_wave(wm.wave)
+	wm.start_wave()
 	
 func apply_upgrade(var upgrade: int):
 	match upgrade:
@@ -86,3 +88,9 @@ func apply_upgrade(var upgrade: int):
 			
 		UpgradeType.SHOOT_RANGE_UP:
 			PlayerVariables.player_combat.shoot_range *= 1.2
+
+func _on_Button4_button_up():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hide()
+	upgrade_label.show()

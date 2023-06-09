@@ -69,7 +69,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61685, 0 )
 enemy_root = NodePath("..")
 
 [node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="PathfindingTimer" type="Timer" parent="."]
 wait_time = 0.2

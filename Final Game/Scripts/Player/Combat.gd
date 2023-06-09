@@ -14,12 +14,7 @@ func increase_attack_speed(var amount):
 	req_draw /= amount
 	bow_animator.playback_speed *= amount
 
-func _process(delta):	
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE: 
-		bow_animator.stop(true) # stops current animation
-		bow_animator.seek(0, true) # resets animation to default
-		return
-	
+func _process(delta):		
 	if Input.is_action_just_pressed("shoot"):
 		bow_animator.play("bow_draw_animation")
 		
