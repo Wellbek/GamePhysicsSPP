@@ -28,6 +28,7 @@ transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
 collision_layer = 32
 collision_mask = 52
 script = ExtResource( 1 )
+speed = 3.0
 nav_mesh_collider = NodePath("CollisionShape")
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
