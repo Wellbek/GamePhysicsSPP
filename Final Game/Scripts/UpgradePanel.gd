@@ -19,7 +19,9 @@ enum UpgradeType{
 	ATTACK_SPEED_UP
 	CORE_HEALTH_UP,
 	SLOWER_ENEMY_SPAWN,
-	SHOOT_RANGE_UP
+	SHOOT_RANGE_UP,
+	EXTRA_ARROW,
+	MULTI_ARROW_SPAN_DOWN
 }
 
 var current_upgrades = [UpgradeType.NONE, UpgradeType.NONE, UpgradeType.NONE]
@@ -88,6 +90,12 @@ func apply_upgrade(var upgrade: int):
 			
 		UpgradeType.SHOOT_RANGE_UP:
 			PlayerVariables.player_combat.shoot_range *= 1.2
+			
+		UpgradeType.EXTRA_ARROW:
+			PlayerVariables.player_combat.number_of_arrows += 1
+			
+		UpgradeType.MULTI_ARROW_SPAN_DOWN:
+			PlayerVariables.player_combat.shoot_span /= 1.2
 
 func _on_Button4_button_up():
 	get_tree().paused = false
