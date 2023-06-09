@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Instances/Cube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instances/Sphere.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/Camera.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 10, 0.5, 10 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 20, 1, 20 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.145098, 0.47451, 0.172549, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Ground" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Cube" parent="Ground" instance=ExtResource( 1 )]
+transform = Transform( 0.904261, 0.426979, 0, -0.395589, 0.837783, -0.376337, -0.160688, 0.340307, 0.926483, 0.0463434, 9.72208, 0.0411119 )
+
+[node name="Cube" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0 )
+
+[node name="Cube2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 0 )
+
+[node name="Cube3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, 0 )
+
+[node name="Sphere" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.217, 2.31475, 0 )
+linear_velocity = Vector3( 0, 0, 1 )
+
+[node name="Camera" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0777117, 3.245, 9.81329 )
