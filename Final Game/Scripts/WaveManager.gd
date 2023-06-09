@@ -38,7 +38,6 @@ func _process(delta):
 				upgrade_panel.show()
 				upgrade_label.hide()
 				get_tree().paused = true
-				upgrade_panel.set_pause_mode(Node.PAUSE_MODE_PROCESS)
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func update_wave_counter(var _wave):
@@ -76,8 +75,6 @@ func wave_complete():
 	upgrade_panel.init_new_upgrades()
 	upgrade_panel.show()
 	get_tree().paused = true
-	upgrade_panel.set_pause_mode(Node.PAUSE_MODE_PROCESS)
-	set_pause_mode(Node.PAUSE_MODE_PROCESS)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	# reduce spawn cooldown every wave but always wait atleast 1 second

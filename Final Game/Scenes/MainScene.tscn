@@ -40,6 +40,7 @@ height = 1.0
 spawnerNodePaths = [ NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner2"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner3"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner4") ]
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
+pause_mode = 2
 
 [node name="Terrain" type="Spatial" parent="."]
 

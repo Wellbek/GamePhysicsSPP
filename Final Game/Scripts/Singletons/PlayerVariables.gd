@@ -4,7 +4,7 @@ extends Node
 # NOTE: might needs to be adjusted when changing scenes as game mechanic 
 #		Idea: have a function that sets player variable and is called on each scene start
 onready var player = get_tree().root.get_node("Spatial/Player")
-onready var player_combat = player.get_node("FirstPersonCamera/Bow")
+onready var player_combat = player.get_node(player.weapon_camera).get_node("Bow")
 
 var render_distance = 50
 var damage = 12

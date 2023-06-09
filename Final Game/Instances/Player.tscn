@@ -21,7 +21,7 @@ script = ExtResource( 1 )
 max_speed = 3.5
 jump_strength = 4.0
 main_camera = NodePath("FirstPersonCamera")
-weapon_camera = NodePath("CanvasLayer/ViewportContainer/Viewport/BowCamera")
+weapon_camera = NodePath("CanvasLayer/ViewportContainer/Viewport/WeaponCamera")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -1.2, 0 )
@@ -37,6 +37,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 cull_mask = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -67,15 +68,17 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+pause_mode = 2
 size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 script = ExtResource( 3 )
 
-[node name="BowCamera" type="Camera" parent="CanvasLayer/ViewportContainer/Viewport"]
+[node name="WeaponCamera" type="Camera" parent="CanvasLayer/ViewportContainer/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 cull_mask = 2
 
-[node name="Bow" parent="CanvasLayer/ViewportContainer/Viewport/BowCamera" instance=ExtResource( 2 )]
+[node name="Bow" parent="CanvasLayer/ViewportContainer/Viewport/WeaponCamera" instance=ExtResource( 2 )]
+pause_mode = 1
 transform = Transform( 0.0319463, 0.176448, -0.0156666, 0.177022, -0.0312138, 0.00942047, 0.00651783, -0.0170793, -0.179069, 0.731, -0.132, -0.928 )
