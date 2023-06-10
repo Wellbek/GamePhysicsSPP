@@ -20,7 +20,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		bow_animator.play("bow_draw_animation")
 		
-	if Input.is_action_just_released("shoot"):
+	if Input.is_action_just_released("shoot") && bow_animator.current_animation_length != 0:
 		# only shoot if bow is drawn enough
 		var anim_frac = bow_animator.current_animation_position/bow_animator.current_animation_length
 		if anim_frac >= req_draw:

@@ -1,23 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
 [ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=4]
-
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 1 )
-colors = PoolColorArray( 0.402344, 0.402344, 0.402344, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://Assets/RobotoMono-VariableFont_wght.ttf"
-
-[sub_resource type="DynamicFont" id=4]
-size = 28
-font_data = SubResource( 3 )
+[ext_resource path="res://Assets/ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://Assets/UI_RECT.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=5]
 size = 27
@@ -42,16 +30,17 @@ __meta__ = {
 margin_right = 200.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 40 )
+theme = ExtResource( 5 )
 
 [node name="Background" type="NinePatchRect" parent="TopBar/WaveCounter"]
 margin_right = 200.0
 margin_bottom = 40.0
-texture = SubResource( 2 )
+texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="TopBar/WaveCounter/Background"]
 margin_right = 100.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+theme = ExtResource( 5 )
 text = "Wave:"
 align = 2
 valign = 1
@@ -63,7 +52,6 @@ __meta__ = {
 margin_left = 100.0
 margin_right = 200.0
 margin_bottom = 38.0
-custom_fonts/font = SubResource( 4 )
 text = "1"
 align = 1
 valign = 1
@@ -89,16 +77,16 @@ margin_left = 1580.0
 margin_right = 1780.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
+theme = ExtResource( 5 )
 
 [node name="Background" type="NinePatchRect" parent="TopBar/KillCounter"]
 margin_right = 200.0
 margin_bottom = 40.0
-texture = SubResource( 2 )
+texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="TopBar/KillCounter/Background"]
 margin_right = 110.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
 text = "Kills:"
 align = 2
 valign = 1
@@ -110,7 +98,6 @@ __meta__ = {
 margin_left = 110.0
 margin_right = 200.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
 text = "0"
 align = 1
 valign = 1
@@ -119,6 +106,7 @@ __meta__ = {
 }
 
 [node name="UpgradePanel" type="Panel" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -136,7 +124,7 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Upgrade1"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,7 +139,7 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Upgrade2"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -166,7 +154,7 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Upgrade3"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -181,7 +169,7 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Core Heal"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -196,7 +184,7 @@ margin_left = -150.0
 margin_top = -25.0
 margin_right = 150.0
 margin_bottom = 25.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Close Panel"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -244,7 +232,7 @@ margin_left = -220.0
 margin_top = -60.0
 margin_right = 180.0
 margin_bottom = 40.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Back to Game"
 __meta__ = {
 "_edit_use_anchors_": false
