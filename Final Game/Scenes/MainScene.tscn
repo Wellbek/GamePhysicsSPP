@@ -37,7 +37,6 @@ height = 1.0
 [node name="Spatial" type="Spatial"]
 
 [node name="WaveManager" parent="." instance=ExtResource( 3 )]
-pause_mode = 2
 spawnerNodePaths = [ NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner2"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner3"), NodePath("../Terrain/Navigation/NavigationMeshInstance/Spawner4") ]
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
