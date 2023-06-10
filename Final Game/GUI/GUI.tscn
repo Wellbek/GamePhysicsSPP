@@ -12,12 +12,12 @@ colors = PoolColorArray( 0.402344, 0.402344, 0.402344, 1 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://Assets/RobotoMono-VariableFont_wght.ttf"
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 28
-font_data = SubResource( 4 )
+font_data = SubResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 27
@@ -51,7 +51,7 @@ texture = SubResource( 2 )
 [node name="Label" type="Label" parent="TopBar/WaveCounter/Background"]
 margin_right = 100.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Wave:"
 align = 2
 valign = 1
@@ -63,7 +63,7 @@ __meta__ = {
 margin_left = 100.0
 margin_right = 200.0
 margin_bottom = 38.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "1"
 align = 1
 valign = 1
@@ -98,7 +98,7 @@ texture = SubResource( 2 )
 [node name="Label" type="Label" parent="TopBar/KillCounter/Background"]
 margin_right = 110.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Kills:"
 align = 2
 valign = 1
@@ -110,7 +110,7 @@ __meta__ = {
 margin_left = 110.0
 margin_right = 200.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "0"
 align = 1
 valign = 1
@@ -119,7 +119,6 @@ __meta__ = {
 }
 
 [node name="UpgradePanel" type="Panel" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -174,6 +173,21 @@ __meta__ = {
 }
 
 [node name="Button4" type="Button" parent="UpgradePanel"]
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+text = "Core Heal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="closePanelButton" type="Button" parent="UpgradePanel"]
 anchor_left = 0.5
 anchor_top = 0.85
 anchor_right = 0.5
@@ -257,5 +271,6 @@ __meta__ = {
 [connection signal="button_up" from="UpgradePanel/Button2" to="UpgradePanel" method="_on_Button2_button_up"]
 [connection signal="button_up" from="UpgradePanel/Button3" to="UpgradePanel" method="_on_Button3_button_up"]
 [connection signal="button_up" from="UpgradePanel/Button4" to="UpgradePanel" method="_on_Button4_button_up"]
+[connection signal="button_up" from="UpgradePanel/closePanelButton" to="UpgradePanel" method="_on_closePanelButton_button_up"]
 [connection signal="button_up" from="PauseMenu/UnpauseButton" to="PauseMenu" method="_on_UnpauseButton_button_up"]
 [connection signal="value_changed" from="PauseMenu/MouseSensSlider" to="PauseMenu" method="_on_MouseSensSlider_value_changed"]

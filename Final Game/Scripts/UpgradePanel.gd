@@ -11,12 +11,13 @@ onready var upgrade_label = get_parent().get_node("CanUpgradeLabel")
 # Add upgrades here by appending to the list and extending the match statement in apply_upgrade
 enum UpgradeType{
 	NONE,
+	CORE_HEAL,
 	JUMP_STRENGTH_UP,
 	MAX_SPEED_UP,
 	DAMAGE_UP,
 	EXTRA_JUMP,
 	ATTACK_SPEED_UP
-	CORE_HEALTH_UP,
+	CORE_MAX_HEALTH_UP,
 	SLOWER_ENEMY_SPAWN,
 	SHOOT_RANGE_UP,
 	EXTRA_ARROW,
@@ -34,6 +35,7 @@ func enum_to_string(var enum_value):
 func init_new_upgrades():	
 	var available_upgrades = UpgradeType.keys()
 	available_upgrades.remove(UpgradeType.NONE)
+	available_upgrades.remove(UpgradeType.CORE_HEAL)
 	
 	for i in 3:
 		var available_index = randi() % available_upgrades.size()
@@ -55,10 +57,19 @@ func _on_Button3_button_up():
 	apply_upgrade(UpgradeType[current_upgrades[2]])
 	wm.start_wave()
 	
+	
+func _on_Button4_button_up():
+	apply_upgrade(UpgradeType.CORE_HEAL)
+	wm.start_wave()
+	
 func apply_upgrade(var upgrade: int):
 	match upgrade:
 		UpgradeType.NONE:
 			pass
+			
+		UpgradeType.CORE_HEAL:
+			PlayerVariables.core.health += 0.5 * PlayerVariables.core.max_health
+			PlayerVariables.core.update_core_bar()
 			
 		UpgradeType.JUMP_STRENGTH_UP:
 			player.jump_strength *= 1.2
@@ -77,8 +88,8 @@ func apply_upgrade(var upgrade: int):
 		UpgradeType.ATTACK_SPEED_UP:
 			PlayerVariables.player_combat.increase_attack_speed(1.15)
 			
-		UpgradeType.CORE_HEALTH_UP:
-			var amount = PlayerVariables.core.max_health * .1
+		UpgradeType.CORE_MAX_HEALTH_UP:
+			var amount = PlayerVariables.core.max_health * .2
 			PlayerVariables.core.max_health += amount
 			PlayerVariables.core.health += amount
 			PlayerVariables.core.update_core_bar()
@@ -93,10 +104,12 @@ func apply_upgrade(var upgrade: int):
 			PlayerVariables.player_combat.number_of_arrows += 1
 			
 		UpgradeType.MULTI_ARROW_SPAN_DOWN:
-			PlayerVariables.player_combat.shoot_span /= 1.2
+			PlayerVariables.player_combat.shoot_span /= 1.5
 
-func _on_Button4_button_up():
+func _on_closePanelButton_button_up():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
 	upgrade_label.show()
+
+

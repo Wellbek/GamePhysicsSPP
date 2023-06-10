@@ -90,13 +90,16 @@ func despawn_all_enemies():
 	
 func _on_Timer_timeout():
 	if to_spawn > 0:
+		# just pick a random spawner
+		spawner_index = randi() % spawners.size()
+		
 		spawners[spawner_index].spawn_enemy(enemy)
 		enemies_alive += 1
 		
 		# alternate spawn locations
-		spawner_index += 1	
-		if spawner_index >= spawners.size():
-			spawner_index = 0
+		#spawner_index += 1	
+		#if spawner_index >= spawners.size():
+		#	spawner_index = 0
 		
 		to_spawn -= 1
 		if to_spawn == 0:

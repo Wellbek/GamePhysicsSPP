@@ -5,7 +5,7 @@ onready var bow_animator = $AnimationPlayer
 onready var arrow_scene = load("res://Instances//Entities//Arrow.tscn")
 
 var number_of_arrows = 1
-var shoot_span = 2 # span of multiple arrows in degrees
+var shoot_span = 10 # span of multiple arrows in degrees
 var shoot_range = 40
 var req_draw = 0.4 # seconds how long to draw bow to be able shoot
 

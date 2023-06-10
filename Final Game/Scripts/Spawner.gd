@@ -44,7 +44,7 @@ func randomize_enemy(var _enemy, var _mean, var _deviation):
 	
 	_enemy.speed /= ran
 	_enemy.damage *= ran
-	_enemy.attack_speed /= ran
+	#_enemy.attack_speed /= ran #I took this out since this evens out the damage debuff/buff so it doesnt really matter wether the enemy is big or small (the babies were too powerful xd)
 	_enemy.max_health *= ran
 	_enemy.health = _enemy.max_health
 	
