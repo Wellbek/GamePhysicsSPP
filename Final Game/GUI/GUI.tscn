@@ -1,14 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
 [ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=4]
-[ext_resource path="res://Assets/ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/UI_RECT.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=5]
-size = 27
+[sub_resource type="DynamicFont" id=1]
+size = 26
 font_data = ExtResource( 3 )
 
 [node name="GUI" type="CanvasLayer"]
@@ -36,6 +35,10 @@ theme = ExtResource( 5 )
 margin_right = 200.0
 margin_bottom = 40.0
 texture = ExtResource( 6 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="Label" type="Label" parent="TopBar/WaveCounter/Background"]
 margin_right = 100.0
@@ -65,7 +68,7 @@ margin_right = 1240.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 700, 40 )
 size_flags_horizontal = 6
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 value = 50.0
 percent_visible = false
 __meta__ = {
@@ -83,6 +86,10 @@ theme = ExtResource( 5 )
 margin_right = 200.0
 margin_bottom = 40.0
 texture = ExtResource( 6 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="Label" type="Label" parent="TopBar/KillCounter/Background"]
 margin_right = 110.0
@@ -109,7 +116,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,24 +207,26 @@ margin_left = -300.0
 margin_top = -75.0
 margin_right = 300.554
 margin_bottom = 75.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0.862745, 0.933333, 0.0509804, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.764706 )
+theme = ExtResource( 5 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Press 'U' to open the upgrade menu."
 align = 1
 valign = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="PauseMenu" type="Panel" parent="."]
 pause_mode = 2
 visible = false
-modulate = Color( 1, 1, 1, 0.623529 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
+theme = ExtResource( 5 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -238,16 +247,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MouseSensSlider" type="HSlider" parent="PauseMenu"]
-anchor_left = 0.5
-anchor_top = 0.25
-anchor_right = 0.5
-anchor_bottom = 0.25
-margin_left = -200.0
-margin_right = 200.0
-margin_bottom = 50.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+margin_left = 730.0
+margin_top = 260.0
+margin_right = 1244.0
+margin_bottom = 358.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
+margin_top = 22.0
+margin_right = 514.0
+margin_bottom = 55.0
+theme = ExtResource( 5 )
+text = "Sensitivity:"
+
+[node name="MouseSensSlider" type="HSlider" parent="PauseMenu/VBoxContainer"]
+margin_top = 59.0
+margin_right = 514.0
+margin_bottom = 75.0
 min_value = 1.0
-max_value = 20.0
+max_value = 10.0
 step = 0.1
 value = 5.0
 tick_count = 4
@@ -261,4 +283,4 @@ __meta__ = {
 [connection signal="button_up" from="UpgradePanel/Button4" to="UpgradePanel" method="_on_Button4_button_up"]
 [connection signal="button_up" from="UpgradePanel/closePanelButton" to="UpgradePanel" method="_on_closePanelButton_button_up"]
 [connection signal="button_up" from="PauseMenu/UnpauseButton" to="PauseMenu" method="_on_UnpauseButton_button_up"]
-[connection signal="value_changed" from="PauseMenu/MouseSensSlider" to="PauseMenu" method="_on_MouseSensSlider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/VBoxContainer/MouseSensSlider" to="PauseMenu" method="_on_MouseSensSlider_value_changed"]
