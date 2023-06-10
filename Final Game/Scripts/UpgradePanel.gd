@@ -57,7 +57,6 @@ func _on_Button3_button_up():
 	apply_upgrade(UpgradeType[current_upgrades[2]])
 	wm.start_wave()
 	
-	
 func _on_Button4_button_up():
 	apply_upgrade(UpgradeType.CORE_HEAL)
 	wm.start_wave()
