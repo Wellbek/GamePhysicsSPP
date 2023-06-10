@@ -68,7 +68,9 @@ func apply_upgrade(var upgrade: int):
 			pass
 			
 		UpgradeType.CORE_HEAL:
-			PlayerVariables.core.health += 0.5 * PlayerVariables.core.max_health
+			PlayerVariables.core.health += 0.3 * PlayerVariables.core.max_health
+			if PlayerVariables.core.health > PlayerVariables.core.max_health:
+				PlayerVariables.core.health = PlayerVariables.core.max_health
 			PlayerVariables.core.update_core_bar()
 			
 		UpgradeType.JUMP_STRENGTH_UP:
@@ -104,7 +106,7 @@ func apply_upgrade(var upgrade: int):
 			PlayerVariables.player_combat.number_of_arrows += 1
 			
 		UpgradeType.MULTI_ARROW_SPAN_DOWN:
-			PlayerVariables.player_combat.shoot_span /= 1.5
+			PlayerVariables.player_combat.shoot_span /= 1.3
 
 func _on_closePanelButton_button_up():
 	get_tree().paused = false

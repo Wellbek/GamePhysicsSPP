@@ -5,7 +5,7 @@ onready var bow_animator = $AnimationPlayer
 onready var arrow_scene = load("res://Instances//Entities//Arrow.tscn")
 
 var number_of_arrows = 1
-var shoot_span = 10 # span of multiple arrows in degrees
+var shoot_span = 20 # span of multiple arrows in degrees
 var shoot_range = 40
 var req_draw = 0.4 # seconds how long to draw bow to be able shoot
 
@@ -33,8 +33,10 @@ func _process(delta):
 
 
 func shoot_arrow(var amount, var anim_frac, var span_degrees):
-	span_degrees *= amount
-	span_degrees -= 0.5 # normally the lowest possible span is 1 since we devide per upgrade. By subtracting 0.5 our lowest values becomes 0.5
+	var span_amplifier = 1 + float(amount)/6 # the more arrow the higher the span (to still feel good with low number of arrows)
+	var span = pow(span_degrees, span_amplifier) / 10 # exponential growth
+	
+	span = clamp(span, 0, 3 * span_degrees) # cap growth span_degrees
 	
 	if amount == 1:
 		var arrow = arrow_scene.instance()
@@ -46,9 +48,9 @@ func shoot_arrow(var amount, var anim_frac, var span_degrees):
 		arrow.damage = anim_frac * PlayerVariables.damage
 		
 		get_tree().root.add_child(arrow)
-	else:	
-		var angle_increment = span_degrees / (amount - 1)  # Calculate the angle increment between each arrow
-		var start_angle = -span_degrees / 2  # Calculate the starting angle
+	else: 
+		var angle_increment = span / (amount - 1)  # Calculate the angle increment between each arrow
+		var start_angle = -span / 2  # Calculate the starting angle
 		
 		for i in range(amount):
 			var arrow = arrow_scene.instance()
@@ -56,12 +58,14 @@ func shoot_arrow(var amount, var anim_frac, var span_degrees):
 			arrow.transform.origin = get_parent().global_transform.origin
 			arrow.rotation = get_parent().global_transform.basis.get_euler()
 			
-			var rotation_angle = deg2rad(start_angle + i * angle_increment)  # Calculate the rotation angle for each arrow
+			var rot_angle_deg =(start_angle + i * angle_increment)
+			
+			var rotation_angle = deg2rad(rot_angle_deg)  # Calculate the rotation angle for each arrow
 			var rotation_axis = get_parent().global_transform.basis.y  # Use the parent's up direction as the rotation axis
 			
 			arrow.rotate(rotation_axis, rotation_angle)  # Rotate the arrow by the calculated angle
 			
 			arrow.apply_central_impulse(-arrow.transform.basis.z * shoot_range * anim_frac)
-			arrow.damage = anim_frac * PlayerVariables.damage
+			arrow.damage = anim_frac * PlayerVariables.damage / span_amplifier # scale damage with number of extra arrows
 			
 			get_tree().root.add_child(arrow)
