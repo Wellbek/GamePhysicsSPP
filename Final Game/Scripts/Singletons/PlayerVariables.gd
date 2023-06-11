@@ -18,3 +18,6 @@ onready var core = get_tree().root.get_node("Spatial/Terrain/Core")
 
 onready var wave_manager = get_tree().root.get_node("Spatial/WaveManager") # idk not good solution but works for now
 onready var gui = get_tree().root.get_node("Spatial/GUI")
+
+func _ready():
+	randomize()

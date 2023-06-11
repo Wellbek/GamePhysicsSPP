@@ -34,8 +34,8 @@ func enum_to_string(var enum_value):
 
 func init_new_upgrades():	
 	var available_upgrades = UpgradeType.keys()
-	available_upgrades.remove(UpgradeType.NONE)
 	available_upgrades.remove(UpgradeType.CORE_HEAL)
+	available_upgrades.remove(UpgradeType.NONE)
 	
 	for i in 3:
 		var available_index = randi() % available_upgrades.size()

@@ -16,7 +16,7 @@ func spawn_enemy(var enemy):
 	
 	enemy_instance = randomize_enemy(enemy_instance, 1, 0.3)
 	
-	var attribute_amplifier = 1.0 + (wm.wave / 30) # the higher the wave the stronger the enemies
+	var attribute_amplifier = 1.0 + (float(wm.wave) / 30) # the higher the wave the stronger the enemies
 	
 	enemy_instance.speed *= attribute_amplifier
 	enemy_instance.attack_speed *= attribute_amplifier
