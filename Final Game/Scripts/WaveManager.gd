@@ -64,7 +64,7 @@ func start_wave():
 	get_tree().paused = false
 	if wave % 10 == 0:
 		to_spawn = wave/2
-		current_deviation = wave/20
+		current_deviation = float(wave)/20
 	else:
 		to_spawn = wave
 		current_deviation = normal_deviation
