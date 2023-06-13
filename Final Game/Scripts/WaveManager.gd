@@ -18,6 +18,9 @@ var spawner_index = 0
 
 var wave = 0
 
+var normal_deviation = 0.3
+var current_deviation = 0.3
+
 var to_spawn = 0
 var enemies_alive = 0
 
@@ -59,7 +62,12 @@ func start_wave():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	upgrade_panel.hide()
 	get_tree().paused = false
-	to_spawn = wave
+	if wave % 10 == 0:
+		to_spawn = wave/2
+		current_deviation = wave/20
+	else:
+		to_spawn = wave
+		current_deviation = normal_deviation
 	timer.wait_time = spawn_cd
 	timer.start()
 	
@@ -93,7 +101,7 @@ func _on_Timer_timeout():
 		# just pick a random spawner
 		spawner_index = randi() % spawners.size()
 		
-		spawners[spawner_index].spawn_enemy(enemy)
+		spawners[spawner_index].spawn_enemy(enemy, current_deviation)
 		enemies_alive += 1
 		
 		# alternate spawn locations

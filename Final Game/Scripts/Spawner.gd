@@ -10,13 +10,13 @@ export var spread = 0
 func _ready():
 	rng.randomize() # get "true" random numbers
 
-func spawn_enemy(var enemy):
+func spawn_enemy(var enemy, var deviation):
 	var enemy_instance = enemy.instance()
 	enemy_instance.transform.origin = get_new_position() 
 	
-	enemy_instance = randomize_enemy(enemy_instance, 1, 0.3)
+	enemy_instance = randomize_enemy(enemy_instance, 1, deviation)
 	
-	var attribute_amplifier = 1.0 + (float(wm.wave) / 30) # the higher the wave the stronger the enemies
+	var attribute_amplifier = 1.0 + (float(wm.wave) / 100) # the higher the wave the stronger the enemies
 	
 	enemy_instance.speed *= attribute_amplifier
 	enemy_instance.attack_speed *= attribute_amplifier
