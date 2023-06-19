@@ -108,7 +108,6 @@ tracks/5/keys = {
 [node name="Model" type="Spatial" groups=[
 "Enemy",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69758, 0 )
 script = ExtResource( 9 )
 anim_player = NodePath("AnimationPlayer")
 walking_animation = "ogre_walk_anim"
