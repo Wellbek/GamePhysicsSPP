@@ -79,6 +79,11 @@ down={
  ]
 }
 
+[physics]
+
+3d/physics_engine="CustomPhysics"
+customphysics/warm_starting=false
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

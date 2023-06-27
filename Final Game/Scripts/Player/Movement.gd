@@ -7,7 +7,8 @@ export var ground_friction = 0.85
 export var air_friction = 0.95
 export var jump_strength = 10.0
 export var gravity = -.2
-export var mouse_sens = 5.0
+export var mouse_sens = 3.0
+export var push_strength = 5.0
 var clickVec = Vector2(0,0)
 var velocity = Vector3(0,0,0)
 
@@ -52,11 +53,19 @@ func _physics_process(delta):
 		handle_wasd(delta, ground_friction, accelaration_speed)
 	else:
 		handle_wasd(delta, air_friction, accelaration_speed_in_air)
+		
+	
+	#push enemies:
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("Enemy"):
+			collision.collider.apply_central_impulse(-collision.normal * push_strength)
 	
 	#last parameter determines whether the player can move rigidbodies or view then as static bodies
 	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol
 	#first parameter is linear_velocity that is getting applied, second is the normal of the floor
-	velocity = move_and_slide(velocity, Vector3(0,1,0), false, 4, 0.785398, true)
+	velocity = move_and_slide(velocity, Vector3(0,1,0), false, 4, 0.785398, false)
+	
 
 	# limit camera rotation along x (so we can only look up/down a certain amount)
 	var myRot = get_node("FirstPersonCamera").get_rotation()

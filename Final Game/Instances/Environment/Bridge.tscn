@@ -1,0 +1,252 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Instances/Environment/BridgePlank.tscn" type="PackedScene" id=1]
+
+[node name="Bridge" type="Spatial"]
+transform = Transform( 0.707107, -0.170861, 0.686153, 0, 0.970367, 0.241634, -0.707107, -0.170861, 0.686153, 12.453, -0.171647, 12.4946 )
+
+[node name="FixedPoint" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+mode = 1
+
+[node name="FixedTo1" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, -0.5 )
+nodes/node_a = NodePath("../FixedPoint")
+nodes/node_b = NodePath("../BridgePlank")
+
+[node name="BridgePlank" type="RigidBody" parent="." instance=ExtResource( 1 )]
+collision_layer = 5
+
+[node name="HingeJoint" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0.484793 )
+nodes/node_a = NodePath("../BridgePlank")
+nodes/node_b = NodePath("../BridgePlank2")
+
+[node name="BridgePlank2" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+collision_layer = 5
+
+[node name="HingeJoint2" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 1.48565 )
+nodes/node_a = NodePath("../BridgePlank2")
+nodes/node_b = NodePath("../BridgePlank3")
+
+[node name="BridgePlank3" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.00085 )
+collision_layer = 5
+
+[node name="HingeJoint4" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 2.49046 )
+nodes/node_a = NodePath("../BridgePlank3")
+nodes/node_b = NodePath("../BridgePlank5")
+
+[node name="BridgePlank5" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.00567 )
+collision_layer = 5
+
+[node name="HingeJoint3" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 3.49132 )
+nodes/node_a = NodePath("../BridgePlank5")
+nodes/node_b = NodePath("../BridgePlank4")
+
+[node name="BridgePlank4" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.00652 )
+collision_layer = 5
+
+[node name="HingeJoint8" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 4.4943 )
+nodes/node_a = NodePath("../BridgePlank4")
+nodes/node_b = NodePath("../BridgePlank9")
+
+[node name="BridgePlank9" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.0095 )
+collision_layer = 5
+
+[node name="HingeJoint7" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 5.49515 )
+nodes/node_a = NodePath("../BridgePlank9")
+nodes/node_b = NodePath("../BridgePlank8")
+
+[node name="BridgePlank8" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.01035 )
+collision_layer = 5
+
+[node name="HingeJoint6" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 6.49997 )
+nodes/node_a = NodePath("../BridgePlank8")
+nodes/node_b = NodePath("../BridgePlank7")
+
+[node name="BridgePlank7" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.01517 )
+collision_layer = 5
+
+[node name="HingeJoint5" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 7.50082 )
+nodes/node_a = NodePath("../BridgePlank7")
+nodes/node_b = NodePath("../BridgePlank6")
+
+[node name="BridgePlank6" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.01603 )
+collision_layer = 5
+
+[node name="HingeJoint12" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 8.49382 )
+nodes/node_a = NodePath("../BridgePlank6")
+nodes/node_b = NodePath("../BridgePlank13")
+
+[node name="BridgePlank13" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.00902 )
+collision_layer = 5
+
+[node name="HingeJoint11" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 9.49467 )
+nodes/node_a = NodePath("../BridgePlank13")
+nodes/node_b = NodePath("../BridgePlank12")
+
+[node name="BridgePlank12" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.0099 )
+collision_layer = 5
+
+[node name="HingeJoint10" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 10.4995 )
+nodes/node_a = NodePath("../BridgePlank12")
+nodes/node_b = NodePath("../BridgePlank11")
+
+[node name="BridgePlank11" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.0147 )
+collision_layer = 5
+
+[node name="HingeJoint9" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 11.5003 )
+nodes/node_a = NodePath("../BridgePlank11")
+nodes/node_b = NodePath("../BridgePlank10")
+
+[node name="BridgePlank10" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.0155 )
+collision_layer = 5
+
+[node name="HingeJoint16" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 12.5015 )
+nodes/node_a = NodePath("../BridgePlank10")
+nodes/node_b = NodePath("../BridgePlank17")
+
+[node name="BridgePlank17" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.0167 )
+collision_layer = 5
+
+[node name="HingeJoint15" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 13.5024 )
+nodes/node_a = NodePath("../BridgePlank17")
+nodes/node_b = NodePath("../BridgePlank16")
+
+[node name="BridgePlank16" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.0176 )
+collision_layer = 5
+
+[node name="HingeJoint14" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 14.5072 )
+nodes/node_a = NodePath("../BridgePlank16")
+nodes/node_b = NodePath("../BridgePlank15")
+
+[node name="BridgePlank15" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.0224 )
+collision_layer = 5
+
+[node name="HingeJoint13" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 15.508 )
+nodes/node_a = NodePath("../BridgePlank15")
+nodes/node_b = NodePath("../BridgePlank14")
+
+[node name="BridgePlank14" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.0232 )
+collision_layer = 5
+
+[node name="HingeJoint21" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 16.5272 )
+nodes/node_a = NodePath("../BridgePlank14")
+nodes/node_b = NodePath("../BridgePlank22")
+
+[node name="BridgePlank22" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0424 )
+collision_layer = 5
+
+[node name="HingeJoint20" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 17.5284 )
+nodes/node_a = NodePath("../BridgePlank22")
+nodes/node_b = NodePath("../BridgePlank21")
+
+[node name="BridgePlank21" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.0436 )
+collision_layer = 5
+
+[node name="HingeJoint19" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 18.5293 )
+nodes/node_a = NodePath("../BridgePlank21")
+nodes/node_b = NodePath("../BridgePlank20")
+
+[node name="BridgePlank20" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.0445 )
+collision_layer = 5
+
+[node name="HingeJoint18" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 19.5341 )
+nodes/node_a = NodePath("../BridgePlank20")
+nodes/node_b = NodePath("../BridgePlank19")
+
+[node name="BridgePlank19" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.0493 )
+collision_layer = 5
+
+[node name="HingeJoint17" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 20.5349 )
+nodes/node_a = NodePath("../BridgePlank19")
+nodes/node_b = NodePath("../BridgePlank18")
+
+[node name="BridgePlank18" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.0501 )
+collision_layer = 5
+
+[node name="HingeJoint25" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 21.542 )
+nodes/node_a = NodePath("../BridgePlank18")
+nodes/node_b = NodePath("../BridgePlank26")
+
+[node name="BridgePlank26" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.0572 )
+collision_layer = 5
+
+[node name="HingeJoint24" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 22.5429 )
+nodes/node_a = NodePath("../BridgePlank26")
+nodes/node_b = NodePath("../BridgePlank25")
+
+[node name="BridgePlank25" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.0581 )
+collision_layer = 5
+
+[node name="HingeJoint23" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 23.5477 )
+nodes/node_a = NodePath("../BridgePlank25")
+nodes/node_b = NodePath("../BridgePlank24")
+
+[node name="BridgePlank24" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.0629 )
+collision_layer = 5
+
+[node name="HingeJoint22" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 24.5485 )
+nodes/node_a = NodePath("../BridgePlank24")
+nodes/node_b = NodePath("../BridgePlank23")
+
+[node name="BridgePlank23" type="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.0637 )
+collision_layer = 5
+
+[node name="FixedTo2" type="HingeJoint" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 25.6138 )
+nodes/node_a = NodePath("../FixedPoint2")
+nodes/node_b = NodePath("../BridgePlank23")
+
+[node name="FixedPoint2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6138 )
+mode = 1
