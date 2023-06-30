@@ -69,7 +69,7 @@ func _physics_process(delta):
 
 	# limit camera rotation along x (so we can only look up/down a certain amount)
 	var myRot = get_node("FirstPersonCamera").get_rotation()
-	get_node("FirstPersonCamera").rotation.x = clamp(myRot.x, -PI/2, 1.2)
+	get_node("FirstPersonCamera").rotation.x = clamp(myRot.x, -PI/2, PI/2)
 
 
 #------------------------------ helper methods -----------------------------------

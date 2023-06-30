@@ -154,12 +154,7 @@ collision_layer = 4
 mode = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Terrain/Navigation/NavigationMeshInstance/Ground"]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0.130981, 0, 0.109695 )
-mesh = ExtResource( 7 )
-material/0 = ExtResource( 8 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="Terrain/Navigation/NavigationMeshInstance/Ground"]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0.130981, 0, 0.109695 )
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 8 )
 
@@ -205,6 +200,7 @@ transform = Transform( 1.68825, 0, 0, 0, 0.219661, 0, 0, 0, 1.70882, -0.092602, 
 [node name="Bridge" parent="Terrain" instance=ExtResource( 9 )]
 
 [node name="Deco" type="Spatial" parent="Terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -0.1 )
 
 [node name="Torch" parent="Terrain/Deco" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 2.5, -12.4 )
