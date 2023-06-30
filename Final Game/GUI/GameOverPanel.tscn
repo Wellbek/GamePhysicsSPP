@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/GameOverPanel.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 2 )
+
+[node name="GameOverPanel" type="Panel"]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.18
+anchor_right = 0.5
+anchor_bottom = 0.18
+margin_left = -270.0
+margin_right = 268.0
+margin_bottom = 122.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Control" parent="."]
+margin_left = 787.0
+margin_top = 333.0
+margin_right = 1173.0
+margin_bottom = 395.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Message"]
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Died at wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wave" type="Label" parent="Message"]
+margin_left = 300.0
+margin_right = 400.0
+margin_bottom = 53.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="."]
+anchor_left = 0.4
+anchor_top = 0.6
+anchor_right = 0.4
+anchor_bottom = 0.6
+margin_left = -150.0
+margin_right = 150.0
+margin_bottom = 100.0
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="."]
+anchor_left = 0.6
+anchor_top = 0.6
+anchor_right = 0.6
+anchor_bottom = 0.6
+margin_left = -150.0
+margin_right = 150.0
+margin_bottom = 100.0
+text = "Back To Menu"
+[connection signal="button_up" from="RestartButton" to="." method="_on_RestartButton_button_up"]

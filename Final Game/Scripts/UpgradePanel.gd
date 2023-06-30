@@ -4,7 +4,7 @@ onready var wm = get_tree().root.get_node("Spatial/WaveManager")
 
 onready var buttons = [get_node("Button1"), get_node("Button2"), get_node("Button3")]
 
-onready var player = PlayerVariables.player
+onready var player = PlayerVariables.player()
 
 onready var upgrade_label = get_parent().get_node("CanUpgradeLabel")
 
@@ -67,10 +67,10 @@ func apply_upgrade(var upgrade: int):
 			pass
 			
 		UpgradeType.CORE_HEAL:
-			PlayerVariables.core.health += 0.3 * PlayerVariables.core.max_health
-			if PlayerVariables.core.health > PlayerVariables.core.max_health:
-				PlayerVariables.core.health = PlayerVariables.core.max_health
-			PlayerVariables.core.update_core_bar()
+			PlayerVariables.core().health += 0.3 * PlayerVariables.core().max_health
+			if PlayerVariables.core().health > PlayerVariables.core().max_health:
+				PlayerVariables.core().health = PlayerVariables.core().max_health
+			PlayerVariables.core().update_core_bar()
 			
 		UpgradeType.JUMP_STRENGTH_UP:
 			player.jump_strength *= 1.2
@@ -81,31 +81,31 @@ func apply_upgrade(var upgrade: int):
 			player.max_speed *= 1.4
 			
 		UpgradeType.DAMAGE_UP:
-			PlayerVariables.damage *= 1.3
+			PlayerVariables.player_combat().damage *= 1.3
 			
 		UpgradeType.EXTRA_JUMP:
 			player.number_of_extra_jumps += 1
 			
 		UpgradeType.ATTACK_SPEED_UP:
-			PlayerVariables.player_combat.increase_attack_speed(1.15)
+			PlayerVariables.player_combat().increase_attack_speed(1.15)
 			
 		UpgradeType.CORE_MAX_HEALTH_UP:
-			var amount = PlayerVariables.core.max_health * .2
-			PlayerVariables.core.max_health += amount
-			PlayerVariables.core.health += amount
-			PlayerVariables.core.update_core_bar()
+			var amount = PlayerVariables.core().max_health * .2
+			PlayerVariables.core().max_health += amount
+			PlayerVariables.core().health += amount
+			PlayerVariables.core().update_core_bar()
 			
 		UpgradeType.SLOWER_ENEMY_SPAWN:
 			wm.spawn_cd += 1 # 1 second longer cooldown
 			
 		UpgradeType.SHOOT_RANGE_UP:
-			PlayerVariables.player_combat.shoot_range *= 1.2
+			PlayerVariables.player_combat().shoot_range *= 1.2
 			
 		UpgradeType.EXTRA_ARROW:
-			PlayerVariables.player_combat.number_of_arrows += 1
+			PlayerVariables.player_combat().number_of_arrows += 1
 			
 		UpgradeType.MULTI_ARROW_SPAN_DOWN:
-			PlayerVariables.player_combat.shoot_span /= 1.3
+			PlayerVariables.player_combat().shoot_span /= 1.3
 
 func _on_closePanelButton_button_up():
 	get_tree().paused = false

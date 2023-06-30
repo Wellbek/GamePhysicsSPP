@@ -2,7 +2,7 @@ extends Spatial
 
 export(NodePath) onready var navigation = get_node(navigation)
 
-onready var wm = PlayerVariables.wave_manager
+onready var wm = PlayerVariables.wave_manager()
 var rng = RandomNumberGenerator.new()
 
 export var spread = 0

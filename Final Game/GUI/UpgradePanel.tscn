@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=1]
+[ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=2]
+
+[node name="UpgradePanel" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+text = "Upgrade1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+text = "Upgrade2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+anchor_left = 0.75
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+text = "Upgrade3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+text = "Core Heal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="closePanelButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+margin_left = -150.0
+margin_top = -25.0
+margin_right = 150.0
+margin_bottom = 25.0
+theme = ExtResource( 2 )
+text = "Close Panel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="Button1" to="." method="_on_Button1_button_up"]
+[connection signal="button_up" from="Button2" to="." method="_on_Button2_button_up"]
+[connection signal="button_up" from="Button3" to="." method="_on_Button3_button_up"]
+[connection signal="button_up" from="Button4" to="." method="_on_Button4_button_up"]
+[connection signal="button_up" from="closePanelButton" to="." method="_on_closePanelButton_button_up"]

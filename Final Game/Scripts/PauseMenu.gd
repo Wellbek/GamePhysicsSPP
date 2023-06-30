@@ -1,10 +1,11 @@
 extends Panel
 
 
-onready var upgrade_panel = PlayerVariables.gui.get_node("UpgradePanel")
+onready var upgrade_panel = PlayerVariables.gui().get_node("UpgradePanel")
+onready var game_over_panel = PlayerVariables.gui().get_node("GameOverPanel")
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel") && !upgrade_panel.visible:
+	if Input.is_action_just_pressed("ui_cancel") && !upgrade_panel.visible && !game_over_panel.visible:
 		if visible:
 			unpause()
 		else:
@@ -24,4 +25,4 @@ func _on_UnpauseButton_button_up():
 	unpause()
 
 func _on_MouseSensSlider_value_changed(value):
-	PlayerVariables.player.mouse_sens = value
+	PlayerVariables.player().mouse_sens = value

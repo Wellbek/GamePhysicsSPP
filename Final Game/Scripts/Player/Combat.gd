@@ -8,6 +8,7 @@ var number_of_arrows = 1
 var shoot_span = 20 # span of multiple arrows in degrees
 var shoot_range = 40
 var req_draw = 0.4 # seconds how long to draw bow to be able shoot
+var damage = 12
 
 func _ready():
 	bow_animator.playback_speed = 0.5
@@ -45,7 +46,7 @@ func shoot_arrow(var amount, var anim_frac, var span_degrees):
 		arrow.rotation = get_parent().global_transform.basis.get_euler()
 		
 		arrow.apply_central_impulse(-arrow.transform.basis.z * shoot_range * anim_frac)
-		arrow.damage = anim_frac * PlayerVariables.damage
+		arrow.damage = anim_frac * damage
 		
 		get_tree().root.add_child(arrow)
 	else: 
@@ -66,6 +67,6 @@ func shoot_arrow(var amount, var anim_frac, var span_degrees):
 			arrow.rotate(rotation_axis, rotation_angle)  # Rotate the arrow by the calculated angle
 			
 			arrow.apply_central_impulse(-arrow.transform.basis.z * shoot_range * anim_frac)
-			arrow.damage = anim_frac * PlayerVariables.damage / span_amplifier # scale damage with number of extra arrows
+			arrow.damage = anim_frac * damage / span_amplifier # scale damage with number of extra arrows
 			
 			get_tree().root.add_child(arrow)

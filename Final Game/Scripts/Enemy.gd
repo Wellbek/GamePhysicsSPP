@@ -20,7 +20,7 @@ export(NodePath) onready var nav_mesh_collider = get_node(nav_mesh_collider)
 var attack_target = null
 
 onready var nav = get_parent()
-onready var target = PlayerVariables.core
+onready var target = PlayerVariables.core()
 onready var attack_timer = get_node("AttackTimer")
 onready var despawn_timer = get_node("DespawnTimer")
 onready var health_bar = get_node("HealthBar3D/Viewport/HealthBar2D")
@@ -63,7 +63,7 @@ func die():
 	
 	if nav_mesh_collider: nav_mesh_collider.disabled = true
 	
-	PlayerVariables.wave_manager.on_enemy_kill()
+	PlayerVariables.wave_manager().on_enemy_kill()
 	
 	health_bar.hide()
 	

@@ -13,7 +13,7 @@ var ray_hit_point: Vector3
 
 export var ray_amplifier = 3.0 # controls length of the ray
 
-var damage = PlayerVariables.damage # NOTE: this will be set in Combat.gd when spawning the arrow
+var damage = 1 # NOTE: this will be set in Combat.gd when spawning the arrow
 
 var col_impulse_magnitude = 0.2 # controls the magnitude of the linear_velocity that is transfered on collision with rigidbody 
 
@@ -33,7 +33,7 @@ func _process(delta):
 		if debug: LineDrawer.DrawRay(ray.global_transform.origin, ray_amplifier * linear_velocity * delta, Color.red)
 		
 		# destroy if out of render distance
-		var distance_to_player = PlayerVariables.player.global_transform.origin.distance_to(global_transform.origin)
+		var distance_to_player = PlayerVariables.player().global_transform.origin.distance_to(global_transform.origin)
 		if  distance_to_player > PlayerVariables.render_distance:
 			queue_free() 
 		

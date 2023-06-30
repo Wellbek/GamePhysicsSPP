@@ -29,8 +29,8 @@ var jump_timer = 0
 var jump_buffered = false
 
 # Camera
-export(NodePath) onready var main_camera = get_node(main_camera)
-export(NodePath) onready var weapon_camera = get_node(weapon_camera)
+onready var main_camera = get_node("FirstPersonCamera")
+onready var weapon_camera = get_node("CanvasLayer/ViewportContainer/Viewport/WeaponCamera")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #locks mouse to the center of screen

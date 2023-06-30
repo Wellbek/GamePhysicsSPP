@@ -7,12 +7,12 @@ onready var timer = get_node("Timer")
 export(Array, NodePath) var spawnerNodePaths := []
 onready var spawners: Array = loadNodes(spawnerNodePaths)
 
-onready var upgrade_panel = PlayerVariables.gui.get_node("UpgradePanel")
-onready var upgrade_label = PlayerVariables.gui.get_node("CanUpgradeLabel")
+onready var upgrade_panel = PlayerVariables.gui().get_node("UpgradePanel")
+onready var upgrade_label = PlayerVariables.gui().get_node("CanUpgradeLabel")
 var can_upgrade = false
 
-onready var wave_counter = PlayerVariables.gui.get_node("TopBar/WaveCounter/Background/Counter")
-onready var kill_counter = PlayerVariables.gui.get_node("TopBar/KillCounter/Background/Counter")
+onready var wave_counter = PlayerVariables.gui().get_node("TopBar/WaveCounter/Background/Counter")
+onready var kill_counter = PlayerVariables.gui().get_node("TopBar/KillCounter/Background/Counter")
 
 var spawner_index = 0
 

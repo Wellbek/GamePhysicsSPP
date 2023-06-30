@@ -20,8 +20,6 @@ collision_mask = 22
 script = ExtResource( 1 )
 max_speed = 3.5
 jump_strength = 4.0
-main_camera = NodePath("FirstPersonCamera")
-weapon_camera = NodePath("CanvasLayer/ViewportContainer/Viewport/WeaponCamera")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -1.2, 0 )

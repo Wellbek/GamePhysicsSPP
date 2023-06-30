@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/UpgradePanel.gd" type="Script" id=2]
+[ext_resource path="res://GUI/PauseMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/UpgradePanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=4]
+[ext_resource path="res://GUI/GameOverPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/UI_RECT.png" type="Texture" id=6]
 
@@ -112,90 +113,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpgradePanel" type="Panel" parent="."]
+[node name="UpgradePanel" parent="." instance=ExtResource( 2 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 5 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button1" type="Button" parent="UpgradePanel"]
-anchor_left = 0.5
-anchor_top = 0.25
-anchor_right = 0.5
-anchor_bottom = 0.25
-margin_left = -200.0
-margin_top = -50.0
-margin_right = 200.0
-margin_bottom = 50.0
-theme = ExtResource( 5 )
-text = "Upgrade1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button2" type="Button" parent="UpgradePanel"]
-anchor_left = 0.25
-anchor_top = 0.5
-anchor_right = 0.25
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -50.0
-margin_right = 200.0
-margin_bottom = 50.0
-theme = ExtResource( 5 )
-text = "Upgrade2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button3" type="Button" parent="UpgradePanel"]
-anchor_left = 0.75
-anchor_top = 0.5
-anchor_right = 0.75
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -50.0
-margin_right = 200.0
-margin_bottom = 50.0
-theme = ExtResource( 5 )
-text = "Upgrade3"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button4" type="Button" parent="UpgradePanel"]
-anchor_left = 0.5
-anchor_top = 0.75
-anchor_right = 0.5
-anchor_bottom = 0.75
-margin_left = -200.0
-margin_top = -50.0
-margin_right = 200.0
-margin_bottom = 50.0
-theme = ExtResource( 5 )
-text = "Core Heal"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="closePanelButton" type="Button" parent="UpgradePanel"]
-anchor_left = 0.5
-anchor_top = 0.85
-anchor_right = 0.5
-anchor_bottom = 0.85
-margin_left = -150.0
-margin_top = -25.0
-margin_right = 150.0
-margin_bottom = 25.0
-theme = ExtResource( 5 )
-text = "Close Panel"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CanUpgradeLabel" type="Label" parent="."]
 visible = false
@@ -219,68 +138,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="PauseMenu" type="Panel" parent="."]
-pause_mode = 2
+[node name="PauseMenu" parent="." instance=ExtResource( 1 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-theme = ExtResource( 5 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="UnpauseButton" type="Button" parent="PauseMenu"]
-anchor_left = 0.5
-anchor_top = 0.75
-anchor_right = 0.5
-anchor_bottom = 0.75
-margin_left = -220.0
-margin_top = -60.0
-margin_right = 180.0
-margin_bottom = 40.0
-theme = ExtResource( 5 )
-text = "Back to Game"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
-margin_left = 730.0
-margin_top = 260.0
-margin_right = 1244.0
-margin_bottom = 358.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
-margin_top = 22.0
-margin_right = 514.0
-margin_bottom = 55.0
-theme = ExtResource( 5 )
-text = "Sensitivity:"
-
-[node name="MouseSensSlider" type="HSlider" parent="PauseMenu/VBoxContainer"]
-margin_top = 59.0
-margin_right = 514.0
-margin_bottom = 75.0
-min_value = 1.0
-max_value = 10.0
-step = 0.1
-value = 3.0
-tick_count = 4
-ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="button_up" from="UpgradePanel/Button1" to="UpgradePanel" method="_on_Button1_button_up"]
-[connection signal="button_up" from="UpgradePanel/Button2" to="UpgradePanel" method="_on_Button2_button_up"]
-[connection signal="button_up" from="UpgradePanel/Button3" to="UpgradePanel" method="_on_Button3_button_up"]
-[connection signal="button_up" from="UpgradePanel/Button4" to="UpgradePanel" method="_on_Button4_button_up"]
-[connection signal="button_up" from="UpgradePanel/closePanelButton" to="UpgradePanel" method="_on_closePanelButton_button_up"]
-[connection signal="button_up" from="PauseMenu/UnpauseButton" to="PauseMenu" method="_on_UnpauseButton_button_up"]
-[connection signal="value_changed" from="PauseMenu/VBoxContainer/MouseSensSlider" to="PauseMenu" method="_on_MouseSensSlider_value_changed"]
+[node name="GameOverPanel" parent="." instance=ExtResource( 4 )]
