@@ -61,6 +61,7 @@ func start_wave():
 	update_wave_counter(wave)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	upgrade_panel.hide()
+	PlayerVariables.inMenu = false
 	get_tree().paused = false
 	if wave % 10 == 0:
 		to_spawn = wave/2

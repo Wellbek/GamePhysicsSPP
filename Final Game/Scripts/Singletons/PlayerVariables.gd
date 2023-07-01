@@ -4,6 +4,10 @@ var render_distance = 50
 
 var kills = 0
 
+var cheats_enabled = true
+
+var inMenu = false
+
 #for mainscene
 #var core
 #for Prototype scene
@@ -31,3 +35,4 @@ func gui():
 
 func reset_variables():
 	kills = 0
+	inMenu = false

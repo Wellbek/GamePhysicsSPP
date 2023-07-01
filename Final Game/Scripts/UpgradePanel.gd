@@ -108,9 +108,8 @@ func apply_upgrade(var upgrade: int):
 			PlayerVariables.player_combat().shoot_span /= 1.3
 
 func _on_closePanelButton_button_up():
+	PlayerVariables.inMenu = false
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
 	upgrade_label.show()
-
-

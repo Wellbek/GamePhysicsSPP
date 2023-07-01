@@ -227,7 +227,7 @@ transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 12.6, 2.5
 transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 12.6, 2.5, 4.1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, -0.766044, 10.1055, 2.59531, 10.1755 )
+transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 1.09622, 2.59531, 5.78367 )
 push_strength = 10.0
 
 [node name="DayNightCycle" type="Spatial" parent="."]

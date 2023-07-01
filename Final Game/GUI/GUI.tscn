@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GUI/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/UpgradePanel.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://GUI/GameOverPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/UI_RECT.png" type="Texture" id=6]
+[ext_resource path="res://GUI/CheatMenu.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -142,3 +143,167 @@ __meta__ = {
 visible = false
 
 [node name="GameOverPanel" parent="." instance=ExtResource( 4 )]
+
+[node name="CheatMenu" type="Panel" parent="."]
+visible = false
+margin_right = 2000.0
+margin_bottom = 1100.0
+theme = ExtResource( 5 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CheatMenu"]
+anchor_left = 0.01
+anchor_top = 0.2
+anchor_right = 0.01
+anchor_bottom = 0.2
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Damage Up"
+
+[node name="Button6" type="Button" parent="CheatMenu"]
+anchor_left = 0.01
+anchor_top = 0.4
+anchor_right = 0.01
+anchor_bottom = 0.4
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Attack Speed Up"
+
+[node name="Button11" type="Button" parent="CheatMenu"]
+anchor_left = 0.01
+anchor_top = 0.6
+anchor_right = 0.01
+anchor_bottom = 0.6
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Extra Arrow"
+
+[node name="Button2" type="Button" parent="CheatMenu"]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.2
+anchor_bottom = 0.2
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Max Speed Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="CheatMenu"]
+anchor_left = 0.2
+anchor_top = 0.4
+anchor_right = 0.2
+anchor_bottom = 0.4
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Shoot Range Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="CheatMenu"]
+anchor_left = 0.4
+anchor_top = 0.2
+anchor_right = 0.4
+anchor_bottom = 0.2
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Jump Strength Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="CheatMenu"]
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.4
+anchor_bottom = 0.4
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Max Health Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="CheatMenu"]
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 0.6
+anchor_bottom = 0.2
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Extra Jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="CheatMenu"]
+anchor_left = 0.6
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.4
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Span Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="CheatMenu"]
+anchor_left = 0.8
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.2
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Core Heal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button10" type="Button" parent="CheatMenu"]
+anchor_left = 0.8
+anchor_top = 0.4
+anchor_right = 0.8
+anchor_bottom = 0.4
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Slower Enemy Spawn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button12" type="Button" parent="CheatMenu"]
+anchor_left = 0.3
+anchor_top = 0.8
+anchor_right = 0.3
+anchor_bottom = 0.8
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Next Wave"
+
+[node name="Button13" type="Button" parent="CheatMenu"]
+anchor_left = 0.55
+anchor_top = 0.8
+anchor_right = 0.55
+anchor_bottom = 0.8
+margin_right = 300.0
+margin_bottom = 100.0
+text = "Close Menu"
+[connection signal="button_up" from="CheatMenu/Button" to="CheatMenu" method="_on_Button_button_up" binds= [ 4 ]]
+[connection signal="button_up" from="CheatMenu/Button6" to="CheatMenu" method="_on_Button_button_up" binds= [ 6 ]]
+[connection signal="button_up" from="CheatMenu/Button11" to="CheatMenu" method="_on_Button_button_up" binds= [ 10 ]]
+[connection signal="button_up" from="CheatMenu/Button2" to="CheatMenu" method="_on_Button_button_up" binds= [ 3 ]]
+[connection signal="button_up" from="CheatMenu/Button7" to="CheatMenu" method="_on_Button_button_up" binds= [ 9 ]]
+[connection signal="button_up" from="CheatMenu/Button3" to="CheatMenu" method="_on_Button_button_up" binds= [ 2 ]]
+[connection signal="button_up" from="CheatMenu/Button8" to="CheatMenu" method="_on_Button_button_up" binds= [ 7 ]]
+[connection signal="button_up" from="CheatMenu/Button4" to="CheatMenu" method="_on_Button_button_up" binds= [ 5 ]]
+[connection signal="button_up" from="CheatMenu/Button9" to="CheatMenu" method="_on_Button_button_up" binds= [ 11 ]]
+[connection signal="button_up" from="CheatMenu/Button5" to="CheatMenu" method="_on_Button_button_up" binds= [ 1 ]]
+[connection signal="button_up" from="CheatMenu/Button10" to="CheatMenu" method="_on_Button_button_up" binds= [ 8 ]]
+[connection signal="button_up" from="CheatMenu/Button12" to="CheatMenu" method="_on_NextWave_button_up"]
+[connection signal="button_up" from="CheatMenu/Button13" to="CheatMenu" method="_on_close_button_up"]

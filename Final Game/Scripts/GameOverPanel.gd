@@ -10,6 +10,7 @@ func _process(delta):
 		init_screen()
 
 func init_screen():
+	PlayerVariables.inMenu = true
 	waveLabel.text = str(PlayerVariables.wave_manager().wave)
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
