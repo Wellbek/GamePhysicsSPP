@@ -29,6 +29,10 @@ func _process(delta):
 		
 	if Input.is_action_just_released("shoot") && bow_animator.current_animation_length != 0:
 		shoot()
+		
+	if Input.is_action_just_pressed("quick_knife"):
+		get_parent().swap_weapon(0)
+		get_parent().get_child(0).start_attack(true)
 
 
 func shoot():

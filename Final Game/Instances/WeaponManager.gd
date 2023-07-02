@@ -2,7 +2,7 @@ extends Camera
 
 # index of weapon active on start
 # #NOTE: change this number to select which weapon to use on startup!
-var curr = 0
+var curr = 1
 
 func _ready():
 	for child in get_children():
