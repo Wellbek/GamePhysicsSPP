@@ -4,11 +4,11 @@
 [ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/GameOverPanel.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = ExtResource( 2 )
 
@@ -31,7 +31,7 @@ margin_left = -270.0
 margin_right = 268.0
 margin_bottom = 122.0
 theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,7 +48,7 @@ __meta__ = {
 
 [node name="Text" type="Label" parent="Message"]
 theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Died at wave"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,7 +59,7 @@ margin_left = 300.0
 margin_right = 400.0
 margin_bottom = 53.0
 theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "100"
 __meta__ = {
 "_edit_use_anchors_": false

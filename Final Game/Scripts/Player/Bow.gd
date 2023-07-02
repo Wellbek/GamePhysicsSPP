@@ -17,21 +17,30 @@ func increase_attack_speed(var amount):
 	req_draw /= amount
 	bow_animator.playback_speed *= amount
 
-func _process(delta):		
+func _process(delta):	
+	if not is_visible(): 
+		# shoot and reset if swapped weapon
+		if bow_animator.current_animation == "bow_draw_animation" and bow_animator.current_animation_length != 0:
+			shoot()
+		return
+		
 	if Input.is_action_just_pressed("shoot"):
 		bow_animator.play("bow_draw_animation")
 		
 	if Input.is_action_just_released("shoot") && bow_animator.current_animation_length != 0:
-		# only shoot if bow is drawn enough
-		var anim_frac = bow_animator.current_animation_position/bow_animator.current_animation_length
-		if anim_frac >= req_draw:
-			# Shoot arrows
-			shoot_arrow(number_of_arrows, anim_frac, shoot_span)
-		
-		# reset bow animation
-		bow_animator.stop(true) # stops current animation
-		bow_animator.seek(0, true) # resets animation to default
+		shoot()
 
+
+func shoot():
+	# only shoot if bow is drawn enough
+	var anim_frac = bow_animator.current_animation_position/bow_animator.current_animation_length
+	if anim_frac >= req_draw:
+		# Shoot arrows
+		shoot_arrow(number_of_arrows, anim_frac, shoot_span)
+	
+	# reset bow animation
+	bow_animator.stop(true) # stops current animation
+	bow_animator.seek(0, true) # resets animation to default
 
 func shoot_arrow(var amount, var anim_frac, var span_degrees):
 	var span_amplifier = 1 + float(amount)/6 # the more arrow the higher the span (to still feel good with low number of arrows)

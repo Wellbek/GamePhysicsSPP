@@ -20,9 +20,13 @@ func _ready():
 func player():
 	return get_tree().root.get_node("Spatial/Player")
 	
-func player_combat():
+func bow_combat():
 	var player = get_tree().root.get_node("Spatial/Player")
 	return player.weapon_camera.get_node("Bow")
+	
+func knife_combat():
+	var player = get_tree().root.get_node("Spatial/Player")
+	return player.weapon_camera.get_node("Knife")
 
 func core():
 	return get_tree().root.get_node("Spatial/Terrain/Core")
