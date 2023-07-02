@@ -82,12 +82,14 @@ func apply_upgrade(var upgrade: int):
 			
 		UpgradeType.DAMAGE_UP:
 			PlayerVariables.bow_combat().damage *= 1.3
+			PlayerVariables.knife_combat().damage *= 1.3
 			
 		UpgradeType.EXTRA_JUMP:
 			player.number_of_extra_jumps += 1
 			
 		UpgradeType.ATTACK_SPEED_UP:
 			PlayerVariables.bow_combat().increase_attack_speed(1.15)
+			PlayerVariables.knife_combat().increase_attack_speed(1.2)
 			
 		UpgradeType.CORE_MAX_HEALTH_UP:
 			var amount = PlayerVariables.core().max_health * .2
