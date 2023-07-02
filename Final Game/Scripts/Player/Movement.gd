@@ -7,6 +7,7 @@ export var ground_friction = 0.85
 export var air_friction = 0.95
 export var jump_strength = 10.0
 export var gravity = -.2
+var cur_gravity = gravity
 export var mouse_sens = 3.0
 export var push_strength = 5.0
 var clickVec = Vector2(0,0)
@@ -42,7 +43,6 @@ func _input(event):
 		rotate_object_local(Vector3(0,1,0),mouse_sens * -clickVec.x)
 		get_node("FirstPersonCamera").rotate_object_local(Vector3(1,0,0),mouse_sens * -clickVec.y)
 		transform = transform.orthonormalized()
-			
 
 func _physics_process(delta):	
 	# Camera
@@ -103,7 +103,7 @@ func handle_jump(delta):
 	update_buffer(delta)
 	update_coyote(delta)
 	
-	velocity.y += gravity
+	velocity.y += cur_gravity
 	
 	if is_on_floor():
 		number_of_left_jumps = number_of_extra_jumps
