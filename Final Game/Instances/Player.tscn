@@ -18,7 +18,7 @@ albedo_color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-collision_mask = 22
+collision_mask = 86
 script = ExtResource( 1 )
 max_speed = 3.5
 jump_strength = 4.0

@@ -86,6 +86,7 @@ cheats_panel={
 3d_physics/layer_4="Arrow"
 3d_physics/layer_5="Core"
 3d_physics/layer_6="Enemy_Nav_Collider"
+3d_physics/layer_7="Player_but_not_Enemy"
 
 [physics]
 
@@ -93,9 +94,9 @@ cheats_panel={
 3d/smooth_trimesh_collision=true
 customphysics/constraint_iterations=20
 customphysics/ball_joint_gamma=0.06
-customphysics/warm_starting=false
 customphysics/warm_starting_factor=0.9
 customphysics/hinge_with_2x2=true
+3d/smooth_trimesh_collision=true
 customphysics/gamma=0.05
 
 [rendering]
