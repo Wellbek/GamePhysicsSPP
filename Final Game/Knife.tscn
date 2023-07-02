@@ -7,14 +7,13 @@
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.688065, 0.519317, 0.553663 )
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.927906, 0.792417, 0.553663 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=3]
 size = Vector3( 1.6, 0.4, 1.6 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "knife_attack_anim"
+[sub_resource type="Animation" id=4]
 length = 0.35
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mesh:translation")
@@ -41,8 +40,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 11.894, 90 ), Vector3( -2.03556e-13, -108.869, 90 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "knife_idle_anim"
+[sub_resource type="Animation" id=5]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -86,7 +84,7 @@ tracks/2/keys = {
 script = ExtResource( 3 )
 
 [node name="Mesh" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.905961, 0.423362, 0, -0.423362, 0.905961, 0, 0, 0 )
+transform = Transform( -4.27729e-08, -0.978531, 0.206102, 1, -4.37114e-08, 0, 9.00899e-09, 0.206102, 0.978531, -0.672989, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.11931e-08, -0.130082, 0 )
@@ -95,22 +93,23 @@ mesh = ExtResource( 2 )
 material/0 = SubResource( 1 )
 
 [node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.201668 )
 monitorable = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.585174, 0.307895, -0.122368 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58, 0.107228, -0.8 )
 visible = false
-mesh = SubResource( 5 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/knife_attack_anim = SubResource( 2 )
-anims/knife_idle_anim = SubResource( 3 )
+anims/knife_attack_anim = SubResource( 4 )
+anims/knife_idle_anim = SubResource( 5 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

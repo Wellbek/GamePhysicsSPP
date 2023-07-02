@@ -9,8 +9,7 @@ var quick_attack = false
 
 var debug = false
 
-# NOTE: not best solution (allows us to only hit one enemy at a time) BUT allows us to dismiss many other issues
-var target = false
+var target = []
 
 func _ready():
 	anim.playback_speed = 0.5
@@ -51,16 +50,15 @@ func attack(var body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	anim.play("knife_idle_anim")
 	area.monitoring = false
-	target = false
+	target = []
 	
 	if quick_attack:
 		quick_attack = false
 		get_parent().swap_weapon(1)
 
 func _on_Area_body_entered(body):
-	if target: return
+	if target.has(body.get_parent()): return
 	
 	if body.is_in_group("Enemy"): 
-		target = true
-		area.monitoring = false
+		target.append(body.get_parent())
 		attack(body)
