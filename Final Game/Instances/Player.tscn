@@ -4,7 +4,7 @@
 [ext_resource path="res://Instances/Bow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/FillViewport.gd" type="Script" id=3]
 [ext_resource path="res://Assets/crosshair.png" type="Texture" id=4]
-[ext_resource path="res://Knife.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Instances/Knife.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Instances/WeaponManager.gd" type="Script" id=7]
 
 [sub_resource type="BoxShape" id=1]
