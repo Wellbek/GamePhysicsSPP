@@ -99,7 +99,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.585174, 0.307895, -0.122368 )
+transform = Transform( 1.16847, 0, 0, 0, 1.36587, 0, 0, 0, 1.44996, -0.585174, 0.307895, -0.122368 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area"]
@@ -112,4 +112,6 @@ material/0 = null
 anims/knife_attack_anim = SubResource( 4 )
 anims/knife_idle_anim = SubResource( 5 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

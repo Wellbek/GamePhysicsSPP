@@ -10,10 +10,11 @@ var quick_attack = false
 var debug = false
 
 var target = []
+var did_damage = []
 
 func _ready():
 	anim.playback_speed = 0.5
-	area.monitoring = false
+	area.monitoring = true
 
 func increase_attack_speed(var amount):
 	anim.playback_speed *= amount
@@ -21,7 +22,7 @@ func increase_attack_speed(var amount):
 func _process(delta):		
 	if not is_visible(): 
 		if area.monitoring:
-			area.monitoring = false
+			area.monitoring = true
 		if anim.current_animation == "knife_attack_anim":
 			anim.play("knife_idle_anim")
 		return
@@ -49,16 +50,29 @@ func attack(var body):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	anim.play("knife_idle_anim")
-	area.monitoring = false
-	target = []
+	did_damage = []
 	
 	if quick_attack:
 		quick_attack = false
 		get_parent().swap_weapon(1)
 
+func _on_Area_body_exited(body):
+	var ind = target.find(body.get_parent())
+	if ind == -1: return
+	
+	target.remove(ind)
+
 func _on_Area_body_entered(body):
-	if target.has(body.get_parent()): return
+	if anim.current_animation != "knife_attack_anim" || target.has(body.get_parent()): return
 	
 	if body.is_in_group("Enemy"): 
 		target.append(body.get_parent())
+		did_damage.append(body.get_parent())
 		attack(body)
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name == "knife_attack_anim":
+		for body in target:
+			attack(body.get_node("torso"))
+			did_damage.append(body.get_parent())
