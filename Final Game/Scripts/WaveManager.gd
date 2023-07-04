@@ -80,6 +80,10 @@ func on_enemy_kill():
 		wave_complete()
 		
 func wave_complete():
+	# clear all remaining stat boosts (to not mess with upgrades)
+	for panel in PlayerVariables.gui().get_node("StatBoostBox").get_children():
+		panel.clear_boost()
+	
 	can_upgrade = true
 	upgrade_panel.init_new_upgrades()
 	upgrade_panel.show()

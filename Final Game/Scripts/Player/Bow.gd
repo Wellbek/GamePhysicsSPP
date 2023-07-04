@@ -16,6 +16,10 @@ func _ready():
 func increase_attack_speed(var amount):
 	req_draw /= amount
 	bow_animator.playback_speed *= amount
+	
+func decrease_attack_speed(var amount):
+	req_draw *= amount
+	bow_animator.playback_speed /= amount
 
 func _process(delta):	
 	if not is_visible(): 

@@ -97,11 +97,9 @@ cheats_panel={
 3d/physics_engine="CustomPhysics"
 3d/smooth_trimesh_collision=true
 customphysics/constraint_iterations=20
-customphysics/ball_joint_gamma=0.06
-customphysics/warm_starting=false
 customphysics/warm_starting_factor=0.9
 customphysics/hinge_with_2x2=true
-customphysics/gamma=0.05
+customphysics/ball_joint_gamma=0.06
 
 [rendering]
 
