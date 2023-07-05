@@ -56,8 +56,10 @@ func _on_Area_body_entered(body):
 			print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
 	
 	elif body.is_in_group("AimTarget"):
-		var container = PlayerVariables.gui().get_node("StatBoostBox")	
-		container.add_child(load("res://Instances/GUI/StatBoostPanel.tscn").instance())
+		if not body.on_cooldown:		
+			var container = PlayerVariables.gui().get_node("StatBoostBox")	
+			container.add_child(load("res://Instances/GUI/StatBoostPanel.tscn").instance())
+			body.hit()
 		
 	# since we "can't" use rigidbody collision (can't rotate collision shape child on its own => look_at fails) we need to apply impulse manually on impact
 	if body.has_method('apply_impulse'): 

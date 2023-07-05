@@ -9,6 +9,7 @@ size = 25
 font_data = ExtResource( 3 )
 
 [node name="StatBoostPanel" type="Panel"]
+pause_mode = 1
 self_modulate = Color( 1, 1, 1, 0.54902 )
 margin_right = 350.0
 margin_bottom = 50.0
