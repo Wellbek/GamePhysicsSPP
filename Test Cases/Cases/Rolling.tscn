@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Instances/Camera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instances/Ground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/Sphere.tscn" type="PackedScene" id=3]
+
+[node name="Rolling" type="Spatial"]
+
+[node name="Camera" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.959658, 0.281169, 0, -0.281169, 0.959658, 3.32555, 4.05958, 7.567 )
+
+[node name="Ground" parent="." instance=ExtResource( 2 )]
+
+[node name="Sphere" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+linear_velocity = Vector3( 2, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.84765, -0.26025, 0.462341, 0, 0.871428, 0.490524, -0.530556, -0.415792, 0.738666, 0, 0, 14.0254 )
+shadow_enabled = true
