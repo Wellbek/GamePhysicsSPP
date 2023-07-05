@@ -58,9 +58,9 @@ func _physics_process(delta):
 	#push enemies:
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
-		if collision.collider.is_in_group("Enemy"):
+		if collision.collider.is_in_group("Enemy") && collision.collider.is_in_group("Pushable"):
 			collision.collider.apply_central_impulse(-collision.normal * push_strength*2)
-		else:
+		elif collision.collider.is_in_group("Pushable"):
 			collision.collider.apply_central_impulse(-collision.normal * push_strength)
 	
 	#last parameter determines whether the player can move rigidbodies or view then as static bodies

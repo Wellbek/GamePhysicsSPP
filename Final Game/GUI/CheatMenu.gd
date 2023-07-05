@@ -24,7 +24,7 @@ func _on_Button_button_up(upgrade):
 
 
 func _on_NextWave_button_up():
-	wave_manager.start_wave()
+	wave_manager.wave_complete(false)
 	unpause()
 
 
