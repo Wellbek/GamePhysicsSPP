@@ -56,6 +56,7 @@ func loadNodes(nodePaths: Array) -> Array:
 	
 func start_wave():
 	can_upgrade = false
+	enemies_alive = 0
 	wave += 1
 	despawn_all_enemies()
 	update_wave_counter(wave)
@@ -70,30 +71,34 @@ func start_wave():
 		to_spawn = wave
 		current_deviation = normal_deviation
 	timer.wait_time = spawn_cd
-	timer.start()
+	timer.start(0.5)
 	
 func on_enemy_kill():
 	enemies_alive -= 1
 	PlayerVariables.kills += 1
 	kill_counter.text = str(PlayerVariables.kills)
 	if enemies_alive <= 0 and to_spawn <= 0:
-		wave_complete()
+		wave_complete(true)
 		
-func wave_complete():
+func wave_complete(var open_upgrade):
 	# clear all remaining stat boosts (to not mess with upgrades)
 	for panel in PlayerVariables.gui().get_node("StatBoostBox").get_children():
 		panel.clear_boost()
 	
-	can_upgrade = true
-	upgrade_panel.init_new_upgrades()
-	upgrade_panel.show()
-	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
 	# reduce spawn cooldown every wave but always wait atleast 1 second
-	spawn_cd -= 0.2
+	spawn_cd -= 0.1
 	if spawn_cd <= 1:
 		spawn_cd = 1
+	
+	if open_upgrade:
+		can_upgrade = true
+		upgrade_panel.init_new_upgrades()
+		upgrade_panel.show()
+		get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		start_wave()
+	
 		
 func despawn_all_enemies():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -103,17 +108,18 @@ func despawn_all_enemies():
 	
 func _on_Timer_timeout():
 	if to_spawn > 0:
-		# just pick a random spawner
-		spawner_index = randi() % spawners.size()
 		
-		spawners[spawner_index].spawn_enemy(enemy, current_deviation)
-		enemies_alive += 1
-		
-		# alternate spawn locations
-		#spawner_index += 1	
-		#if spawner_index >= spawners.size():
-		#	spawner_index = 0
+		_spawn_enemy()
 		
 		to_spawn -= 1
 		if to_spawn == 0:
 			timer.stop()
+		else:
+			timer.start(spawn_cd)
+			
+func _spawn_enemy():
+	# just pick a random spawner
+		spawner_index = randi() % spawners.size()
+		
+		spawners[spawner_index].spawn_enemy(enemy, current_deviation)
+		enemies_alive += 1
