@@ -20,6 +20,8 @@ anchor_right = 0.01
 anchor_bottom = 0.2
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Damage Up"
 
 [node name="Button6" type="Button" parent="."]
@@ -29,6 +31,8 @@ anchor_right = 0.01
 anchor_bottom = 0.4
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Attack Speed Up"
 
 [node name="Button11" type="Button" parent="."]
@@ -38,6 +42,8 @@ anchor_right = 0.01
 anchor_bottom = 0.6
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Extra Arrow"
 
 [node name="Button2" type="Button" parent="."]
@@ -47,6 +53,8 @@ anchor_right = 0.2
 anchor_bottom = 0.2
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Max Speed Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,6 +67,8 @@ anchor_right = 0.2
 anchor_bottom = 0.4
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Shoot Range Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -71,6 +81,8 @@ anchor_right = 0.4
 anchor_bottom = 0.2
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Jump Strength Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,6 +95,8 @@ anchor_right = 0.4
 anchor_bottom = 0.4
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Max Health Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,6 +109,8 @@ anchor_right = 0.6
 anchor_bottom = 0.2
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Extra Jump"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,6 +123,8 @@ anchor_right = 0.6
 anchor_bottom = 0.4
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Span Down"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,6 +137,8 @@ anchor_right = 0.8
 anchor_bottom = 0.2
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Core Heal"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -131,6 +151,8 @@ anchor_right = 0.8
 anchor_bottom = 0.4
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Slower Enemy Spawn"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -143,6 +165,8 @@ anchor_right = 0.3
 anchor_bottom = 0.8
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Next Wave"
 
 [node name="Button13" type="Button" parent="."]
@@ -152,6 +176,8 @@ anchor_right = 0.55
 anchor_bottom = 0.8
 margin_right = 300.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Close Menu"
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up" binds= [ 4 ]]
 [connection signal="button_up" from="Button6" to="." method="_on_Button_button_up" binds= [ 6 ]]

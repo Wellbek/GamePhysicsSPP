@@ -21,7 +21,9 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "Upgrade1"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -36,7 +38,9 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "Upgrade2"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,7 +55,9 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "Upgrade3"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,7 +72,9 @@ margin_left = -200.0
 margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "Core Heal"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,7 +89,9 @@ margin_left = -150.0
 margin_top = -25.0
 margin_right = 150.0
 margin_bottom = 25.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "Close Panel"
 __meta__ = {
 "_edit_use_anchors_": false

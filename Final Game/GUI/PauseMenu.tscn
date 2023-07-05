@@ -24,7 +24,9 @@ margin_left = -220.0
 margin_top = -60.0
 margin_right = 180.0
 margin_bottom = 40.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "Back to Game"
 __meta__ = {
 "_edit_use_anchors_": false

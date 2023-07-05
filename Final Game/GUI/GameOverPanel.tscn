@@ -73,6 +73,8 @@ anchor_bottom = 0.6
 margin_left = -150.0
 margin_right = 150.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Restart"
 
 [node name="MenuButton" type="Button" parent="."]
@@ -83,5 +85,7 @@ anchor_bottom = 0.6
 margin_left = -150.0
 margin_right = 150.0
 margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Back To Menu"
 [connection signal="button_up" from="RestartButton" to="." method="_on_RestartButton_button_up"]
