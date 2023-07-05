@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/aim_taget.obj-33de12b7c68a429edcefc7684c75390c.mesh"
+
+[deps]
+
+files=[ "res://.import/aim_taget.obj-33de12b7c68a429edcefc7684c75390c.mesh" ]
+
+source_file="res://Assets/aim_taget.obj"
+dest_files=[ "res://.import/aim_taget.obj-33de12b7c68a429edcefc7684c75390c.mesh", "res://.import/aim_taget.obj-33de12b7c68a429edcefc7684c75390c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

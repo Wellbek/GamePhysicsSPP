@@ -42,7 +42,7 @@ func apply_boost():
 		BuffType.RANGE_BOOST:
 			PlayerVariables.bow_combat().shoot_range *= 2
 		BuffType.EXTRA_ARROWS:
-			PlayerVariables.bow_combat().number_of_arrows += 5
+			PlayerVariables.bow_combat().number_of_arrows += 2
 			
 func clear_boost():
 	match BuffType[buff]:
@@ -62,7 +62,7 @@ func clear_boost():
 		BuffType.RANGE_BOOST:
 			PlayerVariables.bow_combat().shoot_range /= 2
 		BuffType.EXTRA_ARROWS:
-			PlayerVariables.bow_combat().number_of_arrows -= 5
+			PlayerVariables.bow_combat().number_of_arrows -= 2
 			
 	queue_free()
 
