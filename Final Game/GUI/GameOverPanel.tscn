@@ -88,4 +88,8 @@ margin_bottom = 100.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Back To Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="RestartButton" to="." method="_on_RestartButton_button_up"]
+[connection signal="button_up" from="MenuButton" to="." method="_on_MenuButton_button_up"]

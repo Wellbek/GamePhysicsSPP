@@ -58,10 +58,14 @@ func _physics_process(delta):
 	#push enemies:
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
+		if collision == null || collision.collider == null: continue #Sometims this is null, idk if this fixed it
+		var normal = collision.normal
+		if normal.x*normal.x < 0.1 && normal.z*normal.z < 0.1: #enables the player to stand on top of bodies without pushing them weirdly
+			normal = Vector3(0,0,0)
 		if collision.collider.is_in_group("Enemy") && collision.collider.is_in_group("Pushable"):
-			collision.collider.apply_central_impulse(-collision.normal * push_strength*2)
+			collision.collider.apply_central_impulse(-normal * push_strength*2)
 		elif collision.collider.is_in_group("Pushable"):
-			collision.collider.apply_central_impulse(-collision.normal * push_strength)
+			collision.collider.apply_central_impulse(-normal * push_strength)
 	
 	#last parameter determines whether the player can move rigidbodies or view then as static bodies
 	#the third and fourth parameters are the default values but i dont know how to keep them while also changing the last lol

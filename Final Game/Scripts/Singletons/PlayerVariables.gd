@@ -4,7 +4,7 @@ var render_distance = 50
 
 var kills = 0
 
-var cheats_enabled = true
+var cheats_enabled = false
 
 var inMenu = false
 

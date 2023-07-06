@@ -19,3 +19,9 @@ func init_screen():
 func _on_RestartButton_button_up():
 	PlayerVariables.reset_variables()
 	get_tree().change_scene("res://Scenes/MainScene.tscn")
+
+
+func _on_MenuButton_button_up():
+	get_tree().paused = false
+	PlayerVariables.reset_variables()
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
