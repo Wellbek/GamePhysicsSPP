@@ -39,6 +39,7 @@ func apply_boost():
 			player.number_of_extra_jumps += 5
 		BuffType.ATTK_SPEED_BOOST:
 			PlayerVariables.bow_combat().increase_attack_speed(2)
+			PlayerVariables.knife_combat().increase_attack_speed(2)
 		BuffType.RANGE_BOOST:
 			PlayerVariables.bow_combat().shoot_range *= 2
 		BuffType.EXTRA_ARROWS:
@@ -59,6 +60,7 @@ func clear_boost():
 			player.number_of_extra_jumps -= 5
 		BuffType.ATTK_SPEED_BOOST:
 			PlayerVariables.bow_combat().decrease_attack_speed(2)
+			PlayerVariables.knife_combat().decrease_attack_speed(2)
 		BuffType.RANGE_BOOST:
 			PlayerVariables.bow_combat().shoot_range /= 2
 		BuffType.EXTRA_ARROWS:

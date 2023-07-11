@@ -112,7 +112,9 @@ script = ExtResource( 9 )
 anim_player = NodePath("AnimationPlayer")
 walking_animation = "ogre_walk_anim"
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Spatial" type="Spatial" parent="." groups=[
+"Enemy",
+]]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 
 [node name="head" type="RigidBody" parent="Spatial" groups=[
