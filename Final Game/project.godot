@@ -95,8 +95,7 @@ cheats_panel={
 [physics]
 
 3d/physics_engine="CustomPhysics"
-customphysics/constraint_iterations=20
-customphysics/warm_starting_factor=0.9
+customphysics/warm_starting_factor=0.8
 customphysics/hinge_with_2x2=true
 3d/smooth_trimesh_collision=true
 

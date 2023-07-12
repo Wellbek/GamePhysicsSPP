@@ -3,7 +3,7 @@ extends Spatial
 onready var anim = $AnimationPlayer
 onready var area = $Area
 
-var damage = 10
+var damage = 15
 
 var quick_attack = false
 
@@ -42,6 +42,7 @@ func attack():
 	var i = 0
 	
 	while i < size:
+		
 		var body = targets[i].get_node("torso")
 		# sometimes the body becomes null for some reason
 		if body == null:
@@ -59,8 +60,7 @@ func attack():
 				body.take_damage(damage)
 			elif debug:
 				print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
-	i += 1
-			
+		i += 1
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	anim.play("knife_idle_anim")
