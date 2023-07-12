@@ -2,7 +2,7 @@ extends Spatial
 
 onready var bow_animator = $AnimationPlayer
 
-onready var arrow_scene = load("res://Instances//Entities//Arrow.tscn")
+onready var arrow_scene = load("res://Instances/Entities/Arrow.tscn")
 
 var number_of_arrows = 1
 var shoot_span = 20 # span of multiple arrows in degrees
