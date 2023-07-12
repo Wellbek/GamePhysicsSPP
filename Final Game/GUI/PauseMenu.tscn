@@ -62,5 +62,17 @@ ticks_on_borders = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 799.683
+margin_top = 419.035
+margin_right = 1185.68
+margin_bottom = 482.035
+text = "low spec mode"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="UnpauseButton" to="." method="_on_UnpauseButton_button_up"]
 [connection signal="value_changed" from="VBoxContainer/MouseSensSlider" to="." method="_on_MouseSensSlider_value_changed"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]

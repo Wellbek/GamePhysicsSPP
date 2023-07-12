@@ -28,3 +28,6 @@ func _on_UnpauseButton_button_up():
 
 func _on_MouseSensSlider_value_changed(value):
 	PlayerVariables.player().mouse_sens = value
+
+func _on_CheckBox_toggled(button_pressed):
+	PlayerVariables.low_spec_mode = button_pressed

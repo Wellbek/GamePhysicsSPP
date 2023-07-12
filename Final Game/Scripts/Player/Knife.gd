@@ -38,24 +38,29 @@ func start_attack(var q_a):
 func attack():
 	if not is_visible(): return
 	
-	for i in range(targets.size()):
+	var size = targets.size()
+	var i = 0
+	
+	while i < size:
 		var body = targets[i].get_node("torso")
 		# sometimes the body becomes null for some reason
 		if body == null:
 			targets.remove(i)
-			i -= 1
+			size -= 1
 			continue
 		
 		if body.is_in_group("Enemy"):
 			if body.enemy_root.dead:
 				targets.remove(i)
-				i -= 1
+				size -= 1
 				continue 
 			
 			if body.has_method('take_damage'):
 				body.take_damage(damage)
 			elif debug:
 				print("NoSuchMethodError: take_damage() in " + body.get_script().get_path())
+	i += 1
+			
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	anim.play("knife_idle_anim")

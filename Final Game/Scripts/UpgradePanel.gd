@@ -82,7 +82,7 @@ func apply_upgrade(var upgrade: int):
 			
 		UpgradeType.DAMAGE_UP:
 			PlayerVariables.bow_combat().damage *= 1.3
-			PlayerVariables.knife_combat().damage *= 1.3
+			PlayerVariables.knife_combat().damage *= 1.15
 			
 		UpgradeType.EXTRA_JUMP:
 			player.number_of_extra_jumps += 1

@@ -7,7 +7,6 @@
 [ext_resource path="res://Instances/Knife.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/WeaponManager.gd" type="Script" id=7]
 
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.4, 0.4, 0.8 )
 

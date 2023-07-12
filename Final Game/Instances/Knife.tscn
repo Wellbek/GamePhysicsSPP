@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Knife.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/Knife.gd" type="Script" id=1]
 [ext_resource path="res://Assets/knife.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/knife.png" type="Texture" id=3]
 
@@ -84,7 +84,7 @@ tracks/2/keys = {
 script = ExtResource( 1 )
 
 [node name="Mesh" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.905961, 0.423362, 0, -0.423362, 0.905961, 0, 0, 0 )
+transform = Transform( -4.27729e-08, -0.978531, 0.206102, 1, -4.37114e-08, 0, 9.00899e-09, 0.206102, 0.978531, -0.672989, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.11931e-08, -0.130082, 0 )

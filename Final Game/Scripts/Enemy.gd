@@ -13,6 +13,8 @@ var cur_path_index = 0
 var velocity = Vector3.ZERO
 var threshold = .1 # distance threshold when considered at target location
 
+var despawn_time: float = 60.0
+
 export(NodePath) onready var nav_mesh_collider = get_node(nav_mesh_collider)
 
 # if we want to have enemy attacking multiple things concurrently change to array
@@ -33,6 +35,13 @@ func _ready():
 	
 	attack_timer.wait_time = 1.0 / attack_speed
 
+func _process(delta):
+	if PlayerVariables.low_spec_mode && despawn_timer.wait_time > 5.0:
+		despawn_timer.wait_time = 5.0
+		if despawn_timer.time_left > 0: despawn_timer.start() #restart timer
+	elif not PlayerVariables.low_spec_mode && despawn_timer.wait_time < despawn_time:
+		despawn_timer.wait_time = despawn_time
+	
 func _physics_process(delta):	
 	if dead: return
 	

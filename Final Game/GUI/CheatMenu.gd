@@ -22,11 +22,9 @@ func unpause():
 func _on_Button_button_up(upgrade):
 	upgrade_panel.apply_upgrade(upgrade)
 
-
 func _on_NextWave_button_up():
 	wave_manager.wave_complete(false)
 	unpause()
-
 
 func _on_close_button_up():
 	unpause()

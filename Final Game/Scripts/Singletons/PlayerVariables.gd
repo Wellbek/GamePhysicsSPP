@@ -8,6 +8,8 @@ var cheats_enabled = false
 
 var inMenu = false
 
+var low_spec_mode = false
+
 #for mainscene
 #var core
 #for Prototype scene
