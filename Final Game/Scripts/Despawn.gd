@@ -7,7 +7,7 @@ export(NodePath) onready var timer = get_node(timer)
 func _ready():
 	timer.wait_time = despawn_after_seconds
 	
-func _process(delta):
+func _process(_delta):
 	if PlayerVariables.low_spec_mode && timer.wait_time > 5.0:
 		timer.wait_time = 5.0
 		if timer.time_left > 0: timer.start() #restart timer

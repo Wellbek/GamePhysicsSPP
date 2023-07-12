@@ -29,7 +29,7 @@ export var spawn_cd = 5
 func _ready():
 	start_wave()
 	
-func _process(delta):	
+func _process(_delta):	
 	if can_upgrade:
 		if Input.is_action_just_pressed("upgrade_panel"):
 			if upgrade_panel.visible: 

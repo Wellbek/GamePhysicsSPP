@@ -21,7 +21,7 @@ func increase_attack_speed(var amount):
 func decrease_attack_speed(var amount):
 	anim.playback_speed /= amount
 
-func _process(delta):		
+func _process(_delta):		
 	if not is_visible(): 
 		if anim.current_animation == "knife_attack_anim":
 			anim.play("knife_idle_anim")

@@ -21,7 +21,7 @@ func decrease_attack_speed(var amount):
 	req_draw *= amount
 	bow_animator.playback_speed /= amount
 
-func _process(delta):	
+func _process(_delta):	
 	if not is_visible(): 
 		# shoot and reset if swapped weapon
 		if bow_animator.current_animation == "bow_draw_animation" and bow_animator.current_animation_length != 0:

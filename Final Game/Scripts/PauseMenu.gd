@@ -4,7 +4,7 @@ extends Panel
 onready var upgrade_panel = PlayerVariables.gui().get_node("UpgradePanel")
 onready var game_over_panel = PlayerVariables.gui().get_node("GameOverPanel")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel") && (!PlayerVariables.inMenu || visible):
 		if visible:
 			unpause()

@@ -9,7 +9,7 @@ func _ready():
 	anim_player.play(walking_animation)
 	anim_player.playback_speed = enemy_root.speed / 2
 
-func _process(delta):
+func _process(_delta):
 	if enemy_root.dead: 
 		anim_player.stop()
 		return

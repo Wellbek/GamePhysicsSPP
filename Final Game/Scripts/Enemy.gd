@@ -35,14 +35,14 @@ func _ready():
 	
 	attack_timer.wait_time = 1.0 / attack_speed
 
-func _process(delta):
+func _process(_delta):
 	if PlayerVariables.low_spec_mode && despawn_timer.wait_time > 5.0:
 		despawn_timer.wait_time = 5.0
 		if despawn_timer.time_left > 0: despawn_timer.start() #restart timer
 	elif not PlayerVariables.low_spec_mode && despawn_timer.wait_time < despawn_time:
 		despawn_timer.wait_time = despawn_time
 	
-func _physics_process(delta):	
+func _physics_process(_delta):	
 	if dead: return
 	
 	# Movement:

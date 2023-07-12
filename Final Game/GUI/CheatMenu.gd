@@ -3,7 +3,7 @@ extends Panel
 onready var upgrade_panel = PlayerVariables.gui().get_node("UpgradePanel")
 onready var wave_manager = PlayerVariables.wave_manager()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("cheats_panel") && PlayerVariables.cheats_enabled && !PlayerVariables.inMenu:
 		pause()
 		

@@ -78,7 +78,7 @@ func _ready():
 	
 	apply_boost()
 
-func _process(delta):
+func _process(_delta):
 	if timer.wait_time > 0:
 		progress.value = float(timer.time_left)/float(timer.wait_time) * 100
 

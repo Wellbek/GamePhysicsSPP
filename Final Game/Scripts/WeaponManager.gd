@@ -10,7 +10,7 @@ func _ready():
 		
 	get_child(curr).show()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_key_pressed(KEY_1) and curr != 0:
 		swap_weapon(0)
 		# print("Knife selected")

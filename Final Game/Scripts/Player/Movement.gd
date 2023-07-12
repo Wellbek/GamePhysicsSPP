@@ -79,7 +79,7 @@ func _physics_process(delta):
 
 
 #------------------------------ helper methods -----------------------------------
-func handle_wasd(delta, velocity_damp, accelaration_speed):
+func handle_wasd(_delta, velocity_damp, accelaration_speed):
 	velocity.x *= velocity_damp
 	velocity.z *= velocity_damp
 	

@@ -4,7 +4,7 @@ var processed = false
 
 onready var waveLabel = get_node("Message/Wave")
 
-func _process(delta):
+func _process(_delta):
 	if !processed && visible:
 		processed = true;
 		init_screen()
