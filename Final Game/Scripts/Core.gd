@@ -8,7 +8,7 @@ onready var core_bar = gui.get_node("TopBar/CoreBar")
 
 var dead = false
 
-onready var indicator_scene = load("res://Instances//GUI//DirectionalDamageIndicator.tscn")
+onready var indicator_scene = load("res://Instances/GUI/DirectionalDamageIndicator.tscn")
 
 export var debug = false
 
