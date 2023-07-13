@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/AimTarget.gd" type="Script" id=1]
+[ext_resource path="res://Assets/aim_taget.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/chain.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Assets/aim_taget.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://Assets/aim_taget.png" type="Texture" id=4]
-[ext_resource path="res://Assets/chain.png" type="Texture" id=5]
+[ext_resource path="res://Assets/aim_taget.png" type="Texture" id=3]
+[ext_resource path="res://Assets/chain.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/AimTarget.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 5 )
+albedo_texture = ExtResource( 4 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.185578, 0.0413276, 0.354526 )
@@ -16,16 +16,17 @@ extents = Vector3( 0.185578, 0.0413276, 0.354526 )
 height = 0.25
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_texture = ExtResource( 4 )
+albedo_texture = ExtResource( 3 )
 
 [node name="AimTarget" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.43646, 3.78316, -2.44812 )
 
 [node name="Anchor" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 2.27374e-13, 0, -2.27374e-13, 1, 0, -1.19209e-06, -3.82343 )
-collision_layer = 0
-collision_mask = 0
+collision_layer = 4
+collision_mask = 11
 mode = 1
+mass = 2.0
 
 [node name="PinJoint5" type="PinJoint" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 5.68434e-14, 0, -5.68434e-14, 1, 0, -2.38419e-07, -3.81964 )
@@ -34,8 +35,8 @@ nodes/node_b = NodePath("../Chain4")
 
 [node name="Chain4" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 1.84741e-13, 0, -1.84741e-13, 1, 0, -1.43051e-06, -3.50922 )
-collision_layer = 0
-collision_mask = 15
+collision_layer = 4
+collision_mask = 11
 mass = 2.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Chain4"]
@@ -53,8 +54,8 @@ nodes/node_b = NodePath("../Chain3")
 
 [node name="Chain3" type="RigidBody" parent="."]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.27898e-13, -1.27898e-13, 1.52466e-20, 1, 0, -2.14577e-06, -2.8818 )
-collision_layer = 0
-collision_mask = 15
+collision_layer = 4
+collision_mask = 11
 mass = 2.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Chain3"]
@@ -72,8 +73,8 @@ nodes/node_b = NodePath("../Chain2")
 
 [node name="Chain2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 1.42109e-13, 0, -1.42109e-13, 1, 0, -1.66893e-06, -2.32251 )
-collision_layer = 0
-collision_mask = 15
+collision_layer = 4
+collision_mask = 11
 mass = 2.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Chain2"]
@@ -91,8 +92,8 @@ nodes/node_b = NodePath("../Chain")
 
 [node name="Chain" type="RigidBody" parent="."]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 8.52651e-14, -8.52651e-14, 1.01644e-20, 1, 0, -1.90735e-06, -1.76143 )
-collision_layer = 0
-collision_mask = 15
+collision_layer = 4
+collision_mask = 11
 mass = 2.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Chain"]
@@ -112,10 +113,10 @@ nodes/node_b = NodePath("../Target")
 "AimTarget",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0 )
-collision_layer = 0
-collision_mask = 15
+collision_layer = 4
+collision_mask = 11
 mass = 3.0
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="ChainAttachmentMesh" type="MeshInstance" parent="Target"]
 transform = Transform( -1.14044e-07, 0, 0.7, -1.63425e-13, 0.7, -3.21873e-20, -0.7, -2.06057e-13, -1.14044e-07, -0.0336752, -0.0340691, -1.20099 )
@@ -131,7 +132,7 @@ shape = SubResource( 3 )
 
 [node name="TargetMesh" type="MeshInstance" parent="Target"]
 transform = Transform( 1, 0, 0, 0, 2, 7.10543e-14, 0, -1.42109e-13, 1, 0, 1.69622, -2.38419e-07 )
-mesh = ExtResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="Target"]

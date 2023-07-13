@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/GUI/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=2]
+
 
 [node name="PauseMenu" type="Panel"]
 pause_mode = 2

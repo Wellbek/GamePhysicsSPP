@@ -1,6 +1,6 @@
 extends Node
 
-onready var enemy = preload("res://Instances/Ogre.tscn")
+onready var enemy = preload("res://Instances/Entities/Ogre/Ogre.tscn")
 
 onready var timer = get_node("Timer")
 

@@ -1,12 +1,16 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://GUI/PauseMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://GUI/UpgradePanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/GUI/PauseMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instances/GUI/UpgradePanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://GUI/GameOverPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Instances/GUI/GameOverPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/UI_RECT.png" type="Texture" id=6]
-[ext_resource path="res://GUI/CheatMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Instances/GUI/CheatMenu.tscn" type="PackedScene" id=7]
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 26

@@ -1,9 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://GUI/HealthBar2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instances/GUI/HealthBar2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instances/Entities/Ogre/OgreModel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/HealthBar3D.gd" type="Script" id=3]
-[ext_resource path="res://Instances/OgreModel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Enemy/Enemy.gd" type="Script" id=4]
+
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.0745098, 0.6, 0.121569, 1 )
@@ -27,7 +29,7 @@ height = 3.0
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
 collision_layer = 32
 collision_mask = 52
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 nav_mesh_collider = NodePath("CollisionShape")
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -61,10 +63,10 @@ transparent_bg = true
 usage = 0
 render_target_v_flip = true
 
-[node name="HealthBar2D" parent="HealthBar3D/Viewport" instance=ExtResource( 2 )]
+[node name="HealthBar2D" parent="HealthBar3D/Viewport" instance=ExtResource( 1 )]
 visible = false
 
-[node name="Model" parent="." instance=ExtResource( 4 )]
+[node name="Model" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61685, 0 )
 enemy_root = NodePath("..")
 

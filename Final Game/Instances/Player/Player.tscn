@@ -1,11 +1,15 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Player/Movement.gd" type="Script" id=1]
-[ext_resource path="res://Instances/Bow.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/FillViewport.gd" type="Script" id=3]
+[ext_resource path="res://Instances/Player/PlayerWeapons/Bow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/GUI/FillViewport.gd" type="Script" id=3]
 [ext_resource path="res://Assets/crosshair.png" type="Texture" id=4]
-[ext_resource path="res://Instances/Knife.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Instances/Player/PlayerWeapons/Knife.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/WeaponManager.gd" type="Script" id=7]
+
+
+
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.4, 0.4, 0.8 )

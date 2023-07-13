@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerVariables="*res://Scripts/Singletons/PlayerVariables.gd"
-LineDrawer="*res://Scripts/DrawLine3D.gd"
+LineDrawer="*res://Scripts/Singletons/DrawLine3D.gd"
 
 [display]
 
@@ -94,7 +94,6 @@ cheats_panel={
 
 [physics]
 
-3d/physics_engine="CustomPhysics"
 customphysics/warm_starting_factor=0.8
 customphysics/hinge_with_2x2=true
 3d/smooth_trimesh_collision=true
