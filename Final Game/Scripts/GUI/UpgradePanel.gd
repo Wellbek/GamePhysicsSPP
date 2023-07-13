@@ -62,6 +62,10 @@ func _on_Button4_button_up():
 	wm.start_wave()
 	
 func apply_upgrade(var upgrade: int):
+	# clear all remaining stat boosts (to not mess with upgrades)
+	for panel in PlayerVariables.gui().get_node("StatBoostBox").get_children():
+		panel.clear_boost()
+	
 	match upgrade:
 		UpgradeType.NONE:
 			pass

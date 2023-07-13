@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Bow/arrow.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.1, 0.1, 0.1 )
+extents = Vector3( 0.002, 0.002, 0.1 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.2, 0.2, 0.2 )

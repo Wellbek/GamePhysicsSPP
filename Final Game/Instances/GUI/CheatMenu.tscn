@@ -3,7 +3,6 @@
 [ext_resource path="res://GUI/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/GUI/CheatMenu.gd" type="Script" id=2]
 
-
 [node name="CheatMenu" type="Panel"]
 visible = false
 margin_right = 2000.0

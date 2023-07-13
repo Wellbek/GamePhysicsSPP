@@ -81,10 +81,6 @@ func on_enemy_kill():
 		wave_complete(true)
 		
 func wave_complete(var open_upgrade):
-	# clear all remaining stat boosts (to not mess with upgrades)
-	for panel in PlayerVariables.gui().get_node("StatBoostBox").get_children():
-		panel.clear_boost()
-	
 	# reduce spawn cooldown every wave but always wait atleast 1 second
 	spawn_cd -= 0.1
 	if spawn_cd <= 1:
